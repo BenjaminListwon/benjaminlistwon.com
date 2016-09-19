@@ -1,0 +1,187 @@
+<!-- Sidebar -->
+<section id="sidebar">
+
+    <!-- Intro -->
+        <section id="intro">
+            {{ $pic := .Site.Params.intro.pic }}
+            {{ with $pic.src }}
+                {{ if $pic.circle }}
+                    <img src="{{ . }}" class="intro-circle" width="{{ $pic.width }}" alt="{{ $pic.alt }}" />
+                {{ else if $pic.imperfect }}
+                    <a href="/" class="logo"><img src="{{ . }}" alt="{{ $pic.alt }}" /></a>
+                {{ else }}
+                    <img src="{{ . }}" width="{{ $pic.width }}" alt="{{ $pic.alt }}" />
+                {{ end }}
+            {{ end }}
+            {{ with .Site.Params.intro }}
+                <header>
+                    <h2>{{ .header }}</h2>
+                    <p>{{ .paragraph | safeHTML }}</p>
+                </header>
+            {{ end }}
+            <header>
+                <p class="followme">Elsewhere</p>
+            </header>
+            <ul class="icons">
+                {{ if .RSSLink }}
+                    <li><a href="{{ .RSSLink }}" type="application/rss+xml"
+                         title="RSS" class="fa fa-rss"></a></li>
+                {{ end }}
+                {{ if .Site.Params.socialAppearAtTop }}
+                    {{ partial "social" . }}
+                {{ end }}
+            </ul>
+        </section>
+
+
+
+        <section class="mcform-wrapper">
+            <a name="subscribe"></a>
+            
+
+            <!-- Begin MailChimp Signup Form -->
+            <div id="mc_embed_signup" class="mcform">
+                <h3>Subscribe To The Newsletter</h3>
+                <p>Thanks for taking the time to visit! If you liked this, or you want to
+                    follow along as I learn, build and share, just sign up below. 
+                    I promise to keep it low-key and infrequent. Cheers!</p>
+
+                <form action="//benjaminlistwon.us10.list-manage.com/subscribe/post?u=6aacef1fabe125c2bca255d69&amp;id=55cc9f4efa" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" novalidate>
+                    <div id="mc_embed_signup_scroll">
+                        <p>
+                            <input type="email" value="" name="EMAIL" id="mce-EMAIL" placeholder="thank@you.com"><br/>
+                            <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button-primary">
+                        </p>
+                    </div>
+                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_6aacef1fabe125c2bca255d69_55cc9f4efa" tabindex="-1" value=""></div>   
+                </form>
+            </div>
+            <!--End mc_embed_signup-->
+            
+        </section>
+
+
+
+
+
+    <!-- Posts List -->
+        <section id="recent-posts">
+            <ul class="posts">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                {{ if .Site.Params.orderByPublishDate }}
+                    {{ $.Scratch.Set "recentPosts" .Site.Pages.ByPublishDate.Reverse }}
+                {{ else }}
+                    {{ $.Scratch.Set "recentPosts" .Site.Pages }}
+                {{ end }}
+
+                {{ with .Site.Params.postAmount.sidebar }}
+                    {{ $.Scratch.Set "postLimit" . }}
+                {{ else }}
+                    {{ $.Scratch.Set "postLimit" 5 }}
+                {{ end }}
+
+                {{ range first ($.Scratch.Get "postLimit") (where ($.Scratch.Get "recentPosts") "Type" "post") }}
+                    <li>
+                        <article>
+                            <header>
+                                <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                                {{ if .Site.Params.orderByPublishDate }}
+                                    {{ $.Scratch.Set "dateType" .PublishDate }}
+                                {{ else }}
+                                    {{ $.Scratch.Set "dateType" .Date }}
+                                {{ end }}
+                                <time class="published" datetime=
+                                    '{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
+                                    {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}</time>
+                            </header>
+                        </article>
+                    </li>
+                {{ end }}
+
+                {{ if ge (len (where .Site.Pages "Type" "post")) ($.Scratch.Get "postLimit") }}
+                    <li>
+                        <ul class="actions">
+                            <li><a href=
+                            {{ with .Site.Params.viewMorePostLink }}
+                                {{ . }}
+                            {{ else }}
+                                "/post/"
+                            {{ end }}
+                            class="button">View more posts</a></li>
+                        </ul>
+                    </li>
+                {{ end }}
+            </ul>
+        </section>
+
+    <!-- This if statement only applies if someone goes to the /categories url -->
+    <!-- Otherwise this section is shown for all other links -->
+    {{ if ne ($.Scratch.Get "showCategories") false }}
+    <!-- Categories List -->
+    <!--
+        <section id="categories">
+            <ul class="posts">
+                <header>
+                    <h3><a href="/categories/">Categories</a></h3>
+                </header>
+
+                {{ if .Site.Params.categoriesByCount }}
+                    {{ $.Scratch.Set "categories" .Site.Taxonomies.categories.ByCount }}
+                {{ else }}
+                    {{ $.Scratch.Set "categories" .Site.Taxonomies.categories.Alphabetical }}
+                {{ end }}
+
+                {{ range $key, $value := $.Scratch.Get "categories" }}
+                    <li>
+                        <article>
+                            <header>
+                                <a href="/categories/{{ $value.Name | urlize }}/">{{ $value.Name }}</a>
+                                <span style="float:right;">{{ $value.Count }}</span>
+                            </header>
+                        </article>
+                    </li>
+                {{ end }}
+            </ul>
+        </section>
+        -->
+    {{ end }}
+
+    <!-- About -->
+        {{ with .Site.Params.intro.about }}
+        <section class="blurb">
+            <h2>About</h2>
+            <p>{{ . }}</p>
+
+            <ul class="actions">
+                <li><a href="/about/" class="button">Learn More</a></li>
+            </ul>
+        </section>
+        {{ end }}
+
+    <!-- Footer -->
+        <section id="footer">
+            <header>
+                <p class="followme">Elsewhere</p>
+            </header>
+            <ul class="icons">
+                {{ if .RSSLink }}
+                    <li><a href="{{ .RSSLink }}" type="application/rss+xml"
+                         title="RSS" class="fa fa-rss"></a></li>
+                {{ end }}
+                {{ if .Site.Params.socialAppearAtBottom }}
+                    {{ partial "social" . }}
+                {{ end }}
+            </ul>
+
+            <p class="copyright">
+                &copy; {{ .Site.Title }}.<br/>
+                Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+                Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+                Powered by <a href="//gohugo.io" >Hugo</a>
+            </p>
+        </section>
+
+</section>

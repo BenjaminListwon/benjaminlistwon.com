@@ -1,0 +1,154 @@
+/**
+ * This is the stylesheet for the dummy content. Obviously a super-quick
+ * hack, just to get the point across. I'd advise ditching it and starting
+ * from scratch ;)
+ *
+ * The main layout CSS lives up one directory.
+ *
+ * CSS for the devices themselves lives in devices.min.css, which is from the
+ * tremendous folks at Marvel https://marvelapp.com and is available on Github
+ * at http://marvelapp.github.io/devices.css/
+ */
+
+/* Body Resetting Stuffs */
+* { margin: 0; padding: 0; } /* I know, but it's a shortcut for now :) */
+
+body, html {
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background: #fff;
+	font-family: 'Helvetica Neue', Helvetica, sans-serif;
+	font-size: 14px;
+	line-height: 21px;
+}
+
+/* Nav Section */
+body>nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3em;
+	background: #ddd;
+	z-index: 100;
+	text-align: center;
+}
+
+body>nav ul {
+	display: none;
+}
+
+body>nav p,
+body>nav ul li {
+	display: inline-block;
+	line-height: 3em;
+	padding: 0 1.5em;
+}
+
+/* Main Body & Sections */
+main {
+	padding-top: 4em;
+}
+
+section {
+	padding: 0 1em;
+}
+
+section.content {
+}
+
+section.sidebar {
+	color: #fff;
+	background: #888;
+}
+
+/* A Bit Of Typeography */
+a { 
+	color: #69c; 
+	text-decoration: none;
+}
+
+main p,
+main ul {
+	font-family: Georgia, serif;
+	padding-bottom: 1em;
+}
+
+main ul {
+	list-style: inside;
+}
+
+h1 {
+	font-size: 1.5em;
+	line-height: 2em;
+}
+
+h2 {
+	font-size: 1.25em;
+	line-height: 2.4em;
+}
+
+/* The Image */
+figure {
+	width: 100%;
+	padding-bottom: 1em;
+}
+
+figure img {
+	max-width: 100%;
+}
+
+figcaption {
+	color: #888;
+}
+
+/* The iPad Target */
+@media only screen and (min-width: 400px) {
+	body {
+		font-size: 16px;
+		line-height: 24px;
+	}
+
+	body>nav p {
+		display: none;
+	}
+	body>nav ul {
+		display: block;
+	}
+
+	section {
+		padding: 0 1.5em;
+	}
+}
+
+/* The Macobook Target */
+@media only screen and (min-width: 740px) {
+	body {
+		font-size: 18px;
+		line-height: 27px;
+	}
+
+	body>nav {
+		text-align: left;
+	}
+
+	section {
+		display: inline-block;
+		vertical-align: top;
+	}
+
+	section.content {
+		width: 65%;
+	}
+
+	section.sidebar {
+		color: #888;
+		background: #fff;
+		width: 20%;
+	}
+}

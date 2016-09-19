@@ -1,0 +1,30 @@
+{{ partial "general-title" . }}
+
+{{ partial "header" . }}
+    {{ partial "navbar" . }}
+    <!-- Main -->
+    <div id="main">
+        <article class="post">
+            {{ $.Scratch.Set "h1" true }}
+            {{ .Render "header" }}
+            <div id="content">
+
+              {{ range .Site.Pages.GroupByDate "Jan, 2006" }}
+                <h4>{{ .Key }}</h4>
+                <!-- ANOTHER WAY: <div style="margin-left: 2em" id="list"></div> -->
+                <ul>
+                  {{ range .Pages }}
+                  {{ if eq "post" .Type }}
+                  <li>
+                     <a href="{{ .Permalink }}">{{ .Title }}</a> <span class="archive-date">{{ .Date.Format "Mon, 2 Jan, 2006" }}</span>
+                  </li>
+                  {{ end }}
+                  {{ end }}
+                </ul>
+              {{ end }}
+
+            </div>
+        </article>
+    </div>
+    {{ partial "sidebar" . }}
+{{ partial "footer" . }}

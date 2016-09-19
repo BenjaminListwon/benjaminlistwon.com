@@ -1,0 +1,85 @@
+baseurl = "https://benjaminlistwon.com/"
+languageCode = "en-us"
+title = "Benjamin Listwon"
+theme = "hugo-future-imperfect-modified"
+preserveTaxonomyNames = true
+paginate = 5
+disqusShortname = ""
+googleAnalytics = "UA-78325407-1"
+
+[params]
+    description          = "A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way."
+    navbarTitle          = "Benjamin Listwon"
+    socialAppearAtTop    = true
+    socialAppearAtBottom = true
+    viewMorePostLink     = "/blog/"
+
+# Optional Params
+    categoriesByCount    = true
+    includeReadingTime   = true
+    
+    # https://github.com/audreyr/favicon-cheat-sheet
+    loadFavicon          = false
+    faviconVersion       = ""
+    customCSS            = ["/css/site.min.css"]
+    customJS             = ["/js/site.min.js"]
+
+[params.intro]
+    header    = ""
+    paragraph = "A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way."
+    about     = "I am a designer, developer, and proud father, living in the greater Seattle area. I have spent the last two decades building apps, websites and software with some terrific folks, and now I am striking out on my own."
+
+[params.intro.pic]
+    src       = "/img/logo.jpg"
+    circle    = false
+    imperfect = true
+    width     = ""
+    alt       = "Benjamin Listwon"
+
+[params.postAmount]
+    sidebar = 5
+
+[[menu.main]]
+    name = "Blog"
+    url = "/blog"
+    weight = 1
+
+[[menu.main]]
+    name = "Archive"
+    url = "/archive"
+    weight = 2
+
+[[menu.main]]
+    name = "About"
+    url = "/about"
+    weight = 3
+
+[social]
+    github          = "benjaminlistwon"
+    bitbucket       = ""
+    jsfiddle        = ""
+    codepen         = ""
+    foursquare      = ""
+    dribbble        = ""
+    deviantart      = ""
+    behance         = ""
+    flickr          = "nettles"
+    instagram       = ""
+    youtube         = ""
+    vimeo           = ""
+    vine            = ""
+    medium          = ""
+    wordpress       = ""
+    tumblr          = ""
+    xing            = ""
+    linkedin        = ""
+    slideshare      = ""
+    stackoverflow   = ""
+    reddit          = ""
+    pinterest       = "benjaminlistwon"
+    googleplus      = ""
+    facebook        = ""
+    facebook_admin  = ""
+    twitter_domain  = ""
+    twitter         = "benjaminlistwon"
+    email           = "ben@benjaminlistwon.com"
