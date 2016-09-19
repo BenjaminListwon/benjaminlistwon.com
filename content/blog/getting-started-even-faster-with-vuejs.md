@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Getting Started (Even Faster) With Vue.js"
 type = "post"
+tags = ["Vue", "getting started"]
 
 +++
 

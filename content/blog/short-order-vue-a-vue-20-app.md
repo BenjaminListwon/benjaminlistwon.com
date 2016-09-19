@@ -9,7 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Short Order Vue: A Vue 2.0 App"
 type = "post"
-tags = ["vue", "vuejs", "javascript"]
+tags = ["Vue", "vuex", "javascript", "reactive", "demo"]
 
 +++
 

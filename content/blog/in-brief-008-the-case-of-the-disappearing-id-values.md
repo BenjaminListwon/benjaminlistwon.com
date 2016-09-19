@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "In Brief #008: The Case Of The Disappearing Id Values"
 type = "post"
+tags = ["In Brief", "Laravel", "MySQL"]
 
 +++
 

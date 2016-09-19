@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Tidbits"
 type = "post"
+tags = ["personal", "update"]
 
 +++
 

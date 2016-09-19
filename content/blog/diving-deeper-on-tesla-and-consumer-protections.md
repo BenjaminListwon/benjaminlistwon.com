@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Diving Deeper on Tesla and Consumer Protections"
 type = "post"
+tags = ["opinion", "Tesla", "fact check"]
 
 +++
 

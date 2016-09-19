@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "On Semantic Markup"
 type = "post"
+tags = ["opinion", "HTML", "semantic"]
 
 +++
 

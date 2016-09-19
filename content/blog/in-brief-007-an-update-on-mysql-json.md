@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "In Brief #007: An Update On MySQL + JSON"
 type = "post"
+tags = ["In Brief", "MySQL", "JSON"]
 
 +++
 

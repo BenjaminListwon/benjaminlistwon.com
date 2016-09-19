@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "GitHub Third Party Access and Forge"
 type = "post"
+tags = ["Laravel", "Forge", "GitHub"]
 
 +++
 

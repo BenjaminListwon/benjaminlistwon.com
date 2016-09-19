@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "A Case For Writing It Yourself"
 type = "post"
+tags = ["javascript", "frameworks", "diy"]
 
 +++
 

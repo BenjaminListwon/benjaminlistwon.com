@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Why Laravel? Why Now?"
 type = "post"
+tags = ["opinion", "personal", "Laravel", "getting started"]
 
 +++
 

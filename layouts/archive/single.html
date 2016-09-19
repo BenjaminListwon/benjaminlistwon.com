@@ -4,19 +4,19 @@
     {{ partial "navbar" . }}
     <!-- Main -->
     <div id="main">
-        <article class="post">
+        <article class="post archive">
             {{ $.Scratch.Set "h1" true }}
             {{ .Render "header" }}
             <div id="content">
 
-              {{ range .Site.Pages.GroupByDate "Jan, 2006" }}
+              {{ range .Site.Pages.GroupByDate "January, 2006" }}
                 <h4>{{ .Key }}</h4>
                 <!-- ANOTHER WAY: <div style="margin-left: 2em" id="list"></div> -->
-                <ul>
+                <ul class="archive-list">
                   {{ range .Pages }}
                   {{ if eq "post" .Type }}
                   <li>
-                     <a href="{{ .Permalink }}">{{ .Title }}</a> <span class="archive-date">{{ .Date.Format "Mon, 2 Jan, 2006" }}</span>
+                     <a href="{{ .Permalink }}">{{ .Title }}</a> <span class="archive-date">{{ .Date.Format "Jan 02, 2006" }}</span>
                   </li>
                   {{ end }}
                   {{ end }}

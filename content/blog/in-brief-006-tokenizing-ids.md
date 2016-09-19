@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "In Brief #006: Tokenizing Ids"
 type = "post"
+tags = ["In Brief", "Laravel", "MySQL"]
 
 +++
 

@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Only As Hard As We Make It"
 type = "post"
+tags = ["opinion", "frameworks", "design", "dev"]
 
 +++
 

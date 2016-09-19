@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "In Brief #003: MySQL Backups On Forge"
 type = "post"
+tags = ["In Brief", "Laravel", "Forge", "MySQL"]
 
 +++
 

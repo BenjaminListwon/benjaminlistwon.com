@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Vue 2.0"
 type = "post"
+tags = ["Vue", "vuex", "javascript", "reactive"]
 
 +++
 

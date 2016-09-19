@@ -1,6 +1,7 @@
 +++
 author = ""
 categories = []
+tags = []
 description = ""
 linktitle = ""
 featured = ""

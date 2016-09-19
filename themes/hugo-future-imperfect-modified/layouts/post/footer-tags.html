@@ -1,0 +1,10 @@
+<!-- Display the tags associated with this post -->
+{{ if isset .Params "tags" }}
+    {{ if len .Params.tags }}
+    <ul class="tags">
+    {{ range .Params.tags }}
+        <li><a href="/tags/{{ . | urlize }}">{{ . }}</a></li>
+    {{ end }}
+    </ul>
+    {{ end }}
+{{ end }}

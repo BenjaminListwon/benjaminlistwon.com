@@ -73,72 +73,15 @@
 </ul>
 
 
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-<script type="text/javascript">
-	function setCookie(cname, cvalue, exdays) {
-	    var d = new Date();
-	    d.setTime(d.getTime() + (exdays*24*60*60*1000));
-	    var expires = "expires="+d.toUTCString();
-	    document.cookie = cname + "=" + cvalue + "; " + expires;
-	}
+  ga('create', 'UA-78325407-1', 'auto');
+  ga('send', 'pageview');
 
-	function getCookie(cname) {
-	    var name = cname + "=";
-	    var ca = document.cookie.split(';');
-	    for(var i=0; i<ca.length; i++) {
-	        var c = ca[i];
-	        while (c.charAt(0)==' ') c = c.substring(1);
-	        if (c.indexOf(name) == 0) return c.substring(name.length, c.length);
-	    }
-	    return "";
-	}
-
-	function checkCookie() {
-	    var sirid = getCookie("sirid");
-	    if (sirid != "") {
-	    	setCookie("sirid", sirid, 1);
-	    } else {
-	        sirid = makeId();
-	        setCookie("sirid", sirid, 1);
-	    }
-	    return sirid;
-	}
-
-	function makeId() {
-		var t = Date.now ? Date.now() : Date().getTime();
-		t = Math.floor(t / 1000);
-		var n = Math.floor((Math.random() * 1000000) + 1);
-		return n + "-" + t;
-	}
-</script>
-
-
-<script type="text/javascript" id="sirtracksalot">
-	var sirId = window.sirId = checkCookie();
-	var inboundReferer = "{{ $inboundReferer or '' }}";
-	(function() {
-		var sir = window.sir = window.sir || {};
-		if (sir.exists || sir.downloaded) { return; }
-		sir.exists = true;
-		sir.queue  = [];
-		sir.page      = function() { sir.queue.push({'action': 'page', 'args': arguments}); };
-		sir.pageBegin = function() { sir.queue.push({'action': 'pageBegin', 'args': arguments}); };
-		sir.pageEnd   = function() { sir.queue.push({'action': 'pageEnd', 'args': arguments}); };
-		sir.page      = function() { sir.queue.push({'action': 'page', 'args': arguments}); };
-		sir.record    = function() { sir.queue.push({'action': 'record', 'args': arguments}); };
-		sir.bind      = function() { sir.queue.push({'action': 'bind', 'args': arguments}); };
-	})();
-
-	sir.page(sirId, {});
-</script>
-
-
-<script type="text/javascript">
-	var sirjs = document.createElement('script');
-	sirjs.type = 'text/javascript';
-	sirjs.async = true;
-	sirjs.src = ('https:' === document.location.protocol ? 'https://' : 'http://') + 'sir.tracksalot.com/js/sir.js';
-	document.getElementById('sirtracksalot').parentNode.insertBefore(sirjs, document.getElementById('sirtracksalot'));
 </script>
 
 </body>

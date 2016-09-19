@@ -1,0 +1,27 @@
+{{ partial "general-title" . }}
+
+{{ partial "header" . }}
+{{ partial "navbar" . }}
+
+<!-- Main -->
+<div id="main">
+  <article class="post archive">
+    <header>
+      <h2 id="title">Posts tagged with "{{ .Title }}"</h2>
+      <p><a href="/tags/">List of all tags</a></p>
+    </header>
+
+    <div id="content">
+      <ul class="archive-list">
+      {{ range .Data.Pages }}        
+        <li>
+           <a href="{{ .Permalink }}">{{ .Title }}</a> <span class="archive-date">{{ .Date.Format "Jan 02, 2006" }}</span>
+        </li>
+      {{ end }}
+      </ul>
+    </div>
+  </article>
+</div>
+
+{{ partial "sidebar" . }}
+{{ partial "footer" . }}

@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "No Really, For Everyone"
 type = "post"
+tags = ["opinion", "design", "accessibility"]
 
 +++
 

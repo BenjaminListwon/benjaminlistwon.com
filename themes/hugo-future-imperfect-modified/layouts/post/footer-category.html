@@ -1,5 +1,8 @@
-<ul class="stats">
-    {{ if isset .Params "categories" }}
+{{ if isset .Params "categories" }}
+    {{ if len .Params.categories }}
+    
+    <ul class="stats">
+    
         {{ $categoryCount := (len .Params.categories) }}
 
         <!--
@@ -35,10 +38,12 @@
                 {{ end }}
             </li>
         {{ end }}
-    {{ end }}
 
-    <!-- Display the categories associated with this post -->
-    {{ range .Params.categories }}
-        <li><a href='{{ add ($.Scratch.Get "categoryUrl") . | urlize }}'>{{ . }}</a></li>
+        <!-- Display the categories associated with this post -->
+        {{ range .Params.categories }}
+            <li><a href='{{ add ($.Scratch.Get "categoryUrl") . | urlize }}'>{{ . }}</a></li>
+        {{ end }}
+    </ul>
+
     {{ end }}
-</ul>
+{{ end }}

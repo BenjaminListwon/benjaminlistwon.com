@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Carpetbaggers and Disruption’s Human Costs"
 type = "post"
+tags = ["opinion", "Tesla"]
 
 +++
 

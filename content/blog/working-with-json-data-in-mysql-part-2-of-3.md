@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Working With JSON Data In MySQL - Part 2 of 3"
 type = "post"
+tags = ["JSON", "MySQL", "getting started"]
 
 +++
 

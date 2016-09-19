@@ -4029,6 +4029,25 @@ Monokai Sublime style. Derived from Monokai by noformnocontent http://nn.mit-lic
   width: 3em;
 }
 
+/* The post footer */
+.post footer {
+  padding-top: 3em;
+}
+
+/* Tags */
+ul.tags { overflow: hidden; float: right; margin: 0; padding: 0; list-style: none; padding-bottom: 2em; }
+ul.tags li { display: inline-block; margin: 0; margin-right: 0.2em; }
+ul.tags li a { 
+  background: #fff;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+
+  font-family: "Raleway", Helvetica, sans-serif;
+  font-size: 0.6rem;
+  text-transform: uppercase;
+}
+
+
 /* Keep post header flex even after big screen */
 @media screen and (min-width: 980px) {
 
@@ -4121,10 +4140,35 @@ p.followme {
   color: #999; 
 }
 
+/* Archive pages */
+article.archive #content {
+  padding-bottom: 2em;
+}
+
+/* Archive lists */
+ul.archive-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+ul.archive-list li {
+  margin: 0;
+  padding: 0;
+}
+
 /* Date float on archive page */
 .archive-date {
-  float: right;
+  float: none;
   color: #999;
+  display: inline-block;
+  padding-bottom: 0.5em;
+}
+
+@media screen and (min-width: 600px) {
+  .archive-date {
+    float: right;
+    padding-bottom: 0;
+  }
 }
 
 /* Header nav items should be full heoght */

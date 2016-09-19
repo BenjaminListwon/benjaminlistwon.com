@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "The New, New Media"
 type = "post"
+tags = ["opinion", "VR"]
 
 +++
 

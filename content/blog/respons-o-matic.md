@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Respons-O-Matic"
 type = "post"
+tags = ["design", "responsive", "tool", "demo"]
 
 +++
 

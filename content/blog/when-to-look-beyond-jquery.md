@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "When To Look Beyond jQuery"
 type = "post"
+tags = ["javascript", "jQuery", "diy"]
 
 +++
 

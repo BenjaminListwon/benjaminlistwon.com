@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "In Brief #005: Updating Cartalyst Tagged Models"
 type = "post"
+tags = ["In Brief", "Laravel", "tags", "Cartalyst"]
 
 +++
 

@@ -7,22 +7,23 @@ paginate = 5
 disqusShortname = ""
 googleAnalytics = "UA-78325407-1"
 
+# NOTE: For faviocn, https://github.com/audreyr/favicon-cheat-sheet
+
 [params]
     description          = "A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way."
     navbarTitle          = "Benjamin Listwon"
     socialAppearAtTop    = true
     socialAppearAtBottom = true
     viewMorePostLink     = "/blog/"
-
-# Optional Params
     categoriesByCount    = true
     includeReadingTime   = true
-    
-    # https://github.com/audreyr/favicon-cheat-sheet
     loadFavicon          = false
     faviconVersion       = ""
     customCSS            = ["default", "/css/more.css"]
     customJS             = ["default"]
+
+[taxonomies]
+    tag = "tags"
 
 [params.intro]
     header    = ""

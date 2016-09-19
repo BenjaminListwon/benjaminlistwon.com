@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "In Brief #002: Updating Rows In A Migration"
 type = "post"
+tags = ["In Brief", "Laravel", "migration", "MySQL"]
 
 +++
 

@@ -752,13 +752,18 @@ $(function(){
 
     //hide or show the "back to top" link
     $(window).scroll(function(){
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         if ($(this).scrollTop() > offset) {
             $backToTop.fadeIn();
-            $shareNav.fadeIn();
+            if (w > 480) {
+                $shareNav.fadeIn();
+            }
         } else {
             $backToTop.fadeOut();
             $backToTop.removeClass('btt-fade-out');
-            $shareNav.fadeOut();
+            if (w > 480) {
+                $shareNav.fadeOut();
+            }
         }
 
         if($(this).scrollTop() > offset_opacity) {

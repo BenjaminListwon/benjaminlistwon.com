@@ -1,0 +1,31 @@
+{{ partial "general-title" . }}
+
+{{ partial "header" . }}
+{{ partial "navbar" . }}
+
+<!-- Main -->
+<div id="main">
+  <article class="post archive">
+    <header>
+      <h2 id="title">All Tags</h2>
+    </header>
+
+    <div id="content">
+      {{ $data := .Data }}
+      {{ $len := len .Data.Terms}}
+      {{ $divisor := div $len 3 }}
+      {{ $count := 0 }}
+
+
+      <ul class="archive-list">
+      {{ range $key, $value := .Data.Terms.ByCount }}
+        <li><a href="{{ $value.Name | urlize }}">{{ $value.Name }}</a> <span class="archive-date">{{ $value.Count }} Posts</span></li>
+      {{ end }}
+      </ul>
+    </div>
+
+  </article>
+</div>
+
+{{ partial "sidebar" . }}
+{{ partial "footer" . }}

@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "In Brief #001: Routing With CORS"
 type = "post"
+tags = ["In Brief", "Laravel", "CORS"]
 
 +++
 

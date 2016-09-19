@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Adding Tags In Eloquent With Cartalyst"
 type = "post"
+tags = ["Laravel", "tags", "Cartalyst"]
 
 +++
 

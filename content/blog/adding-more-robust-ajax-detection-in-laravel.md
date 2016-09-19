@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Adding More Robust Ajax Detection In Laravel"
 type = "post"
+tags = ["Laravel", "ajax"]
 
 +++
 

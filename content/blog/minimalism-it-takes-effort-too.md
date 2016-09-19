@@ -9,6 +9,7 @@ featuredpath = ""
 linktitle = ""
 title = "Minimalism: It Takes Effort Too"
 type = "post"
+tags = ["opinion", "design"]
 
 +++
 
