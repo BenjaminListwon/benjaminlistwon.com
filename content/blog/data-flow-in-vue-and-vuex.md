@@ -23,7 +23,7 @@ You can start by checking out the demos:
 - [Using vuex](/demo/dataflow/vuex/index.html)
 - [Using evil bindings](/demo/dataflow/evil/index.html)
 
-Or [grab the repo](https://github.com/BenjaminListwon/vue-data-flow) and try it out locally!
+Or [grab the repo](https://github.com/BenjaminListwon/vue-data-flow) and try it out locally! The code is 2.0 specific at a couple points, but the data flow theory is relevant in any version and is easily ported down to 1.0 with a couple changes that I try to note below.
 
 The demos are all the same, just implemented differently. The app consists of two instance of a single chat component. Whena  user posts a message in one instance, it should appear in both chat windows because the message state is what is shared. Here's a screenshot:
 
@@ -260,6 +260,8 @@ The template remains exactly the same, so I didn't even bother to include it. Th
 1. We use `mapState` to bring in the reference to our shared messages collection.
 2. we use `mapActions` to bring in the action that will create a new message.
 
+(__Note__: These are vuex 2.0 features.)
+
 And bingo, we are done! Feel free to [go give this one a look too](/demo/dataflow/vuex/index.html).
 
 ## Conclusions
@@ -325,9 +327,9 @@ Here's the evil in action.
 Why so bad you ask?
 
 1. We are defeting the one-way loop found in the diagrams above.
-2. We create a ridculously tight coupling between teh component and it's parent.
-3. This would be _impossible_ to maintain. If you needed twenty functions in the component, you'd have to add twenty props, manage their names, etc, etc. Then, if nything ever changed, ugh!
+2. We create a ridculously tight coupling between the component and it's parent.
+3. This would be _impossible_ to maintain. If you needed twenty functions in the component, you'd have to add twenty props, manage their names, etc, etc. Then, if anything ever changed, ugh!
 
-So why bother showing this at all? Because I am lazy just like everyone else. SOmetimes I do something like this only to discover how horrible it is down the road. Then I curse my lazy self because I have hours, or days, of cleanup to do. In this case, I hope I can help you avoid costly decisions or mistakes early by advocating for _never_ passing around anything you don't need to. In 99% of the cases I've run into, a single shared state is more than perfect. (More on that 1% case soon).
+So why bother showing this at all? Because I am lazy just like everyone else. Sometimes I do something like this only to discover how horrible it is down the road. Then I curse my lazy self because I have hours, or days, of cleanup to do. In this case, I hope I can help you avoid costly decisions or mistakes early by advocating for _never_ passing around anything you don't need to. In 99% of the cases I've run into, a single shared state is more than perfect. (More on that 1% case soon).
 
 
