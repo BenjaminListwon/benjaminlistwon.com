@@ -268,7 +268,7 @@ And bingo, we are done! Feel free to [go give this one a look too](/demo/dataflo
 
 So, as you can hopefully see, there is not a huge gulf between simply sharing state on your own, and using vuex. The **huge** advantage to vuex is that it formalizes the process of centralizing your data store for you, and providing all the machinery to work wirth that data. 
 
-At first, when you read the vuex docs or examples, it can seem daunting with the individual files for mutations, actions and modules. But if you are just starting out, simply write all of those in the single `store.js` file to begin. Ass your file size grows, you'll find the right time to move the actions into `actions.js` or to split them out even further.
+At first, when you read the vuex docs or examples, it can seem daunting with the individual files for mutations, actions and modules. But if you are just starting out, simply write all of those in the single `store.js` file to begin. As your file size grows, you'll find the right time to move the actions into `actions.js` or to split them out even further.
 
 Don't fret, take it slow, and you'll be up in no time. And definitely start off with a template used with [vue-cli](https://github.com/vuejs/vue-cli). I use the [browserify](https://github.com/vuejs-templates/browserify) template, and add the following to my `package.json`.
 
