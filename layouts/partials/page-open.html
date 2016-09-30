@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Sitewide Metadata -->
+  <meta charset="utf-8">
+  {{ .Hugo.Generator }}
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <!-- RSS -->
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="{{ .Site.BaseURL }}index.xml">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Muli:300,300i,400,400i" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata:400,700" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/static/css/style.css">
+
+  <!-- Favicon -->
+  {{ partial "favicon" . }}
+
+
+  <!-- Page Metadata -->
+  {{ if eq .URL "/" }}
+    <title>{{ .Title }}</title>
+    <meta property='og:title' content="{{ .Title }}">
+    <meta property="og:type" content="website">
+  {{ else }}
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <meta property='og:title' content="{{ .Title }} - {{ .Site.Title }}">
+    <meta property="og:type" content="article">
+  {{ end }}
+
+  <meta property="og:url" content="{{ .Permalink }}">
+  {{ with .Description }}<meta name="description" content="{{ . }}">{{ end }}
+  {{ with .Params.image }}<meta property="og:image" content="/images/{{ . }}">{{ end }}
+
+
+  {{ template "_internal/twitter_cards.html" . }}
+  {{ template "_internal/opengraph.html" . }}
+  {{ template "_internal/schema.html" . }}
+  {{ template "_internal/google_news.html" . }}
+</head>
+
+{{ if eq .URL "/" }}
+<body class="index">
+{{ else }}
+  {{ if .IsPage }}
+  <body class="{{ $.Type }}">
+  {{ else }}
+  <body>
+  {{ end }}
+{{ end }}

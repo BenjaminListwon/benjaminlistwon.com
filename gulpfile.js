@@ -56,6 +56,28 @@ gulp.task('hugo', function() {
 })
 
 
+/**
+ * LESS compiling for new design
+ */
+gulp.task('less:main', function() {
+  gulp.src('static/static/less/style.less')
+    .pipe(less({
+      paths: [ 'static/static/less' ]
+    }))
+    .pipe(gulp.dest('static/static/css/'))
+});
+
+gulp.task('less:watch', function() {
+  gulp.watch(['static/static/less/**/*.less'], ['less:main']);
+});
+
+
+/**
+ * Production build task
+ */
 gulp.task('build', ['js:build', 'css:build', 'hugo']);
 
+/**
+ * Default task
+ */
 gulp.task('default', ['less:main', 'less:watch']);

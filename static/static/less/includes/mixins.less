@@ -1,0 +1,42 @@
+.font-primary() {
+  font-family: "Muli", serif;
+  font-style: normal;
+  font-weight: 300;
+}
+
+.font-primary--bold() {
+  font-weight: 400;
+}
+
+.font-code() {
+  font-family: "Ubuntu Mono", monospace;
+  font-style: normal;
+  font-weight: 400;
+}
+
+
+.base-font() {
+  font-size: unit(@base-font-size, px);
+  line-height: unit(@base-line-height, px);
+}
+
+.font-size(@font-size: @base-font-size; @line-height: @base-line-height) {
+  font-size: unit((@font-size / @base-font-size), rem);
+  line-height: unit((@line-height / @base-font-size), rem);
+}
+
+.zero() {
+  margin: 0;
+  padding: 0;
+}
+
+.clearfix() {
+  &:before,
+  &:after {
+    content: " ";
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
