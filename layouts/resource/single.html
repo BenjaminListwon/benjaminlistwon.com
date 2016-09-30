@@ -1,0 +1,22 @@
+{{ partial "general-title" . }}
+
+{{ partial "header" . }}
+{{ partial "navbar" . }}
+
+<div id="main">
+	<article class="post resource">
+	    {{ .Render "header" }}
+	    <section id="social-share">
+	        <ul class="icons">
+	            {{ partial "share-links" . }}
+	        </ul>
+	    </section>
+	    
+	    <div id="content">
+	        {{ .Content }}
+	    </div>
+	</article>
+</div>
+
+{{ partial "sidebar" . }}
+{{ partial "footer" . }}

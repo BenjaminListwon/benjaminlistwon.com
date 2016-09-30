@@ -1,30 +1,31 @@
 {{ partial "general-title" . }}
 
 {{ partial "header" . }}
-    {{ partial "navbar" . }}
-    <!-- Main -->
-    <div id="main">
-        <article class="post archive">
-            {{ $.Scratch.Set "h1" true }}
-            {{ .Render "header" }}
-            <div id="content">
+{{ partial "navbar" . }}
 
-              {{ range .Site.Pages.GroupByDate "January, 2006" }}
-                <h4>{{ .Key }}</h4>
-                <!-- ANOTHER WAY: <div style="margin-left: 2em" id="list"></div> -->
-                <ul class="archive-list">
-                  {{ range .Pages }}
-                  {{ if eq "post" .Type }}
-                  <li>
-                     <a href="{{ .Permalink }}">{{ .Title }}</a> <span class="archive-date">{{ .Date.Format "Jan 02, 2006" }}</span>
-                  </li>
-                  {{ end }}
-                  {{ end }}
-                </ul>
-              {{ end }}
+<div id="main">
+  <article class="post archive">
+    {{ $.Scratch.Set "h1" true }}
+    {{ .Render "header" }}
 
-            </div>
-        </article>
+    <div id="content">
+
+      {{ range .Site.Pages.GroupByDate "January, 2006" }}
+        <h4>{{ .Key }}</h4>
+        <ul class="archive-list">
+          {{ range .Pages }}
+          {{ if eq "post" .Type }}
+          <li>
+             <a href="{{ .Permalink }}">{{ .Title }}</a> <span class="archive-date">{{ .Date.Format "Jan 02, 2006" }}</span>
+          </li>
+          {{ end }}
+          {{ end }}
+        </ul>
+      {{ end }}
+
     </div>
-    {{ partial "sidebar" . }}
+  </article>
+</div>
+
+{{ partial "sidebar" . }}
 {{ partial "footer" . }}

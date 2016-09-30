@@ -37,41 +37,41 @@
 
 /* Post */
 
-	.post:after {
+	article.post:after {
 		clear: both;
 		content: '';
 		display: block;
 	}
 
-	.post > header:after {
+	article.post > header:after {
 		clear: both;
 		content: '';
 		display: block;
 	}
 
-	.post > header .title {
+	article.post > header .title {
 		display: table-cell;
 		vertical-align: top;
 		width: 65%;
 	}
 
-	.post > header .meta {
+	article.post > header .meta {
 		display: table-cell;
 		vertical-align: top;
 		width: 30%;
 	}
 
-	.post > footer:after {
+	article.post > footer:after {
 		clear: both;
 		content: '';
 		display: block;
 	}
 
-	.post > footer .actions {
+	article.post > footer .actions {
 		display: inline-block;
 	}
 
-	.post > footer .stats {
+	article.post > footer .stats {
 		display: inline-block;
 		margin-left: 2em;
 	}

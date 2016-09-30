@@ -1,0 +1,28 @@
+{{ partial "general-title" . }}
+
+{{ partial "header" . }}
+{{ partial "navbar" . }}
+
+<div id="main">
+  <article class="post resource">
+    <header>
+      <div class="title">
+        <h2><a href="/resource/">Resources</a></h2>
+      </div>
+    </header>
+
+    <div id="content">
+      <ul class="archive-list">
+      {{ range .Data.Pages }}
+        <li>
+          <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3> <span class="archive-date">{{ .Params.count }} Resources</span>
+          <p>{{ .Description }}</p> 
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </article>
+</div>
+
+{{ partial "sidebar" . }}
+{{ partial "footer" . }}

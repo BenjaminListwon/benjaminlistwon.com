@@ -1,7 +1,7 @@
 baseurl = "https://benjaminlistwon.com/"
 languageCode = "en-us"
 title = "Benjamin Listwon"
-theme = "hugo-future-imperfect-modified"
+theme = ""
 preserveTaxonomyNames = true
 paginate = 5
 disqusShortname = ""
@@ -51,9 +51,14 @@ googleAnalytics = "UA-78325407-1"
     weight = 2
 
 [[menu.main]]
+    name = "Resources"
+    url = "/resource"
+    weight = 3
+
+[[menu.main]]
     name = "About"
     url = "/about"
-    weight = 3
+    weight = 4
 
 [social]
     github          = "benjaminlistwon"

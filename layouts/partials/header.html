@@ -75,7 +75,12 @@
         {{ end }}
 
     </head>
+
+    {{ if .IsPage }}
+    <body class="{{ $.Type }}">
+    {{ else }}
     <body>
+    {{ end }}
 
         <!-- Wrapper -->
         <div id="wrapper">

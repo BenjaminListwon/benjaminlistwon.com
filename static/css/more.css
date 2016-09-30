@@ -40,7 +40,7 @@
 }
 
 /* The post footer */
-.post footer {
+article.post footer {
   padding-top: 3em;
 }
 
@@ -61,7 +61,7 @@ ul.tags li a {
 /* Keep post header flex even after big screen */
 @media screen and (min-width: 980px) {
 
-  .post > header {
+  article.post > header {
     -moz-flex-direction: column;
     -webkit-flex-direction: column;
     -ms-flex-direction: column;
@@ -70,14 +70,14 @@ ul.tags li a {
     border-left: 0;
   }
 
-  .post > header .title {
+  article.post > header .title {
     -ms-flex: 0 1 auto;
     margin: 0 0 2em 0;
     padding: 0;
     text-align: center;
   }
 
-  .post > header .meta {
+  article.post > header .meta {
     -moz-align-items: center;
     -webkit-align-items: center;
     -ms-align-items: center;
@@ -98,24 +98,24 @@ ul.tags li a {
     width: 100%;
   }
 
-  .post > header .meta > * {
+  article.post > header .meta > * {
     border-left: solid 1px rgba(160, 160, 160, 0.3);
     margin-left: 2em;
     padding-left: 2em;
   }
 
-  .post > header .meta > :first-child {
+  article.post > header .meta > :first-child {
     border-left: 0;
     margin-left: 0;
     padding-left: 0;
   }
 
-  .post > header .meta .published {
+  article.post > header .meta .published {
     margin-bottom: 0;
     margin-top: 0;
   }
 
-  .post > header .meta .author {
+  article.post > header .meta .author {
     -moz-flex-direction: row-reverse;
     -webkit-flex-direction: row-reverse;
     -ms-flex-direction: row-reverse;
@@ -123,24 +123,24 @@ ul.tags li a {
     margin-bottom: 0;
   }
 
-  .post > header .meta .author .name {
+  article.post > header .meta .author .name {
     margin: 0 0 0 1.5em;
   }
 
-  .post > header .meta .author img {
+  article.post > header .meta .author img {
     width: 3.5em;
   }
 }
 
 /* Post header general */
-.post > header .meta > * {
+article.post > header .meta > * {
   margin-bottom: 0;
   white-space: nowrap;
 }
 
 
 @media screen and (min-width: 1280px) {
-  .post > header .subscribe-bug {
+  article.post > header .subscribe-bug {
     display: none;
   }
 }
@@ -221,4 +221,38 @@ ul.archive-list li {
 .mcform input[type="submit"]:hover {
   box-shadow: inset 0 0 0 1px rgb(91, 187, 99);
   color: #fff !important;
+}
+
+
+/* Resource list stuff */
+article.resource ul {
+  list-style: none;
+}
+
+article.resource ul,
+article.resource ul li,
+article.resource ul li label {
+  margin: 0;
+  padding: 0;
+}
+
+article.resource ul li {
+  padding-bottom: 0.75rem;
+}
+
+article.resource #content a,
+article.resource #content label a {
+  border-bottom: none;
+  color: rgb(95, 203, 105);
+  font-weight: normal;
+  font-size: 1rem;
+}
+
+article.resource #content label a {
+  text-transform: uppercase;
+  font-family: 'Raleway', helvetica, sans-serif;
+}
+
+article.resource #content label {
+  font-size: 1.2rem;
 }

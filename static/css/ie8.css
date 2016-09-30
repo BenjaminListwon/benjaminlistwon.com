@@ -27,11 +27,11 @@
 
 /* Post */
 
-	.post {
+	article.post {
 		border: solid 1px #dedede;
 	}
 
-		.post > header {
+		article.post > header {
 			border-bottom: solid 1px #dedede;
 		}
 

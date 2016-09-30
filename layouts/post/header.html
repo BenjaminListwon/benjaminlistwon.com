@@ -6,6 +6,7 @@
         {{ else }}
             <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
         {{ end }}
+        
         {{ with .Description }}
             <p>{{ . }}</p>
         {{ end }}

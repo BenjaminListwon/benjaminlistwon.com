@@ -129,18 +129,18 @@ article.post footer .stats {
     border-radius: 50%;
 }
 
-.post > header .title h1 {
+article.post > header .title h1 {
     font-weight: 900;
     font-size: 1.5em;
 }
     @media screen and (max-width: 736px) {
-        .post > header .title h1 {
+        article.post > header .title h1 {
             font-size: 1.1em;
         }
     }
 
 @media screen and (max-width: 480px) {
-    .post > .image.featured {
+    article.post > .image.featured {
         margin-top: 0;
     }
 }
@@ -281,7 +281,7 @@ body.is-share-visible #wrapper {
 
 			#share-menu .links > li {
 				border: 0;
-				border-top: dotted 1px rgba(160, 160, 160, 0.3);
+				border-top: dotted 1px rgba(91, 187, 99, 0.3);
 				margin: 0.7em 0 0 0;
 				padding: 1em 0 0 0;
 			}
@@ -335,7 +335,7 @@ body.is-share-visible #wrapper {
 
 		}
 
-.post {
+article.post {
     margin: 0 0 2em 0;
 }
 
@@ -344,12 +344,12 @@ body.is-share-visible #wrapper {
     }
 
     #content p a, #content ul li a {
-        border-bottom: dotted 2px rgba(160,160,160,.65);
+        border-bottom: dotted 2px rgba(91, 187, 99, 0.65);
     }
 
-        #content p a:hover {
-            border-bottom-color: transparent;
-        }
+    #content p a:hover, #content ul li a:hover {
+        border-bottom-color: transparent;
+    }
 
     #content blockquote, #content p, #content ul{
         margin: 0 0 1em;
