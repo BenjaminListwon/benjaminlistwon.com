@@ -16,3 +16,5 @@ I’m also working on a couple of other writing projects. One is very personal, 
 If you’d like to get in touch, go ahead and [send an email](mailto:ben@benjaminlistwon.com).
 
 Thanks for stopping by!
+
+PS: If you are looking for my complete CV, [look no further](/personal/cv/).

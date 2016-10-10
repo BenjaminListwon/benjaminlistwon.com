@@ -57,7 +57,7 @@ googleAnalytics = "UA-78325407-1"
 [[menu.main]]
     name = "About"
     url = "/about"
-    weight = 3
+    weight = 4
 
 [social]
     github          = "benjaminlistwon"
