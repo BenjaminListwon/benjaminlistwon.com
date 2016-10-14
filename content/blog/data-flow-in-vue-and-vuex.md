@@ -13,7 +13,7 @@ tags = ["Vue", "vuex", "javascript", "reactive"]
 
 +++
 
-_(Update 10/14/16: This article has been [translated into simplified Chinese](http://gold.xitu.io/entry/58007bcf0bd1d00058eefe69/) by [@sqrtthree](https://twitter.com/sqrtthree).)_
+_(Update 10/14/16: This article has been [translated into simplified Chinese](http://www.jianshu.com/p/2e0b6d19dd6a) by [@sqrtthree](https://twitter.com/sqrtthree). Also [available here](http://gold.xitu.io/entry/58007bcf0bd1d00058eefe69/).)_
 
 It seems like one of the things that trips people up in [Vue](https://vuejs.org) is how to share state across components. For those new to reactive programming, something like [vuex](https://github.com/vuejs/vuex/) can seem daunting with loads of new jargon and the way it separates concerns. It can also seem like overkill when all you want is to share one or two pieces of data.
 
