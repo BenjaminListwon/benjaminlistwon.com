@@ -13,7 +13,11 @@ tags = ["Vue", "vuex", "javascript", "reactive"]
 
 +++
 
+_(Update 10/14/16: This article has been [translated into simplified Chinese](http://gold.xitu.io/entry/58007bcf0bd1d00058eefe69/) by [@sqrtthree](https://twitter.com/sqrtthree).)_
+
 It seems like one of the things that trips people up in [Vue](https://vuejs.org) is how to share state across components. For those new to reactive programming, something like [vuex](https://github.com/vuejs/vuex/) can seem daunting with loads of new jargon and the way it separates concerns. It can also seem like overkill when all you want is to share one or two pieces of data.
+
+<!--more-->
 
 With that in mind, I thought I'd pull together a couple of quick demos. The first implements shared state by using a simple javascript object that is referenced by each new component. The second does the same with vuex. There's also an example of something that, while it works, you should _never_ do. (We'll look at why at the end.)
 
