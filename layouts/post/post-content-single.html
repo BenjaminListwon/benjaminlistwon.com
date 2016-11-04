@@ -1,17 +1,17 @@
 <article class="post">
-    <!-- {{ .Render "header" }} -->
+    {{ .Render "header" }}
 
-    <section id="social-share">
+    <section class="article-share" id="social-share">
         <ul class="icons">
             <!-- {{ partial "share-links" . }} -->
         </ul>
     </section>
     
-    <div id="content">
+    <section class="article-content" id="content">
         {{ .Content }}
-    </div>
+    </section>
 
-    <footer>
+    <footer class="article-footer">
        <!--  {{ .Render "footer-category" }}
         {{ .Render "footer-tags" }} -->
     </footer>

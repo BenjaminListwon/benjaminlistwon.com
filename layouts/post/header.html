@@ -1,0 +1,24 @@
+<header>
+    <div class="title">
+        <h1><a href="{{ .Permalink }}">{{ .Title }}</a></h1>
+        {{ with .Description }}
+            <p>{{ . }}</p>
+        {{ end }}
+    </div>
+    <div class="meta">
+        {{ if .Site.Params.orderByPublishDate }}
+            {{ $.Scratch.Set "dateType" .PublishDate }}
+        {{ else }}
+            {{ $.Scratch.Set "dateType" .Date }}
+        {{ end }}
+
+        <time class="published"
+            datetime='{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
+            {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}</time>
+        {{ with .Params.author }}<span class="author">{{ . }}</span>{{ end }}
+        {{ if .Site.Params.includeReadingTime }}
+            <p>{{ .ReadingTime }} minute read</p>
+        {{ end }}
+            <p class="subscribe-bug"><a href="#subscribe"><i class="fa fa-newspaper-o">&nbsp;</i>Subscribe</a></p>
+    </div>
+</header>

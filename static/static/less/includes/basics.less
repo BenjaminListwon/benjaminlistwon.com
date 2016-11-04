@@ -2,71 +2,12 @@ html, body {
 	// height: 100%;
 }
 
-body {
-	background: #fafaf0;
-	.base-font();
-	.font-primary();
-}
-
-
-code,
-pre code {
-	.font-code();
-	font-size: 0.85em;
-}
-
-pre code {
-	line-height: 1.6em;
-}
-
-code {
-	background: #EcEff6;
-	padding: 3px 6px;
-	line-height: 1.95em;
-	border: 1px solid #dde;
-	color: #555;
-}
-
-
-a {
-	// text-decoration: none;
-	.font-primary--bold();
-	color: #7C8894;
-}
-
-ul {
-	list-style: disc;
-}
-
-ol {
-	list-style: decimal;
-}
-
-ul, ol {
-	padding: 0 2em;
-}
-
-
-li {
-	padding: 0.5em 0;
-}
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+/** LAYOUT **/
 body {
 	display: flex;
 	flex-direction: row;
@@ -75,48 +16,39 @@ body {
 }
 
 
-body>header {
+div.lefty {
 	width: 300px;
 	min-width: 300px;
 	order: 1;
-
-	background: #2E4053;
 }
 
 
-body>main {
+div.righty {
 	order: 2;
 	flex: 1 1 auto;
 }
 
-body>aside {
-	display: none;
-}
 
 
 
+
+/** SOME BASIC PRETTINESS **/
 body>main {
-
-	article {
-		p, ul, ol {
-			max-width: 700px;
-		}
-
-		p, ul, ol, h1, h2, h3, h4, h5, h6, header {
-			margin: 0 2em;
-			margin-bottom: 1em;
-		}
-
-		pre {
-			width: 100%;
-			margin-bottom: 1em;
-		}
-	}
+  padding: 0 0 2rem 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	.font-primary--bold();
-	text-transform: uppercase;
+a {
+  color: #FF6C4D;
+  text-decoration: none;
+  border-bottom: 1px dotted #FF6C4D;
+  font-weight: 400;
 }
+
+p, ul, ol, pre {
+  margin-bottom: 1rem;
+}
+
+
+
 
 

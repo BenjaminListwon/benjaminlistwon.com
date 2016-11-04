@@ -2,15 +2,17 @@
 
 
 {{ $.Scratch.Set "shareNav" true }}
-{{ partial "global-nav" . }}
+{{ partial "left-pane" . }}
 
-<main>
-    {{ range first 1 (where .Site.Pages "Type" "post") }}
-        {{ .Render "post-content-single" }}
+<div class="righty">
+  <main>
+      {{ range first 1 (where .Site.Pages "Type" "post") }}
+          {{ .Render "post-content-single" }}
 
-        <!-- {{ partial "share-menu" . }} -->
-    {{ end }}
-</main>
+          <!-- {{ partial "share-menu" . }} -->
+      {{ end }}
+  </main>
+</div>
 
 <!-- {{ partial "sidebar" . }} -->
 
