@@ -13,6 +13,8 @@ tags = ["Vue", "vuex", "javascript", "reactive"]
 
 +++
 
+_(Update 11/14/16: This article has been [translated into Japanese](http://d.hatena.ne.jp/chi-bd/20161103/1478153981) by Chiharu Shibata.)_
+
 A couple weeks back I got back from holiday, my son started the new school year, and once again the home office was calm and quiet. While I was away, someone had reached out about a [Vue](http://vuejs.org/) component I mentioned I was writing to use a [Handsontable](https://handsontable.com/) (HOT) in a Vue app. I mentioned that I was about to start converting it over to Vue 2.0, for future awesome, and that I’d happily add it to GitHub when done.
 
 My oh my, was I in for a ride.
