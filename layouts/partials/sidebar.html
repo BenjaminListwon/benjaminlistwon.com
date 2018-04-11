@@ -2,94 +2,99 @@
 <section id="sidebar">
 
     <!-- Intro -->
-        <section id="intro">
-            {{ $pic := .Site.Params.intro.pic }}
-            {{ with $pic.src }}
-                {{ if $pic.circle }}
-                    <img src="{{ . }}" class="intro-circle" width="{{ $pic.width }}" alt="{{ $pic.alt }}" />
-                {{ else if $pic.imperfect }}
-                    <a href="/" class="logo"><img src="{{ . }}" alt="{{ $pic.alt }}" /></a>
-                {{ else }}
-                    <img src="{{ . }}" width="{{ $pic.width }}" alt="{{ $pic.alt }}" />
-                {{ end }}
+    <section id="intro">
+        {{ $pic := .Site.Params.intro.pic }}
+        {{ with $pic.src }}
+            {{ if $pic.circle }}
+                <img src="{{ . }}" class="intro-circle" width="{{ $pic.width }}" alt="{{ $pic.alt }}" />
+            {{ else if $pic.imperfect }}
+                <a href="/" class="logo"><img src="{{ . }}" alt="{{ $pic.alt }}" /></a>
+            {{ else }}
+                <img src="{{ . }}" width="{{ $pic.width }}" alt="{{ $pic.alt }}" />
             {{ end }}
-            {{ with .Site.Params.intro }}
-                <header>
-                    <h2>{{ .header }}</h2>
-                    <p>{{ .paragraph | safeHTML }}</p>
-                </header>
-            {{ end }}
+        {{ end }}
+        {{ with .Site.Params.intro }}
             <header>
-                <p class="followme">Elsewhere</p>
+                <h2>{{ .header }}</h2>
+                <p>{{ .paragraph | safeHTML }}</p>
             </header>
-            <ul class="icons">
-                {{ if .RSSLink }}
-                    <li><a href="{{ .RSSLink }}" type="application/rss+xml"
-                         title="RSS" class="fa fa-rss"></a></li>
-                {{ end }}
-                {{ if .Site.Params.socialAppearAtTop }}
-                    {{ partial "social" . }}
-                {{ end }}
-            </ul>
-        </section>
+        {{ end }}
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            {{ if .RSSLink }}
+                <li><a href="{{ .RSSLink }}" type="application/rss+xml"
+                     title="RSS" class="fa fa-rss"></a></li>
+            {{ end }}
+            {{ if .Site.Params.socialAppearAtTop }}
+                {{ partial "social" . }}
+            {{ end }}
+        </ul>
+    </section>
 
 
-        <a name="subscribe"></a>
-        {{ partial "revue" . }}
+    <!-- Book Promo -->
+    {{ partial "sidebar-book-promo" . }}
+
+
+    <!-- Newsletter -->
+    <a name="subscribe"></a>
+    {{ partial "revue" . }}
 
 
 
     <!-- Posts List -->
-        <section id="recent-posts">
-            <ul class="posts">
-                <header>
-                    <h3>Recent Posts</h3>
-                </header>
-                {{ if .Site.Params.orderByPublishDate }}
-                    {{ $.Scratch.Set "recentPosts" .Site.Pages.ByPublishDate.Reverse }}
-                {{ else }}
-                    {{ $.Scratch.Set "recentPosts" .Site.Pages }}
-                {{ end }}
+    <section id="recent-posts">
+        <ul class="posts">
+            <header>
+                <h3>Recent Posts</h3>
+            </header>
+            {{ if .Site.Params.orderByPublishDate }}
+                {{ $.Scratch.Set "recentPosts" .Site.Pages.ByPublishDate.Reverse }}
+            {{ else }}
+                {{ $.Scratch.Set "recentPosts" .Site.Pages }}
+            {{ end }}
 
-                {{ with .Site.Params.postAmount.sidebar }}
-                    {{ $.Scratch.Set "postLimit" . }}
-                {{ else }}
-                    {{ $.Scratch.Set "postLimit" 5 }}
-                {{ end }}
+            {{ with .Site.Params.postAmount.sidebar }}
+                {{ $.Scratch.Set "postLimit" . }}
+            {{ else }}
+                {{ $.Scratch.Set "postLimit" 5 }}
+            {{ end }}
 
-                {{ range first ($.Scratch.Get "postLimit") (where ($.Scratch.Get "recentPosts") "Type" "post") }}
-                    <li>
-                        <article>
-                            <header>
-                                <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-                                {{ if .Site.Params.orderByPublishDate }}
-                                    {{ $.Scratch.Set "dateType" .PublishDate }}
-                                {{ else }}
-                                    {{ $.Scratch.Set "dateType" .Date }}
-                                {{ end }}
-                                <time class="published" datetime=
-                                    '{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
-                                    {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}</time>
-                            </header>
-                        </article>
-                    </li>
-                {{ end }}
-
-                {{ if ge (len (where .Site.Pages "Type" "post")) ($.Scratch.Get "postLimit") }}
-                    <li>
-                        <ul class="actions">
-                            <li><a href=
-                            {{ with .Site.Params.viewMorePostLink }}
-                                {{ . }}
+            {{ range first ($.Scratch.Get "postLimit") (where ($.Scratch.Get "recentPosts") "Type" "post") }}
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+                            {{ if .Site.Params.orderByPublishDate }}
+                                {{ $.Scratch.Set "dateType" .PublishDate }}
                             {{ else }}
-                                "/post/"
+                                {{ $.Scratch.Set "dateType" .Date }}
                             {{ end }}
-                            class="button">View more posts</a></li>
-                        </ul>
-                    </li>
-                {{ end }}
-            </ul>
-        </section>
+                            <time class="published" datetime=
+                                '{{ ($.Scratch.Get "dateType").Format "2006-01-02" }}'>
+                                {{ ($.Scratch.Get "dateType").Format "January 2, 2006" }}</time>
+                        </header>
+                    </article>
+                </li>
+            {{ end }}
+
+            {{ if ge (len (where .Site.Pages "Type" "post")) ($.Scratch.Get "postLimit") }}
+                <li>
+                    <ul class="actions">
+                        <li><a href=
+                        {{ with .Site.Params.viewMorePostLink }}
+                            {{ . }}
+                        {{ else }}
+                            "/post/"
+                        {{ end }}
+                        class="button">View more posts</a></li>
+                    </ul>
+                </li>
+            {{ end }}
+        </ul>
+    </section>
 
     <!-- This if statement only applies if someone goes to the /categories url -->
     <!-- Otherwise this section is shown for all other links -->
@@ -124,38 +129,38 @@
     {{ end }}
 
     <!-- About -->
-        {{ with .Site.Params.intro.about }}
-        <section class="blurb">
-            <h2>About</h2>
-            <p>{{ . }}</p>
+    {{ with .Site.Params.intro.about }}
+    <section class="blurb">
+        <h2>About</h2>
+        <p>{{ . }}</p>
 
-            <ul class="actions">
-                <li><a href="/about/" class="button">Learn More</a></li>
-            </ul>
-        </section>
-        {{ end }}
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    {{ end }}
 
     <!-- Footer -->
-        <section id="footer">
-            <header>
-                <p class="followme">Elsewhere</p>
-            </header>
-            <ul class="icons">
-                {{ if .RSSLink }}
-                    <li><a href="{{ .RSSLink }}" type="application/rss+xml"
-                         title="RSS" class="fa fa-rss"></a></li>
-                {{ end }}
-                {{ if .Site.Params.socialAppearAtBottom }}
-                    {{ partial "social" . }}
-                {{ end }}
-            </ul>
+    <section id="footer">
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            {{ if .RSSLink }}
+                <li><a href="{{ .RSSLink }}" type="application/rss+xml"
+                     title="RSS" class="fa fa-rss"></a></li>
+            {{ end }}
+            {{ if .Site.Params.socialAppearAtBottom }}
+                {{ partial "social" . }}
+            {{ end }}
+        </ul>
 
-            <p class="copyright">
-                &copy; {{ .Site.Title }}.<br/>
-                Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
-                Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
-                Powered by <a href="//gohugo.io" >Hugo</a>
-            </p>
-        </section>
+        <p class="copyright">
+            &copy; {{ .Site.Title }}.<br/>
+            Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+            Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+            Powered by <a href="//gohugo.io" >Hugo</a>
+        </p>
+    </section>
 
 </section>

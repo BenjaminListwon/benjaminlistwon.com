@@ -3290,35 +3290,33 @@
 
 /* Sidebar */
 
+#sidebar {
+	margin-right: 3em;
+	min-width: 22em;
+	width: 22em;
+}
+
+#sidebar > * {
+	border-top: solid 1px rgba(160, 160, 160, 0.3);
+	margin: 3em 0 0 0;
+	padding: 3em 0 0 0;
+}
+
+#sidebar > :first-child {
+	border-top: 0;
+	margin-top: 0;
+	padding-top: 0;
+}
+
+@media screen and (max-width: 1280px) {
 	#sidebar {
-		margin-right: 3em;
-		min-width: 22em;
-		width: 22em;
+		border-top: solid 1px rgba(160, 160, 160, 0.3);
+		margin: 3em 0 0 0;
+		min-width: 0;
+		padding: 3em 0 0 0;
+		width: 100%;
 	}
-
-		#sidebar > * {
-			border-top: solid 1px rgba(160, 160, 160, 0.3);
-			margin: 3em 0 0 0;
-			padding: 3em 0 0 0;
-		}
-
-		#sidebar > :first-child {
-			border-top: 0;
-			margin-top: 0;
-			padding-top: 0;
-		}
-
-		@media screen and (max-width: 1280px) {
-
-			#sidebar {
-				border-top: solid 1px rgba(160, 160, 160, 0.3);
-				margin: 3em 0 0 0;
-				min-width: 0;
-				padding: 3em 0 0 0;
-				width: 100%;
-			}
-
-		}
+}
 
 /* Intro */
 
@@ -4211,6 +4209,91 @@ ul.archive-list li {
 .mcform input[type="submit"]:hover {
   box-shadow: inset 0 0 0 1px rgb(91, 187, 99);
   color: #fff !important;
+}
+
+
+/* Book Promo - Sidebar & Top */
+.book-promo figure a {
+  text-decoration: none;
+  border-bottom: none;
+}
+
+.book-promo .button {
+  background: rgb(95, 203, 105);
+  border: 1px solid rgb(91, 187, 99);
+  
+}
+
+.book-promo .button:hover {
+  box-shadow: inset 0 0 0 1px rgb(91, 187, 99);
+  color: #fff !important;
+}
+
+
+.sidebar-book-promo { 
+  text-align: center; 
+}
+
+.sidebar-book-promo figure,
+.sidebar-book-promo figure img {
+  max-width: 100%;
+}
+
+.sidebar-book-promo figure img {
+  max-width: 320px;
+}
+
+
+.banner-book-promo figure,
+.banner-book-promo figure img {
+  width: 60px;
+}
+
+.banner-book-promo p {
+  font-family: "Raleway", Helvetica, sans-serif;
+  font-size: 0.7em;
+  font-weight: 400;
+  letter-spacing: 0.25em;
+  line-height: 2.5;
+  text-transform: uppercase;
+}
+
+.banner-book-promo table,
+.banner-book-promo tbody,
+.banner-book-promo tr,
+.banner-book-promo td {
+  border: none;
+  background: transparent;
+  background-color: transparent !important ;
+} 
+
+.banner-book-promo td {
+  vertical-align: middle;
+  padding: 0 1em;
+}
+
+.banner-book-promo tr td:last-child {
+  text-align: right;
+}
+
+.banner-book-promo td p {
+  margin: 0;
+}
+
+@media screen and (max-width: 520px) {
+  .banner-book-promo tr td:last-child {
+    display: none;
+  }
+}
+
+.banner-book-promo .mini-link {
+  font-weight: 900;
+}
+
+@media screen and (min-width: 520px) {
+  .banner-book-promo .mini-link {
+    display: none;
+  }
 }
 
 
