@@ -49,7 +49,7 @@ Before we get into the moving parts of our application, let’s take a quick loo
 
 The main `div` element acts as a wrapper for a two-column layout. In each column we have a single instance of `pointer-demo`, each of which acts as a wrapper for a canvas where we will track pointer events and an output element where we’ll log those pointer events. We want (at least) two instances so we can test the reusability of our components and be sure they act independently.
 
-We wrap those child components in `poonter-demo` so that they can share a single event log, while also keeping that even log private to each instance. This avoids global collision of events from each event source, and it avoids making the sibling components dependent on each other for data. We’ll see more on this as we dive in.
+We wrap those child components in `pointer-demo` so that they can share a single event log, while also keeping that even log private to each instance. This avoids global collision of events from each event source, and it avoids making the sibling components dependent on each other for data. We’ll see more on this as we dive in.
 
 ## Using  x-templates
 We don’t make much change to our templates (in fact, only a single change in Demo 4), so it will help to keep our template code out of the way of our component code. For this, we make use of  [x-templates](http://vuejs.org/guide/components.html#X-Templates).

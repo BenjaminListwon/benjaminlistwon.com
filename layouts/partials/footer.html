@@ -5,10 +5,10 @@
         <!-- Keeping the deprecated param, minifiedFilesJS, for now. The new param
              that replaces this is customJS. Utilizing a scratch variable jsFiles
              to keep the deprecated param. -->
-        {{ if isset .Site.Params "minifiedFilesJS" }}
-            {{ $.Scratch.Set "jsFiles" .Site.Params.minifiedFilesJS }}
-        {{ else if isset .Site.Params "customJS" }}
-            {{ $.Scratch.Set "jsFiles" .Site.Params.customJS }}
+        {{ if isset $.Site.Params "minifiedFilesJS" }}
+            {{ $.Scratch.Set "jsFiles" $.Site.Params.minifiedFilesJS }}
+        {{ else if isset $.Site.Params "customJS" }}
+            {{ $.Scratch.Set "jsFiles" $.Site.Params.customJS }}
         {{ else }}
             {{ $.Scratch.Set "jsFiles" false }}
         {{ end }}

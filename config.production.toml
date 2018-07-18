@@ -13,16 +13,12 @@ googleAnalytics = "UA-78325407-1"
     socialAppearAtTop    = true
     socialAppearAtBottom = true
     viewMorePostLink     = "/blog/"
-
-# Optional Params
     categoriesByCount    = true
     includeReadingTime   = true
-    
-    # https://github.com/audreyr/favicon-cheat-sheet
     loadFavicon          = false
     faviconVersion       = ""
-    customCSS            = ["/css/site.min.css?v=2"]
-    customJS             = ["/js/site.min.js?v=2"]
+    customCSS            = "/css/site.min.css?v=6"
+    customJS             = "/js/site.min.js?v=6"
 
 [params.intro]
     header    = ""

@@ -1,4 +1,5 @@
 var gulp = require('gulp')
+var runSequence = require('run-sequence')
 var less = require('gulp-less')
 var concat = require('gulp-concat')
 var uglify = require('gulp-uglify')
@@ -51,11 +52,11 @@ gulp.task('css:build', function() {
 //   return cp.execFile('hugo --config config.production.toml');
 // })
 
-gulp.task('hugo', function() {
+gulp.task('hugoit', function() {
   return run('hugo --config config.production.toml').exec();
 })
 
 
-gulp.task('build', ['js:build', 'css:build', 'hugo']);
+gulp.task('build', runSequence('js:build', 'css:build', 'hugoit'));
 
 gulp.task('default', ['less:main', 'less:watch']);
