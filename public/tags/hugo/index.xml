@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Benjamin Listwon</title>
+    <link>https://benjaminlistwon.com/tags/hugo/</link>
+    <description>Recent content in Hugo on Benjamin Listwon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 19 Sep 2016 10:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://benjaminlistwon.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Hooray for Hugo!</title>
+      <link>https://benjaminlistwon.com/blog/hooray-for-hugo/</link>
+      <pubDate>Mon, 19 Sep 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/hooray-for-hugo/</guid>
+      <description>The old site was getting a little clunky, despite being only a few months in service. I had never intended for the design to last very long in the first place, and I certainly didn&amp;rsquo;t expect to get anywhere near the level of traction I got for some posts. Thank you all for reading!
+This new site is running on Hugo, an amazing static site generator written in Go. If you are looking to start any sort of content-driven site, or feel like the old one is outgrowing its roots, I encourage you to give Hugo a serious look.</description>
+    </item>
+    
+  </channel>
+</rss>

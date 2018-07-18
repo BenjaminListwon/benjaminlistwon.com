@@ -1,0 +1,4 @@
+body{font-family:Helvetica,sans-serif}.column{padding:2rem}.box header{padding-bottom:1rem;text-align:center;border-bottom:3px double #ddd}ul li{padding:1.1rem 0;position:relative}div.box a.button,li a.button{position:absolute;right:0}div.box a.button{top:.75rem}.fade-enter-active,.fade-leave-active{transition:opacity .5s}.fade-enter,.fade-leave-active{opacity:0}
+.sov-orders ul{max-height:450px;overflow:auto}.backedup,.backedup strong{color:tomato}
+.sov-console{background:#444;box-shadow:inset 0 5px 5px #333}.sov-console pre{background:#444;color:#6c6;max-height:780px;overflow:auto}
+.winter .button{transition:transform .5s}.winter .button.spin{transform:rotate(180deg)}

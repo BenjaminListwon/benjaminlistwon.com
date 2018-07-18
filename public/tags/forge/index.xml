@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Forge on Benjamin Listwon</title>
+    <link>https://benjaminlistwon.com/tags/forge/</link>
+    <description>Recent content in Forge on Benjamin Listwon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 11 Mar 2016 10:00:00 -0600</lastBuildDate>
+    
+	<atom:link href="https://benjaminlistwon.com/tags/forge/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GitHub Third Party Access and Forge</title>
+      <link>https://benjaminlistwon.com/blog/github-third-party-access-and-forge/</link>
+      <pubDate>Fri, 11 Mar 2016 10:00:00 -0600</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/github-third-party-access-and-forge/</guid>
+      <description>Yesterday, I created a GitHub organization so that I could house all of the projects my LLC is working on under one roof. The re-homing process from my individual GitHub user account to the organization could not have been smoother.
+Once the repositories were in place, I went to spin up a new Forge instance for a new site I was working on. When I tried to deploy from GitHub, I got this error:</description>
+    </item>
+    
+    <item>
+      <title>In Brief #004: MySQL Backups On Forge, Part 2</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-004-mysql-backups-on-forge-part-2/</link>
+      <pubDate>Mon, 07 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-004-mysql-backups-on-forge-part-2/</guid>
+      <description>If you read my last In Brief post, you may have tried setting up a cron job to run mysqldump nightly, gone back to check the results the following day and found a zero byte file where you expected to see a dumpfile.
+-rw-rw-r-- 1 forge forge 0 Mar 5 00:00 dump-nightly.sql  Don&amp;rsquo;t worry! The backup still ran, but Forge does some auto-magic output redirection that had me guessing for a little while.</description>
+    </item>
+    
+    <item>
+      <title>In Brief #003: MySQL Backups On Forge</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-003-mysql-backups-on-forge/</link>
+      <pubDate>Tue, 01 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-003-mysql-backups-on-forge/</guid>
+      <description>(Update: Forge auto-magically redirects cron job output to a job specific file, which means my cronjob below doesn&amp;rsquo;t quite do what is expected. I&amp;rsquo;ve written a new post about how this affects this strategy because it made more sense than trying to correct/update this one.)
+Shifting gears for a second, let’s chat about backups. I’m using Laravel Forge to run deployments on top of Linode servers. Both are ah-may-zing!</description>
+    </item>
+    
+  </channel>
+</rss>

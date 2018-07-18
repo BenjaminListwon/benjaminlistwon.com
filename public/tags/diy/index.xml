@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Diy on Benjamin Listwon</title>
+    <link>https://benjaminlistwon.com/tags/diy/</link>
+    <description>Recent content in Diy on Benjamin Listwon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 11 Aug 2016 10:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://benjaminlistwon.com/tags/diy/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>A Case For Writing It Yourself</title>
+      <link>https://benjaminlistwon.com/blog/a-case-for-writing-it-yourself/</link>
+      <pubDate>Thu, 11 Aug 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/a-case-for-writing-it-yourself/</guid>
+      <description>Over the years I’ve vacillated between the two extremes of “roll your own code” and “throw together a bunch of libraries.” I suspect I’m not alone in this endless pursuit of “the best” way to build software.
+In the end, we all know that each project is unique, and perhaps more importantly, its requirements will change with time. A library you rely upon today may not have all the capabilities you need tomorrow, or perhaps, after real usage data pours in, you realize you only need 1/100th of some module’s functionality and that you can easily write that bit on your own.</description>
+    </item>
+    
+    <item>
+      <title>When To Look Beyond jQuery</title>
+      <link>https://benjaminlistwon.com/blog/when-to-look-beyond-jquery/</link>
+      <pubDate>Tue, 12 Apr 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/when-to-look-beyond-jquery/</guid>
+      <description>(Update: Forgot to include ScrollMagic. Big oops!)
+Before I continue, I wanted to set forth what this post is about. It is not a teardown of jQuery or a preachy case for using such-and-such a JavaScript framework.
+Rather, it is an acknowledgement of two things:
+ If your target is modern browsers (really anything post IE8) and you are building something of modest size, then any library or framework, jQuery or otherwise, may be overkill.</description>
+    </item>
+    
+  </channel>
+</rss>

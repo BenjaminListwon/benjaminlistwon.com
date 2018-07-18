@@ -1,0 +1,876 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>A Case For Writing It Yourself</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.44" />
+        
+
+
+        
+        
+            <meta name="description" content="Quite often it is better to learn how something is made than to simply grab something off the shelf.">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="A Case For Writing It Yourself"/>
+<meta name="twitter:description" content="Quite often it is better to learn how something is made than to simply grab something off the shelf."/>
+<meta name="twitter:site" content="@benjaminlistwon"/>
+
+        <meta property="og:title" content="A Case For Writing It Yourself" />
+<meta property="og:description" content="Quite often it is better to learn how something is made than to simply grab something off the shelf." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://benjaminlistwon.com/blog/a-case-for-writing-it-yourself/" />
+
+
+
+<meta property="article:published_time" content="2016-08-11T10:00:00-07:00"/>
+
+<meta property="article:modified_time" content="2016-08-11T10:00:00-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="A Case For Writing It Yourself">
+<meta itemprop="description" content="Quite often it is better to learn how something is made than to simply grab something off the shelf.">
+
+
+<meta itemprop="datePublished" content="2016-08-11T10:00:00-07:00" />
+<meta itemprop="dateModified" content="2016-08-11T10:00:00-07:00" />
+<meta itemprop="wordCount" content="1219">
+
+
+
+<meta itemprop="keywords" content="javascript,frameworks,diy," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-78325407-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+
+    </head>
+
+    
+    <body class="post">
+    
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h1><a href="/">Benjamin Listwon</i></a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/blog">
+                        Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archive">
+                        Archive
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resource">
+                        Resources
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/blog">
+                            <h3>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archive">
+                            <h3>
+                                
+                                Archive
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resource">
+                            <h3>
+                                
+                                Resources
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/"><p>Strategies for extending Vue</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/"><p>Vuex Chat Part 2</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/"><p>Data Flow in Vue and Vuex</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/hooray-for-hugo/"><p>Hooray for Hugo!</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/"><p>Short Order Vue: A Vue 2.0 App</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://benjaminlistwon.com/blog/a-case-for-writing-it-yourself/">A Case For Writing It Yourself</a></h2>
+            
+        
+        
+        
+            <p>Quite often it is better to learn how something is made than to simply grab something off the shelf.</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-08-11'>
+            August 11, 2016</time>
+        
+        
+            <p>6 minute read</p>
+        
+            <p class="subscribe-bug"><a href="#subscribe"><i class="fa fa-newspaper-o">&nbsp;</i>Subscribe</a></p>
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f&text=A%20Case%20For%20Writing%20It%20Yourself&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f&title=A%20Case%20For%20Writing%20It%20Yourself"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f&title=A%20Case%20For%20Writing%20It%20Yourself"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f&title=A%20Case%20For%20Writing%20It%20Yourself"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+    
+
+    <div id="content">
+        <p>Over the years I’ve vacillated between the two extremes of “roll your own code” and “throw together a bunch of libraries.” I suspect I’m not alone in this endless pursuit of “the best” way to build software.</p>
+
+<p>In the end, we all know that each project is unique, and perhaps more importantly, its requirements will change with time. A library you rely upon today may not have all the capabilities you need tomorrow, or perhaps, after real usage data pours in, you realize you only need 1/100th of some module’s functionality and that you can easily write that bit on your own.</p>
+
+<p>That said, more often than not,when it comes to building a project you are bootstrapping on your own dime, you tend to look for solutions and tools that are already out there.</p>
+
+<p>That’s exactly how I started out on my latest project, which I began writing code for about two weeks ago. But today, I realized there’s value to writing some things on your own in the early stages, even if it takes you some extra time. Let me take a step back first.</p>
+
+<hr />
+
+<p>Last week I was cruising along with my Vue.js-based front end, amazed at how easily I was able to make really large amounts of progress each day. Part of this was due to careful planning, and part was due to the rather permissive structure of Vue itself.</p>
+
+<p>Over the weekend, I wanted to rough out a very simple prototype of in-browser editing for two pretty straightforward, but distinct use cases.</p>
+
+<ol>
+<li>The ability to edit a heading, represented by an <code>h1</code> or <code>h2</code> element. This would only allow for editing the text itself, and perhaps very basic formatting like bold or italic, but would not allow “full RTE” capability, HTML entry, etc. It should however allow a user to paste a value copied from elsewhere, and convert it to just text.</li>
+<li>The ability to use RTE-like functionality to compose, edit or otherwise author a document in the context of a div, or similar <code>contenteditable</code> enabled element. Editing here would allow for things like ordered lists, block quotes, hyperlinks, etc, and perhaps even the occasional image placement. Copy/paste should do a reasonable job of preserving formatting from external documents, and undo/redo should operate as natively as possible.</li>
+</ol>
+
+<p>Immediately I thought of three nice-to-haves:</p>
+
+<ol>
+<li>Use something already available, proven and tested</li>
+<li>Ideally use the same code for both instances—potentially through configuration or an API—so I didn’t have dependency trees for each use case, twice the code to manage, etc</li>
+<li>Find something developer friendly, that is, something with modularity, a good API or some other way of extending and integrating the editor</li>
+</ol>
+
+<p>Saturday came, and Saturday went. What I realized after doing <em>a lot</em> of research, was that I’d have to mock up the scenarios I wanted to test, and create a list of criteria I was going to use to judge what worked.</p>
+
+<p>I picked up where I left off on Monday, and by Tuesday my head was spinning. I had roughly 20 simple prototype pages built out and none of them was really leaping out as a clear winner.</p>
+
+<p>The strongest candidate for the full-fledged RTE was [Quill], which has a killer [v1 Beta out]. As far as a lightweight solution (and even some RTE functionality), [Medium.js] does a really good job leveraging modern browser features for simple editing.</p>
+
+<p>But, this left me in the unenviable position of possibly having two solutions, one for each use case, or of extending one or the other to enable it to be used for both contexts.</p>
+
+<p>While that was certainly possible, I found that Quill had one major flaw, undo/redo histories are maintained per-instance, which gets absolutely crazy when you have many instances to manage. It also does not emit events as much as I’d like, so I’d have to write some code there that would be “delicate” at best since it would live outside the core of the editor.</p>
+
+<p>Medium.js lacks some of the more advanced RTE functionality, so I’d be doing a lot of coding to get it up to snuff for document editing. This is obviously more work than finding a way to restrict what a more feature-rich RTE can do.</p>
+
+<hr />
+
+<p>And so it was that Wednesday I decided to write my own code to meet my use cases. By now, I have a very good definition of exactly what I need, and how those needs will evolve (at least for the next few months). I also have learned <em>a lot</em> from poking around inside so many great solutions that are out there.</p>
+
+<p>Along the way though, I’ve also learned just how much support there is in the browser for creating editable content. Starting from [this article] that covers the basics of creating your own RTE, it became clear that it would;t be too hard to get something workable very quickly, then evolve it as I continued other feature development.</p>
+
+<p>There’s loads of resources related to this topic, most notably Mozilla’s docs on [<code>execCommand</code>] and a pointer to [some of the hurdles] that browsers put in your way. After about an hour, I had a passable editor that could handle RTE commands nicely, as well as the restricted case for editing a heading.</p>
+
+<p>The one sticky wicket is, of course, copy/paste, but with some tweaking of <a href="[here’s a fiddle]">this solution</a>, I’ve got just about all the external formatting I want to support in place, and none of the stuff I don’t want.</p>
+
+<hr />
+
+<p>So, what did I learn? Why roll your own?</p>
+
+<p>Well, I wouldn’t advise it universally. First, do this:</p>
+
+<ol>
+<li>Identify your critical functionality, your nice-to-haves and, any bonuses</li>
+<li>Identify what you don’t want (multiple dependencies, etc)</li>
+<li>Research what is out there</li>
+<li>Score them</li>
+<li>Build super-quick prototypes; aim for equal outcomes for better comparison (like [TodoMVC])</li>
+<li>Score them again</li>
+</ol>
+
+<p>If your needs are met, great! If not, then maybe roll your own. If you do, consider:</p>
+
+<ol>
+<li><strong>What can you reuse from the exercises above?</strong> Not just code, but ideas and strategies.</li>
+<li><strong>Are there smaller, helper libs that can get you up to speed faster?</strong> Both Quill and Medium.js make use of other small dependencies to help with things like range selection or undo history. I looked at things like [clipboard.js] to see what I could “delegate.”</li>
+<li><strong>What is absolutely critical to build right now, and what can wait?</strong> Don’t ignore what can wait when you design your code, but plan to build it out later. In other words, build only what you need to validate your criteria, but keep growth in mind so you minimize having to revisit core code later.</li>
+</ol>
+
+<p>Once you’ve got all that out of the way, start coding!</p>
+
+<p>I honestly think the above steps are necessary to make the end result actually worthwhile. Too many times I’ve said, “f*%k it, I’m going to write this myself” and ended up wanting to tear my hair out. Measure twice, cut once, and all that.</p>
+
+<p>In the end, if you’ve done your planning and your homework, I think you get:</p>
+
+<ul>
+<li>a solution that meets 100% of your needs</li>
+<li>less bloat</li>
+<li>less code to manage</li>
+<li><strong>a much better understanding of how stuff works</strong></li>
+</ul>
+
+<p>You can tell from the emphasis on that last one that I think that is the most valuable bit.</p>
+
+<p>Good luck, and happy coding!</p>
+
+    </div>
+
+    <footer>
+        
+    
+
+        
+
+    
+    <ul class="tags">
+    
+        <li><a href="/tags/javascript">javascript</a></li>
+    
+        <li><a href="/tags/frameworks">frameworks</a></li>
+    
+        <li><a href="/tags/diy">diy</a></li>
+    
+    </ul>
+    
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="https://benjaminlistwon.com/blog/back-in-action/"
+                class="button big previous">Back In Action</a></li>
+    
+
+    
+        <li><a href="https://benjaminlistwon.com/blog/vue-20/"
+                class="button big next">Vue 2.0</a></li>
+    
+</ul>
+
+
+
+
+        <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f&text=A%20Case%20For%20Writing%20It%20Yourself&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f&title=A%20Case%20For%20Writing%20It%20Yourself"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f&title=A%20Case%20For%20Writing%20It%20Yourself"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f&title=A%20Case%20For%20Writing%20It%20Yourself"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fa-case-for-writing-it-yourself%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+    <section id="intro">
+        
+        
+            
+                <a href="/" class="logo"><img src="/img/logo.jpg" alt="Benjamin Listwon" /></a>
+            
+        
+        
+            <header>
+                <h2></h2>
+                <p>A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way.</p>
+            </header>
+        
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+    </section>
+
+
+    
+    <section class="book-promo sidebar-book-promo">
+    <h3>Vue.js In Action</h3>
+    <figure>
+        <a href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">
+            <img src="/img/vuejs-in-action-cover.png" alt="Vue.js In Action Cover Image">
+        </a>
+    </figure>
+    <p>I wrote a book about Vue.js along with amazing developer and author <a href="https://twitter.com/ErikCH">Erik Hanchett</a>.</p>
+    <p><a class="button" href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">Grab a Copy</a></p>
+</section>
+
+
+    
+    <a name="subscribe"></a>
+    <section class="mcform-wrapper">
+    <form action="http://newsletter.benjaminlistwon.com/add_subscriber" method="post" name="revue-form">
+    <div class="mcform">
+        <h3>Subscribe To The Newsletter</h3>
+        <p>Thanks for taking the time to visit! If you liked this, or you want to
+            follow along as I learn, build and share, just sign up below. 
+            I promise to keep it low-key and infrequent. Cheers!</p>
+    
+        <p class="mcform-inputs">
+            <input class="revue-form-field" placeholder="thank@you.com" type="email" name="member[email]" >
+            <input type="submit" value="Subscribe" name="member[subscribe]">
+        </p>
+    </div>
+    </form>
+</section>
+
+
+
+
+    
+    <section id="recent-posts">
+        <ul class="posts">
+            <header>
+                <h3>Recent Posts</h3>
+            </header>
+            
+                
+            
+
+            
+                
+            
+
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/">Strategies for extending Vue</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-11-04'>
+                                November 4, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/">Vuex Chat Part 2</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-28'>
+                                September 28, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">Data Flow in Vue and Vuex</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-21'>
+                                September 21, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/hooray-for-hugo/">Hooray for Hugo!</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-19'>
+                                September 19, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/">Short Order Vue: A Vue 2.0 App</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-16'>
+                                September 16, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+
+            
+                <li>
+                    <ul class="actions">
+                        <li><a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a></li>
+                    </ul>
+                </li>
+            
+        </ul>
+    </section>
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    <section class="blurb">
+        <h2>About</h2>
+        <p>I am a designer, developer, and proud father, living in the greater Seattle area. I have spent the last two decades building apps, websites and software with some terrific folks, and now I am striking out on my own.</p>
+
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    
+
+    
+    <section id="footer">
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+
+        <p class="copyright">
+            &copy; Benjamin Listwon.<br/>
+            Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+            Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+            Powered by <a href="//gohugo.io" >Hugo</a>
+        </p>
+    </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

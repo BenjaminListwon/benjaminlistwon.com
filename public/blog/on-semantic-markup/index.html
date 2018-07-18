@@ -1,0 +1,1243 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>On Semantic Markup</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.44" />
+        
+
+
+        
+        
+            <meta name="description" content="Our front-end toolboxes are awesome these days, but why bend over backwards just to describe HTML?">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="On Semantic Markup"/>
+<meta name="twitter:description" content="Our front-end toolboxes are awesome these days, but why bend over backwards just to describe HTML?"/>
+<meta name="twitter:site" content="@benjaminlistwon"/>
+
+        <meta property="og:title" content="On Semantic Markup" />
+<meta property="og:description" content="Our front-end toolboxes are awesome these days, but why bend over backwards just to describe HTML?" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://benjaminlistwon.com/blog/on-semantic-markup/" />
+
+
+
+<meta property="article:published_time" content="2016-05-18T10:00:00-07:00"/>
+
+<meta property="article:modified_time" content="2016-05-18T10:00:00-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="On Semantic Markup">
+<meta itemprop="description" content="Our front-end toolboxes are awesome these days, but why bend over backwards just to describe HTML?">
+
+
+<meta itemprop="datePublished" content="2016-05-18T10:00:00-07:00" />
+<meta itemprop="dateModified" content="2016-05-18T10:00:00-07:00" />
+<meta itemprop="wordCount" content="3323">
+
+
+
+<meta itemprop="keywords" content="opinion,HTML,semantic," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-78325407-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+
+    </head>
+
+    
+    <body class="post">
+    
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h1><a href="/">Benjamin Listwon</i></a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/blog">
+                        Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archive">
+                        Archive
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resource">
+                        Resources
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/blog">
+                            <h3>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archive">
+                            <h3>
+                                
+                                Archive
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resource">
+                            <h3>
+                                
+                                Resources
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/"><p>Strategies for extending Vue</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/"><p>Vuex Chat Part 2</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/"><p>Data Flow in Vue and Vuex</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/hooray-for-hugo/"><p>Hooray for Hugo!</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/"><p>Short Order Vue: A Vue 2.0 App</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://benjaminlistwon.com/blog/on-semantic-markup/">On Semantic Markup</a></h2>
+            
+        
+        
+        
+            <p>Our front-end toolboxes are awesome these days, but why bend over backwards just to describe HTML?</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-05-18'>
+            May 18, 2016</time>
+        
+        
+            <p>16 minute read</p>
+        
+            <p class="subscribe-bug"><a href="#subscribe"><i class="fa fa-newspaper-o">&nbsp;</i>Subscribe</a></p>
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f&text=On%20Semantic%20Markup&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f&title=On%20Semantic%20Markup"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f&title=On%20Semantic%20Markup"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f&title=On%20Semantic%20Markup"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+    
+
+    <div id="content">
+        
+
+<h2 id="the-backdrop">The Backdrop</h2>
+
+<p><em>(In which the author is, once again, too hasty.)</em></p>
+
+<p>Yesterday, I saw this tweet pass through my timeline:</p>
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr"><a href="https://twitter.com/snookca">@snookca</a> x1000 this. Reading that ALA article, I had two thoughts…<br><br>1. ALA used to have good content.<br><br>2. What year is it? Did we go *back*?</p>— Nathan Smith (@nathansmith) <a href="https://twitter.com/nathansmith/status/732607288893018112">May 17, 2016</a></blockquote>
+
+<p>Naturally, I was immediately curious about what Jonathan had written, and what the ALA article was about.</p>
+
+<p>I headed off, read them both, and then after some coffee I hastily penned a “comment” that ended up being more like an article itself.</p>
+
+<p>As usual though, I did a pretty poor job reflecting on the matter at hand, and thought I’d take some time to articulate my own position on CSS, semantics and the modular tools in use in so-called “modern” web development.</p>
+
+<h2 id="the-premises">The Premises</h2>
+
+<p>In case you haven’t read them, _<a href="http://snook.ca/archives/html_and_css/more-meaningful-css">More  Meaningful CSS</a>_ is <a href="http://snook.ca/about/">Jonathan’s</a> response to <em><a href="http://alistapart.com/article/meaningful-css-style-like-you-mean-it">Meaningful CSS: Style Like You Mean It</a></em>, an ALA article by <a href="http://alistapart.com/author/tim-baxter">Tim Baxter</a> from earlier this month.</p>
+
+<p>I suggest giving both a read before continuing here, but if I were to briefly summarize each post …</p>
+
+<p>Tim’s post asserts that semantic elements in HTML5, and other tools like <a href="https://www.w3.org/TR/wai-aria/">ARIA</a> should enable us to write semantic CSS, not get lost in a soup of meaningless classnames. In his own words:</p>
+
+<blockquote>
+<p>Why reinvent the semantic meanings already defined in the spec in our own classes? Why duplicate them, or muddy them?</p>
+</blockquote>
+
+<p>Jonathan’s post acknowledges that there are times when rigid systems break down in practical usage, when using a class-based, modular approach is more effective than adherence to dogma for adherence’s sake. He writes:</p>
+
+<blockquote>
+<p>This is where class-based CSS systems like SMACSS excel. You can give something meaning with a name—a name that you and your team can decide together what it means.</p>
+</blockquote>
+
+<p>In the end, I think Both Tim and Jonathan are right.</p>
+
+<p>No, this is not a hedge, and I hope to convey in the coming paragraphs that by building on a strong semantic footprint, we allow ourselves the ability to easily alter the layout or appearance of modular components without excessive <code>class</code> values or additional markup.</p>
+
+<h2 id="the-problem-s">The Problem(s)</h2>
+
+<p>To summarize briefly, HTML or CSS that is non-standard, proprietary, highly customized or unnecessarily opaque means:</p>
+
+<ol>
+<li>our code is harder to read and comprehend</li>
+<li>there is a greater learning curve for new contributors</li>
+<li>our code is increasingly tied to a particular system, method or technology</li>
+<li>we devote ever-increasing time to documenting our code and educating the collective</li>
+<li>the more contributors there are, the more amplified any deviations will become</li>
+</ol>
+
+<p>Those factors cost us time, money and frankly, our own personal sanity—we constantly juggle how exactly to specify attributes for an <code>h1</code> in Jade (or Haml, or jQuery, or Vue.js, or …).</p>
+
+<p>Think about something completely different for a second. Isn’t the popularity of <a href="https://daringfireball.net/projects/markdown/">markdown</a> due to the fact that we collectively like the portability of a document that can be transformed into dozens (possibly hundreds) of different types of output? Isn’t its explosive growth do to a terse set of a few basic rules? Isn’t a major factor of its appeal, its utter simplicity?</p>
+
+<p>Well that was, and still is, the idea behind <a href="https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language">SGML</a>, the granddaddy of XML, HTML and the like. Create a way to describe a document that can, in turn, be interpreted by any software and transformed into some sort of friendly, user-facing presentation of that document.</p>
+
+<p><em>(I’ll come back to transformations down in The Solution section.)</em></p>
+
+<p>There’s a reason HTML is still <em>the</em> markup for the entire internet. It is standardized, people all have a more-or-less consistent understanding of its parts, and it is versatile enough that it can describe loads of different outcomes.</p>
+
+<p>HTML has grown, changed and adapted (albeit slowly) as the industry has matured, but it has never been thrown out, completely rewritten or otherwise torn down.</p>
+
+<p>The same notion of semantic meaning is present in CSS, though is perhaps undersold relative to the semantics of HTML. There are, of course, external influences that have contributed to less rigor in CSS semantics:</p>
+
+<ul>
+<li>browser prefixes</li>
+<li>uneven browser support</li>
+<li>divergent precompiler syntaxes <sup>†</sup></li>
+<li>less than clear/complete specifications for several properties (often due to a reluctance to over-prescribe in the spec)</li>
+</ul>
+
+<p>Despite the turbulence within and across different toolsets, and in the face of uneven adoption of CSS3, things were manageable for quite a while. Then, along came the rise of the Javascript Framework (dum, dum, dummmmm).</p>
+
+<p>Let’s take a look at how these situations got amplified, then see if we can’t solve some of it.</p>
+
+<p><em><sup>†</sup> Incidentally, precompilers utilizing an auto-prefix library to automagically fill in values for different browsers is a terrific example of a tool helping us out.</em></p>
+
+<h2 id="those-problems-intensified">Those Problems, Intensified</h2>
+
+<p>About a year ago <a href="https://twitter.com/samuelfine">Samuel Fine</a> had this to say (amongst other tweets):
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">BEM sounds super useful if you don&rsquo;t know how HTML or CSS work.</p>— Samuel Fine (@samuelfine) <a href="https://twitter.com/samuelfine/status/575646836251344897">March 11, 2015</a></blockquote></p>
+
+<p><em>(Thanks to <a href="https://css-tricks.com/bem-101/">css-tricks</a> for hanging onto them in an article on BEM.)</em></p>
+
+<p>The way I see it, we’ve let more modern approaches to rendering the front-end dictate how we should write—and even think about—the styles and markup we write.</p>
+
+<p>The rampant <code>div</code>ification of our markup and “classname over-proliferation” Tim alludes to are almost entirely the result of the rapid adoption of front-end frameworks.</p>
+
+<p><a href="https://www.facebook.com">For example</a>:</p>
+
+<pre><code>&lt;h2 class=&quot;inlineBlock _3ma _6n _6s _6v&quot; 
+    style=&quot;padding: 42px 0 24px; font-size: 28px; 
+    line-height: 36px&quot;&gt; Connect with friends and the&lt;br /&gt;
+    world around you on Facebook.&lt;/h2&gt;
+</code></pre>
+
+<p>That code is clearly generated programmatically, and it is likely that more descriptive classnames and code are written behind by the original authors before being optimized and obfuscated for maximum efficiency.</p>
+
+<p>However, why are we voluntarily obfuscating our own work? It’s less readable / intelligible / maintainable in the long run. Our own tools often <strike>allow us</strike> force us to relinquish the generation of styles and markup to code.</p>
+
+<p>Code that frequently falls back on techniques we’d immediately condemn if written by an actual person, just like the Facebook snippet above.</p>
+
+<p>Let’s take a sampling.</p>
+
+<p>Stylistic approaches to CSS, like <a href="https://en.bem.info/">BEM</a>, tell us we need to <a href="http://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/">write CSS classnames</a> in a manner comparable to how Javascript traditionally annotates HTML as it generates or manipulates elements:</p>
+
+<pre><code>.person {}
+.person__hand {}
+.person--female {}
+.person--female__hand {}
+.person__hand--left {}
+</code></pre>
+
+<p>Front-end frameworks like <a href="http://getbootstrap.com/">Bootstrap</a> require you to write HTML that looks like it is machine generated <em>(<a href="#btw">btw</a>)</em>:</p>
+
+<pre><code>&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-sm-5 col-md-6&quot;&gt;Huh?&lt;/div&gt;
+&lt;div class=&quot;col-sm-5 col-sm-offset-2 
+    col-md-6 col-md-offset-0&quot;&gt;Wut?&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;row&quot;&gt;
+&lt;div class=&quot;col-sm-6 col-md-5 col-lg-6&quot;&gt;
+    This is an actual ...&lt;/div&gt;
+&lt;div class=&quot;col-sm-6 col-md-5 col-md-offset-2 
+    col-lg-6 col-lg-offset-0&quot;&gt;... example 
+    from the docs.&lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Javascript-based frameworks like <a href="https://angularjs.org/">Angular</a>, or libraries like <a href="https://www.polymer-project.org/1.0/">Polymer</a> do away with standard tags altogether:</p>
+
+<pre><code>&lt;paper-dropdown-menu label=&quot;Your favourite pastry&quot;&gt;
+    &lt;paper-listbox class=&quot;dropdown-content&quot;&gt;
+        &lt;paper-item&gt;Croissant&lt;/paper-item&gt;
+        &lt;paper-item&gt;Donut&lt;/paper-item&gt;
+        &lt;paper-item&gt;Financier&lt;/paper-item&gt;
+        &lt;paper-item&gt;Madeleine&lt;/paper-item&gt;
+    &lt;/paper-listbox&gt;
+&lt;/paper-dropdown-menu&gt;
+</code></pre>
+
+<p><em>(Ssshhhh, that’s a <code>select</code> in disguise. More on that irony, <a href="#irony">just below</a>.)</em></p>
+
+<p>We even got too tired and lazy to write HTML (or even worse, let our editor auto-complete HTML for us). Witness <a href="http://haml.info/">HAML</a>:</p>
+
+<pre><code>%section.container
+    %h1= post.title
+    %h2= post.subtitle
+        .content
+            = post.content
+</code></pre>
+
+<p>I mean, c’mon. <em>[<a href="#anaside">An aside</a>]</em></p>
+
+<h4 id="deja-vu-all-over-again">Deja Vu All Over Again</h4>
+
+<p>Incidentally, folks have been reinventing / augmenting / building <a href="https://en.wikipedia.org/wiki/XUL">atop web standards</a> for “ages,” <a href="http://www.mozillazine.org/articles/article2278.html">or at least since 2002</a>:</p>
+
+<blockquote>
+<p>XUL can be used to write cross-platform applications such as Mozilla Firefox, where it is interpreted by the layout engine, known as Gecko, which renders Firefox&rsquo;s user interface and Web page display.</p>
+
+<p>[…]</p>
+
+<p>XUL relies on multiple existing Web standards and Web technologies, including CSS, JavaScript, and DOM. Such reliance makes XUL relatively easy to learn for people with a background in Web programming and design.</p>
+</blockquote>
+
+<p>… wait for it … <a name="irony"></a></p>
+
+<blockquote>
+<p>The Polymer library is designed to make it easier and faster for developers to create great, reusable components for the modern web.</p>
+
+<p>[…]</p>
+
+<p>With custom elements, you can extend the vocabulary of HTML with your own elements. Elements that provide sophisticated UI. Elements that are as easy to use as &lt;select&gt;</p>
+</blockquote>
+
+<p>I guess <a href="https://en.wikipedia.org/wiki/XSL">XSL</a> probably clocks in as one of the earlier technologies to dabble in transformations built on web standards, with its first draft out in 1998.</p>
+
+<h2 id="some-solutions">Some Solutions</h2>
+
+<p><em>(Or, at least, the kernel of how to employ them.)</em></p>
+
+<p>You may think, from the above, that I am sour on technologies like Polymer, Vue or Angular, that I steer clear of Bootstrap, underscore or Foundation.</p>
+
+<p>On the contrary, I think client-side rendering is a good thing. I think having the ability to create applications that primarily pass data back and forth allows for greater autonomy, and tremendous possibility for the software—and indeed embedded hardware—that we will build in the next decade.</p>
+
+<p>However, I do not believe there is any reason why we shouldn’t write semantic markup and/or styles.</p>
+
+<p>HTML is standardized, well-understood and documented, and familiar to anyone that picks up our code, not just ourselves or our immediate team. So too should our CSS be.</p>
+
+<h4 id="semantic-first">Semantic First</h4>
+
+<p><em>(It’s like mobile-first, but for linguistic nerds.)</em></p>
+
+<p>Even in large-scale systems, I truly believe that semantic markup is the strongest foundation on which to build. Why reinvent the wheel?</p>
+
+<p>For example, this will always be more comprehensible to a broader audience:</p>
+
+<pre><code>&lt;article&gt;
+    &lt;header&gt;
+        &lt;h1&gt;Cats And Dogs&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;p&gt;Cats and dogs could not be more different, yet ... &lt;/p&gt;
+&lt;/article&gt;
+</code></pre>
+
+<p>than this:</p>
+
+<pre><code>&lt;div class=&quot;article&quot;&gt;
+    &lt;div class=&quot;article__header&quot;&gt;Cats And Dogs&lt;/div&gt;
+    &lt;p&gt;Cats and dogs could not be more different, yet ... &lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>And the <code>article</code> version does exactly what the <code>div class=&quot;article&quot;</code> version does, arguably more transparently. Removing the <code>h1</code> and adding style to the <code>article__header</code> element also removes implicit understanding of what’s inside and what it should look like.</p>
+
+<p>Often though, things go the other way—more divs. Here’s just the containers for the title text of a <a href="https://www.youtube.com/watch?v=gFUSF_UB2R8">video on Youtube</a>:</p>
+
+<pre><code>&lt;div id=&quot;watch7-headline&quot; class=&quot;clearfix&quot;&gt;
+    &lt;div id=&quot;watch-headline-title&quot;&gt;
+        &lt;h1 class=&quot;yt watch-title-container&quot; &gt;
+            &lt;span id=&quot;eow-title&quot; class=&quot;watch-title&quot; dir=&quot;ltr&quot; 
+                title=&quot;What It Would Be Like to Live on the Death Star? 
+                    A Look at What Life Was Like During Rogue One&quot;&gt;
+                What It Would Be Like to Live on the Death Star? 
+                A Look at What Life Was Like During Rogue One
+            &lt;/span&gt;
+        &lt;/h1&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>What the what? I can <em>maybe</em> justify one containing <code>div</code> (though there is another parent <code>div</code> in the markup that might work just as well), but the span is almost guaranteed to be excess markup and nearly all of those classnames are likely unnecessary.</p>
+
+<p>Moving on.</p>
+
+<p>Certainly, when it comes to CSS, it seems ridiculous to waste time and effort renaming what already exists. Compare:</p>
+
+<pre><code>ul.menu { width: 200px; }
+ul.menu li { background: #fff; }
+ul.menu a { color: #369; }
+ul.menu a:hover { color: #333; } 
+</code></pre>
+
+<p>with:</p>
+
+<pre><code>.menu { width: 200px; }
+.menu__item { background: #fff; }
+.menu__link { color: #369; }
+.menu__link:hover { color: #333; } 
+</code></pre>
+
+<p>and tell me it isn’t just wasted naming effort and additional cognitive load to remember and transform those names in your head.</p>
+
+<p>As far as individual customizations or special scenarios, if you want to change one particular menu in one particular place, both of these will still require at least one parent or combining class that changes the children’s behavior:</p>
+
+<pre><code>ul.menu.inverted { ... }
+ul.inverted a:hover li { ... }
+-- vs --
+.menu.menu--inverted { ... }
+.menu--inverted .menu__link:hover .menu_item { ... }
+</code></pre>
+
+<p>So, let’s stick with elements that have semantic meaning, and the styles that target them, until we absolutely cannot.</p>
+
+<h4 id="classnames-are-not-all-bad">Classnames Are Not <em>All</em> Bad</h4>
+
+<p>Another aspect of the discussion was about changing appearance with classnames.</p>
+
+<p>I have always interpreted the <code>class</code> attribute as a way to add properties to, or change the properties of,  a “base” class. For that, classnames are 100% appropriate.</p>
+
+<p>This idea is very similar to the notion of <a href="https://en.wikipedia.org/wiki/Duck_typing">duck typing</a> in object-oriented programing. <em>(A duck is a bird, but not every bird is a duck!)</em></p>
+
+<p>If we have a signup form that looks like:</p>
+
+<pre><code>&lt;form&gt;
+    &lt;p&gt;
+        &lt;label&gt;Email Address&lt;/label&gt;
+        &lt;input type=&quot;email&quot; name=&quot;email&quot;&gt;
+    &lt;/p&gt;
+    &lt;p&gt;
+        &lt;label&gt;Password&lt;/label&gt;
+        &lt;input type=&quot;password&quot; name=&quot;password&quot;&gt;
+    &lt;/p&gt;
+&lt;/form&gt;
+</code></pre>
+
+<p>It is pretty easy to think about how we’d style this form in CSS. We can give our site consistent form look-and-feel by using general <code>input</code> selectors, or specifics like <code>input[type=&quot;email&quot;]</code>.</p>
+
+<p>Now, let’s say we want our signup form to have a colorful background on certain pages where we want it to stand out, we would simply add a class to the form, or use an ancestor to control the change:</p>
+
+<pre><code>form.party-time { background: url(celebrate.jpg); }
+-- or --
+body.party-time form { background: url(celebrate.jpg); }
+</code></pre>
+
+<p>And if we had a need for a specific <code>input</code> alteration based on some other prevailing condition, we can just as easily target that in CSS:</p>
+
+<pre><code>form.party-time input[type=&quot;password&quot;] { transform: rotate(180deg); }
+</code></pre>
+
+<p>This becomes more relevant, and less oversimplified, as we head into larger applications.</p>
+
+<h4 id="applications-and-components">Applications And Components</h4>
+
+<p>One area where folks often argue that semantic-only markup and styles fail is in a web application context.</p>
+
+<p>In such cases there is often a need to use a generic HTML element, such as a <code>div</code>, for a few reasons. The biggest reason though is usually that one cannot predict the context of where a component will be inserted into the DOM, thus we need some sort of hook to hang localized styles off of. <em>(I have an idea for that in the next section.)</em></p>
+
+<p>An example might be something like the <a href="http://getbootstrap.com/components/#progress">Bootstrap progress bar</a>. Here’s the HTML for the basic example:</p>
+
+<pre><code>&lt;div class=&quot;progress&quot;&gt;
+    &lt;div class=&quot;progress-bar&quot; role=&quot;progressbar&quot; aria-valuenow=&quot;60&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot; style=&quot;width: 60%;&quot;&gt;
+        &lt;span class=&quot;sr-only&quot;&gt;60% Complete&lt;/span&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>To Tim’s point, there is no need for the class <code>progress-bar</code> in the above example, <em>especially</em> when there is also already an ARIA <code>role</code> attribute present. Either of these will work:</p>
+
+<pre><code>  div.progressbar &gt; div
+  div[role=&quot;progressbar&quot;]
+</code></pre>
+
+<p>The span with the class <code>sr-only</code> is intended to indicate that the text within should be read by screenreader, but that there is a style somewhere that hides the text from visual display.</p>
+
+<p>This can be accomplished with the <code>aria-label</code> attribute, a global attribute intended expressly for labels not displayed visually, or functionally equivalent to the HTML <code>title</code> attribute. So we could rewrite the above as:</p>
+
+<pre><code>&lt;div class=&quot;progress&quot;&gt;
+    &lt;div role=&quot;progressbar&quot; aria-label=&quot;60% Complete&quot; aria-valuenow=&quot;60&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot; style=&quot;width: 60%;&quot;&gt;&lt;/div&gt;
+&lt;/div&gt; 
+</code></pre>
+
+<p>I almost cooked up a way to eliminate the outer <code>div</code> but ran up against a wall. That would let us express a progress bar (save for the <a href="http://getbootstrap.com/components/#progress-stacked">stacked</a> case), like so:</p>
+
+<pre><code>&lt;div role=&quot;progressbar&quot; aria-valuenow=&quot;60&quot; aria-valuemin=&quot;0&quot; aria-valuemax=&quot;100&quot; style=&quot;width: 60%;&quot; aria-label=&quot;60% Complete&quot;&gt;&lt;/div&gt;
+</code></pre>
+
+<p><em>(I’ll keep at it and update here if I can do it.)</em></p>
+
+<h4 id="the-magic-of-title">The Magic Of Title</h4>
+
+<p>I’ve secretly been holding onto “this 1 cool trick” the whole time.</p>
+
+<p>Going back to our signup form, I can feel some readers squirming in their seats thinking about “But, what if I want to have a base form, then signup details, then party-time awesomeness? Won’t that need multiple classes?”</p>
+
+<pre><code>&lt;form class=&quot;signup party-time&quot;&gt;
+...
+&lt;/form&gt;
+</code></pre>
+
+<p>Before you go classifying every component in your toolbox, consider using the <code>title</code> attribute. In HTML5, you can add it to <em>any</em> element!</p>
+
+<p>Plus, not only can you use it as a selector target, you can helpfully provide context for screen readers.</p>
+
+<pre><code>&lt;form title=&quot;Signup Form&quot; class=&quot;party-time&quot;&gt;
+...
+&lt;/form&gt;
+</code></pre>
+
+<p>Now, we can target all three, or any combo, in CSS:</p>
+
+<pre><code>form { ... }
+form[title=&quot;Signup Form&quot;] { .. }
+form.party-time { ... }
+form[title=&quot;Signup Form&quot;].party-time { .. }
+</code></pre>
+
+<p>Using <code>title</code> pretty much eliminates an urge to create poorly descriptive classnames like “that-one-form-with-the-special-button” or names that could otherwise be titles, like the one above.</p>
+
+<p>So now there’s really no need for classes like “form basic-form signup-form” or  using <code>id</code> to do the same <code>id=&quot;signupForm&quot;</code>.</p>
+
+<p>Use this power wisely my friends!</p>
+
+<h4 id="let-the-software-do-some-work">Let The Software Do Some Work</h4>
+
+<p>In all seriousness: why do we put the load on ourselves, not our tools?</p>
+
+<p><strong>At the end of the day, so long as the browser remains our de facto target, then the end result will ALWAYS BE HTML.</strong></p>
+
+<p>Just let that simmer for a minute. No matter how many transformations between source file and output, no matter how clever the abstraction, no matter how trendy javascript gets, the browser still consumes HTML.</p>
+
+<p>HTML is inherently expressive, and so is CSS (I’ll allow that there are places where both get very murky). We should strive to use that expressiveness in our everyday work, and adapt our tools so that they can use that input to create generated output.</p>
+
+<p>Since something like Polymer already supports scoped styling, shadow (shady) DOM and other methods that allow for an autonomous component, there is no reason the internal markup of a component has to be like the completely proprietary markup above instead of:</p>
+
+<pre><code>&lt;label&gt;Your favourite pastry&lt;/label&gt;
+&lt;select&gt;
+    &lt;option&gt;Croissant&lt;/option&gt;
+    &lt;option&gt;Donut&lt;/option&gt;
+    &lt;option&gt;Financier&lt;/option&gt;
+    &lt;option&gt;Madeleine&lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+
+<p>Polymer adherents will point out that there is no root element to attach to for DOM insertion, etc. However, that is <em>precisely</em> the kind of transformation our software should do for us:</p>
+
+<pre><code>If there is more than one DOM node in the template
+    &gt; create a root node
+    &gt; clone the child nodes
+    &gt; append the clones to the root
+Else
+    &gt; clone the root node
+Finally
+    &gt; insert the root into the dcoument
+</code></pre>
+
+<p>We should not have to write source files with nested <code>div</code>s just so our Javascript doesn’t have to check the number of child nodes in a container.</p>
+
+<p>Let’s push for our tools, toolsets and toolchains to support workflows that allow us to have to carry less of the load. Not tools that purport to save us time by trading for our brainspace, but tools that save us time by embracing the foundations of the web, and allow us to be the innovative, creative souls that we are.</p>
+
+<p>In the meantime, we’ll have to do our best to build components within those frameworks that leverages semantic HTML and CSS. We can do this in a framework like Polymer by building components with less <code>div</code> elements, no custom elements like <code>x-elem</code> and scoped styles that utilize semantic selectors, not classnames.</p>
+
+<p>We should aim for how Vue.js operates, allowing us to express data-bound, modular components that use clean, semantic markup. Here’s a <a href="http://vuejs.org/guide/forms.html#Select">bound <code>select</code> in Vue</a>:</p>
+
+<pre><code>&lt;select v-model=&quot;selected&quot;&gt;
+    &lt;option v-for=&quot;option in options&quot; v-bind:value=&quot;option.value&quot;&gt;
+        {{ option.text }}
+    &lt;/option&gt;
+&lt;/select&gt;
+</code></pre>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Though I’m not sure I accomplished what I set out to do here, or that I wrote about anything novel, I do think it is important to keep the conversation about semantic HTML + CSS going.</p>
+
+<p>The pace of our innovation, and our toolset(s) for that matter, keep increasing. And the more we let them abstract away the correlation between source material and output, the greater the risk to our community and our colleague’s understanding of how those technologies actually work.</p>
+
+<p>It never took me long to explain how HTML works to a new hire, be it 20 years ago or today. Let’s work to ensure that our shiny new tools and meta-languages are just as clear, and just as well-suited for the job as those technologies that have proven so resilient all these years.</p>
+
+<hr />
+
+<p><a name="btw"></a></p>
+
+<h2 id="btw">BTW</h2>
+
+<p>Did you know: <a href="http://caniuse.com/#search=column">CSS3 column support</a> has been in Chrome since version 4, which shipped in <a href="https://en.wikipedia.org/wiki/Google_Chrome_release_history">January 2010</a> and Firefox since version 2, which shipped in <a href="https://en.wikipedia.org/wiki/Firefox_release_history">October 2006</a>!</p>
+
+<p>Just saying.</p>
+
+<p><a name="anaside"></a></p>
+
+<h2 id="an-aside">An Aside</h2>
+
+<p>Full Disclosure: Way back, my very first “big” gig was to remove proprietary, in-house markup from over 2,000 untemplated pages (save a header and footer template), implement CSS for the first time, and templatize the whole site.</p>
+
+<p>The in-house code functioned basically the same as any of the above abstractions, but it was untenable as the team had grown from one designer to eight, and a half dozen engineers to forty.</p>
+
+<p>The solution was to go back to basics, wipe the slate clean, and re-write the whole thing from the ground up in semantic HTML and CSS. Productivity soared, build times shrunk, bug counts fell and features began shipping in weeks not months or quarters.</p>
+
+<p>And yes, we did it on a site with 10M active users.</p>
+
+<p>So, maybe I’m partial to semantic solutions. Maybe I’m nostalgic to some degree. But I do think simplicity enables growth, and in a completely different sense, complexity.</p>
+
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+    </div>
+
+    <footer>
+        
+    
+
+        
+
+    
+    <ul class="tags">
+    
+        <li><a href="/tags/opinion">opinion</a></li>
+    
+        <li><a href="/tags/html">HTML</a></li>
+    
+        <li><a href="/tags/semantic">semantic</a></li>
+    
+    </ul>
+    
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="https://benjaminlistwon.com/blog/respons-o-matic-part-2/"
+                class="button big previous">Respons-O-Matic Part 2</a></li>
+    
+
+    
+        <li><a href="https://benjaminlistwon.com/blog/minimalism-it-takes-effort-too/"
+                class="button big next">Minimalism: It Takes Effort Too</a></li>
+    
+</ul>
+
+
+
+
+        <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f&text=On%20Semantic%20Markup&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f&title=On%20Semantic%20Markup"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f&title=On%20Semantic%20Markup"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f&title=On%20Semantic%20Markup"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fon-semantic-markup%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+    <section id="intro">
+        
+        
+            
+                <a href="/" class="logo"><img src="/img/logo.jpg" alt="Benjamin Listwon" /></a>
+            
+        
+        
+            <header>
+                <h2></h2>
+                <p>A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way.</p>
+            </header>
+        
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+    </section>
+
+
+    
+    <section class="book-promo sidebar-book-promo">
+    <h3>Vue.js In Action</h3>
+    <figure>
+        <a href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">
+            <img src="/img/vuejs-in-action-cover.png" alt="Vue.js In Action Cover Image">
+        </a>
+    </figure>
+    <p>I wrote a book about Vue.js along with amazing developer and author <a href="https://twitter.com/ErikCH">Erik Hanchett</a>.</p>
+    <p><a class="button" href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">Grab a Copy</a></p>
+</section>
+
+
+    
+    <a name="subscribe"></a>
+    <section class="mcform-wrapper">
+    <form action="http://newsletter.benjaminlistwon.com/add_subscriber" method="post" name="revue-form">
+    <div class="mcform">
+        <h3>Subscribe To The Newsletter</h3>
+        <p>Thanks for taking the time to visit! If you liked this, or you want to
+            follow along as I learn, build and share, just sign up below. 
+            I promise to keep it low-key and infrequent. Cheers!</p>
+    
+        <p class="mcform-inputs">
+            <input class="revue-form-field" placeholder="thank@you.com" type="email" name="member[email]" >
+            <input type="submit" value="Subscribe" name="member[subscribe]">
+        </p>
+    </div>
+    </form>
+</section>
+
+
+
+
+    
+    <section id="recent-posts">
+        <ul class="posts">
+            <header>
+                <h3>Recent Posts</h3>
+            </header>
+            
+                
+            
+
+            
+                
+            
+
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/">Strategies for extending Vue</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-11-04'>
+                                November 4, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/">Vuex Chat Part 2</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-28'>
+                                September 28, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">Data Flow in Vue and Vuex</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-21'>
+                                September 21, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/hooray-for-hugo/">Hooray for Hugo!</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-19'>
+                                September 19, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/">Short Order Vue: A Vue 2.0 App</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-16'>
+                                September 16, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+
+            
+                <li>
+                    <ul class="actions">
+                        <li><a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a></li>
+                    </ul>
+                </li>
+            
+        </ul>
+    </section>
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    <section class="blurb">
+        <h2>About</h2>
+        <p>I am a designer, developer, and proud father, living in the greater Seattle area. I have spent the last two decades building apps, websites and software with some terrific folks, and now I am striking out on my own.</p>
+
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    
+
+    
+    <section id="footer">
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+
+        <p class="copyright">
+            &copy; Benjamin Listwon.<br/>
+            Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+            Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+            Powered by <a href="//gohugo.io" >Hugo</a>
+        </p>
+    </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

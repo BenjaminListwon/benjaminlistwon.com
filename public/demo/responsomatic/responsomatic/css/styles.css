@@ -1,0 +1,140 @@
+/**
+ * This is the stylesheet for the index file only. It handles the layout of
+ * the devices and that's about it.
+ *
+ * Content CSS should live inside the content directory, or wherever you are 
+ * loading your content from.
+ *
+ * CSS for the devices themselves lives in devices.min.css, which is from the
+ * tremendous folks at Marvel https://marvelapp.com and is available on Github
+ * at http://marvelapp.github.io/devices.css/
+ */
+
+/* Basic body stuffs */
+* { padding: 0; margin: 0; }
+
+html, body {
+	width: 100%;
+	height: 100%;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-family: sans-serif;
+}
+
+
+/* A toolbar */
+#appToolbar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 3rem;
+	background: #fff;
+	box-shadow: 0 0 10px rgba(0,0,0,0.1);
+	z-index: 200;
+	color: #666;
+
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+	flex-grow: 1;
+}
+
+#appToolbar > div {
+	font-size: 1.1rem;
+	flex-grow: 1;
+}
+
+#appToolbar input[type="text"] {
+	font-size: 1.1rem;
+	padding: 0.2rem 0.3rem;
+	width: 20rem;
+	border: none;
+	border-bottom: 1px solid #ccc;
+	outline: none;
+	color: #666;
+}
+
+#appToolbar button {
+	font-size: 1.1rem;
+	padding: 0.2rem 0.3rem;
+	border: none;
+	outline: none;
+	color: #666;
+	background: #fff;
+	cursor: pointer;
+}
+
+@media only screen and (max-width: 800px) {
+	#appToolbar > * { display: none; }
+	#appToolbar > div:first-child { display: block; }
+}
+
+/* The URL menu */
+#urlMenu {
+	display: none;
+	position: absolute;
+	z-index: 500;
+	list-style-type: none;
+	background: #fff;
+	box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+#urlMenu li {
+	width: 19.6rem;
+	padding: 0.5rem 0.5rem;
+	text-align: left;
+}
+
+#urlMenu li:hover {
+	background: #9cf;
+}
+
+/* Handles the row of devices */
+div.flex-wrapper {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 100%;
+}
+
+div.device-wrapper {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	align-items: center;
+	flex-grow: 1;
+	height: 100%;
+}
+
+div.device-item {
+	flex-grow: 1;
+	padding: 6rem 3rem 3rem 3rem;
+	
+}
+
+/* Make the iframes snug in their device wrappers */
+div.marvel-device {
+	margin: 0 auto;
+}
+
+div.marvel-device div.screen {
+	z-index: 100;
+}
+
+div.marvel-device div.screen > iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+}
+
+div.marvel-device div.home {
+	cursor: pointer;
+}
+
+

@@ -1,0 +1,1305 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Working With JSON Data In MySQL - Part 2 of 3</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.44" />
+        
+
+
+        
+        
+            <meta name="description" content="Implementing document-oriented patterns with the new JSON support in MySQL.">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Working With JSON Data In MySQL - Part 2 of 3"/>
+<meta name="twitter:description" content="Implementing document-oriented patterns with the new JSON support in MySQL."/>
+<meta name="twitter:site" content="@benjaminlistwon"/>
+
+        <meta property="og:title" content="Working With JSON Data In MySQL - Part 2 of 3" />
+<meta property="og:description" content="Implementing document-oriented patterns with the new JSON support in MySQL." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://benjaminlistwon.com/blog/working-with-json-data-in-mysql-part-2-of-3/" />
+
+
+
+<meta property="article:published_time" content="2016-04-01T10:00:00-07:00"/>
+
+<meta property="article:modified_time" content="2016-04-01T10:00:00-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Working With JSON Data In MySQL - Part 2 of 3">
+<meta itemprop="description" content="Implementing document-oriented patterns with the new JSON support in MySQL.">
+
+
+<meta itemprop="datePublished" content="2016-04-01T10:00:00-07:00" />
+<meta itemprop="dateModified" content="2016-04-01T10:00:00-07:00" />
+<meta itemprop="wordCount" content="3429">
+
+
+
+<meta itemprop="keywords" content="JSON,MySQL,getting started," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-78325407-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+
+    </head>
+
+    
+    <body class="post">
+    
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h1><a href="/">Benjamin Listwon</i></a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/blog">
+                        Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archive">
+                        Archive
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resource">
+                        Resources
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/blog">
+                            <h3>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archive">
+                            <h3>
+                                
+                                Archive
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resource">
+                            <h3>
+                                
+                                Resources
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/"><p>Strategies for extending Vue</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/"><p>Vuex Chat Part 2</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/"><p>Data Flow in Vue and Vuex</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/hooray-for-hugo/"><p>Hooray for Hugo!</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/"><p>Short Order Vue: A Vue 2.0 App</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://benjaminlistwon.com/blog/working-with-json-data-in-mysql-part-2-of-3/">Working With JSON Data In MySQL - Part 2 of 3</a></h2>
+            
+        
+        
+        
+            <p>Implementing document-oriented patterns with the new JSON support in MySQL.</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-04-01'>
+            April 1, 2016</time>
+        
+        
+            <p>17 minute read</p>
+        
+            <p class="subscribe-bug"><a href="#subscribe"><i class="fa fa-newspaper-o">&nbsp;</i>Subscribe</a></p>
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f&text=Working%20With%20JSON%20Data%20In%20MySQL%20-%20Part%202%20of%203&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f&title=Working%20With%20JSON%20Data%20In%20MySQL%20-%20Part%202%20of%203"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f&title=Working%20With%20JSON%20Data%20In%20MySQL%20-%20Part%202%20of%203"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f&title=Working%20With%20JSON%20Data%20In%20MySQL%20-%20Part%202%20of%203"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+    
+
+    <div id="content">
+        
+
+<p>In last week’s post, <a href="https://benjaminlistwon.com/working-with-json-data-in-mysql-part-1-of-3">Part 1 of 3</a>, we took a look at the JSON data type support added in MySQL 5.7.8. This week, I wanted to look at some of the document-oriented patterns that MongoDB uses so we can see how we might accomplish the same in MySQL.</p>
+
+<p>The goal is not to 100% replicate what Mongo does, but to see which patterns will make the best use of JSON support in MySQL, allowing us to get the best of an SQL store and a document-oriented one.</p>
+
+<p>I also want to tee up next week’s post, where we’ll take a look at how to implement models that make use of the JSON data type in Laravel, as well as how to work with them using the query builder and other mechanisms.</p>
+
+<p><strong>Warning:</strong> This one’s a bit of a long read. Here’s a high-level TOC.</p>
+
+<ol>
+<li><a href="#intro1">A Micro-Intro To MongoDB</a></li>
+<li><a href="#squarepeg">Square Peg, Round Hole</a></li>
+<li><a href="#whattodo">What To Do Then?</a></li>
+<li><a href="#whymatter">Why Does This Matter?</a></li>
+<li><a href="#whew">Whew!</a></li>
+</ol>
+
+<p><a name="intro1"></a></p>
+
+<hr />
+
+<h2 id="a-micro-intro-to-mongodb">A Micro-Intro To MongoDB</h2>
+
+<p>If you’re unfamiliar with <a href="https://www.mongodb.org/">MongoDB</a>, I’ll let their <a href="https://docs.mongodb.org/manual/introduction/">introduction</a> bring you up to speed:</p>
+
+<blockquote>
+<p>A record in MongoDB is a document, which is a data structure composed of field and value pairs. MongoDB documents are similar to JSON objects. The values of fields may include other documents, arrays, and arrays of documents.</p>
+</blockquote>
+
+<h4 id="documents">Documents</h4>
+
+<p>A document looks like any JSON object you may be familiar with:</p>
+
+<pre><code>{
+    name: &quot;Benjamin Listwon&quot;,
+    height: 75,
+    likes: [ &quot;coffee&quot;, &quot;cashews&quot; ],
+    pets: [{
+        name: &quot;Daytona&quot;,
+        type: &quot;dog&quot;
+        }]
+}
+</code></pre>
+
+<p>Technically, documents are stored as <a href="https://www.mongodb.com/json-and-bson">BSON</a>, which is basically a binary representation of JSON-esque data structures that allows for a few more data types as well as faster retrieval and indexing.</p>
+
+<h4 id="objectid">ObjectId</h4>
+
+<p>Upon insertion, each document will get a document id, very similar to how <code>auto_increment</code> works, but with some metadata encoded into it such as a timestamp. An id looks like this:</p>
+
+<pre><code>&quot;_id&quot; : ObjectId(&quot;54c955492b7c8eb21818bd09&quot;)
+</code></pre>
+
+<p>There’s also information like the machine the document was created on. That metadata is part of the underpinnings of topics like sharding, a strategy for scaling beyond a single DB machine.</p>
+
+<p>The entirety of an <a href="https://docs.mongodb.org/manual/reference/method/ObjectId/">ObjectId is covered in this document</a>, but I bring it up here because it will facilitate comparisons in our queries.</p>
+
+<h4 id="querying">Querying</h4>
+
+<p>When we want to query for documents, we would issue a statement like this:</p>
+
+<pre><code>db.people.find( { &quot;height&quot;: 75 } )
+</code></pre>
+
+<p>The equivalent in SQL would look something like:</p>
+
+<pre><code>SELECT * FROM `people` WHERE 'height' = 75;
+</code></pre>
+
+<p>In Mongo, we use dot-notated paths to query embedded objects or documents. Considering our example document above, we could do something like:</p>
+
+<pre><code>db.people.find( { &quot;pets.name&quot;: &quot;Daytona&quot; } )
+</code></pre>
+
+<p>Finally, boolean queries such as AND and OR are expressed as follows:</p>
+
+<pre><code>db.people.find( { &quot;name&quot;: &quot;Benjamin Listwon&quot;, &quot;height&quot;: 75 } )
+db.people.find( $or: [ { &quot;name&quot;: &quot;Benjamin Listwon&quot; } , { &quot;height&quot;: 75 } ] )
+</code></pre>
+
+<p><a name="squarepeg"></a></p>
+
+<hr />
+
+<h2 id="square-peg-round-hole">Square Peg, Round Hole</h2>
+
+<p>With our whirlwind tour of Mongo under our belt—and before we dive into what the JSON data type will be good at—let’s take a look at an example of something we shouldn’t try to force in MySQL.</p>
+
+<p>Within the <a href="https://docs.mongodb.org/manual/core/data-modeling-introduction/">Data Models Section</a>, Mongo provides several patterns that are the building blocks for every well-designed Mongo database. There’s a lot to explore in the subtopic “Data Model Examples and Patterns,” and if you’re interested in Mogno, you should definitely check it out when you get a chance.</p>
+
+<p>For now, let’s focus on <a href="https://docs.mongodb.org/manual/tutorial/model-referenced-one-to-many-relationships-between-documents/">Model One-To-Many Relationships With Document References</a>. This pattern example discusses the relationship of books to publishers. A book may be published by more than one publisher, and publishers certainly publish more than one book.</p>
+
+<h4 id="design-1-error-prone-subdocuments">Design 1: Error Prone Subdocuments</h4>
+
+<p>As noted in the example, storing a publisher subdocument with the book means we have duplicate data all over the place, and we leave ourselves wide open to errors.</p>
+
+<pre><code>{
+    title: &quot;MongoDB: The Definitive Guide&quot;,
+    ...
+    publisher: {
+        name: &quot;O'Reilly Media&quot;,
+        founded: 1980,
+        location: &quot;CA&quot;
+    }
+},
+{
+    title: &quot;50 Tips and Tricks for MongoDB Developer&quot;,
+    ...
+    publisher: {
+        name: &quot;O'Reilly Media&quot;,
+        founded: 1980,
+        location: &quot;CA&quot;
+    }
+}
+</code></pre>
+
+<h4 id="design-2-books-field-may-grow-too-large">Design 2: Books Field May Grow Too Large</h4>
+
+<p>If we create a field for the book ids within a publisher document, we potentially have a field that will grow too large, too fast, and may exceed the max document size <em>(amongst other concerns)</em>.</p>
+
+<pre><code>publisher: {
+    _id: &quot;oreilly&quot;,
+    name: &quot;O'Reilly Media&quot;,
+    founded: 1980,
+    location: &quot;CA&quot;,
+    books: [1234, 5678, ... 0987]
+}
+</code></pre>
+
+<h4 id="design-3-publisher-reference-s">Design 3: Publisher Reference(s)</h4>
+
+<p>Therefore, after we reason about the data a bit, the best way to store this relationship is with a publisher reference on each book entry. This has the added benefit of affording multiple publishers <em>(though we could have further discussion about how to record different published editions, dates, etc)</em>.</p>
+
+<pre><code>{
+    title: &quot;MongoDB: The Definitive Guide&quot;,
+    ...
+    publisher: [&quot;oreilly&quot;, &quot;wiley&quot;]
+},
+{
+    title: &quot;50 Tips and Tricks for MongoDB Developer&quot;,
+    ...
+    publisher: [&quot;oreilly&quot;]
+}
+</code></pre>
+
+<h4 id="multiple-queries">Multiple Queries</h4>
+
+<p>A potential downside to the design(s) above is that you must make multiple queries to retrieve the books, and their publishers. There is no notion of JOINing in Mongo.</p>
+
+<p>So, you’d have to make two queries to get a) books where “oreilly” is the publisher and b) the publisher data for “oreilly.” This gets more complex if you want to do something like “get all the books with publishers founded in 1980.” In SQL, this could be done with some JOINing, albeit a semi-complex one.</p>
+
+<h4 id="design-4-db-references">Design 4: DB References</h4>
+
+<p>An alternative is <a href="https://docs.mongodb.org/manual/reference/database-references/">DB References</a> (DBRef), which will “slurp” the referenced document into the parent document. Let’s re-imagine Design 3 with DBRefs instead:</p>
+
+<pre><code>{
+    title: &quot;MongoDB: The Definitive Guide&quot;,
+    ...
+    publisher: [
+        {
+            &quot;$ref&quot;: &quot;publishers&quot;,
+            &quot;$id&quot;: &quot;oreilly&quot;,
+            &quot;$db&quot;: &quot;LoCcatalog&quot;   // Optional
+        },
+        {
+            &quot;$ref&quot;: &quot;publishers&quot;,
+            &quot;$id&quot;: &quot;wiley&quot;,
+            &quot;$db&quot;: &quot;LoCcatalog&quot;   // Optional
+        }
+    ]
+},
+{
+    title: &quot;50 Tips and Tricks for MongoDB Developer&quot;,
+    ...
+    publisher: [
+        {
+            &quot;$ref&quot;: &quot;publishers&quot;,
+            &quot;$id&quot;: &quot;oreilly&quot;,
+            &quot;$db&quot;: &quot;LoCcatalog&quot;   // Optional
+        }
+    ]
+}
+</code></pre>
+
+<p>Now, when we execute a query for books with “MongoDB” in the title, Mongo will automatically pull in the referenced documents:</p>
+
+<h5 id="query">Query</h5>
+
+<p>// This is the equivalent of LIKE or %MongoDB%
+  db.books.find( { title: /MongoDB/ } )</p>
+
+<h5 id="partial-result">Partial Result</h5>
+
+<pre><code>{
+    title: &quot;MongoDB: The Definitive Guide&quot;,
+    ...
+    publisher: [
+        {
+            _id: &quot;oreilly&quot;,
+            name: &quot;O'Reilly Media&quot;,
+            ...
+        },
+        {
+            _id: &quot;wiley&quot;,
+            name: &quot;John Wiley &amp; Sons&quot;,
+            ...
+        }
+    ]
+} ...
+</code></pre>
+
+<h4 id="design-5-mysql-join-no-json-data">Design 5: MySQL Join, No JSON Data</h4>
+
+<p>Facilitating many-to-many relationships in SQL might typically use an intermediate or “pivot” table. Continuing the book and publisher example, we’d end up with <code>book</code>, <code>publisher</code> and <code>book_publisher</code> tables.</p>
+
+<p>In order to get a result similar to Design 4 above, we’d do something like:</p>
+
+<pre><code>SELECT book.title, book..., publisher.id, publisher.name, ...
+    FROM book 
+    LEFT JOIN book_publisher ON book_publisher.bookid = book.id 
+    LEFT JOIN publisher on book_publisher.publisherid = publisher.id 
+    WHERE publisher.id IS NOT NULL     // Exclude books without publishers
+    AND book.title LIKE &quot;%MongoDB%&quot;;   // Don't do LIKE in real world apps!
+</code></pre>
+
+<p>We’d still have some work to do to coalesce publishers to books, since this will yield a row for each book + publisher combo. You can get fancy with GROUP_CONCAT and GROUP BY clauses to avoid this, but that may not be what you want either.</p>
+
+<h4 id="design-6-not-a-valid-idea">Design 6: Not A Valid Idea</h4>
+
+<p>Assuming we had similar JSON data stored in MySQL rows, we might try to do something like this:</p>
+
+<h5 id="this-is-psuedosql-won-t-work">This Is PsuedoSQL; Won’t Work</h5>
+
+<pre><code>SELECT book.id, book.jsondoc, publisher.jsondoc 
+    FROM book 
+    JOIN publisher 
+    ON publisher.id IN JSON_EXTRACT(book.bookdoc, &quot;$.publisher&quot;)
+    WHERE publisher.id IS NOT NULL;
+</code></pre>
+
+<p>Trouble is, <code>JSON_EXTRACT</code> will return an object that is a JSON Array, so <code>[&quot;oreilly&quot;, &quot;wiley&quot;]</code> and there is no easy way to convert that to a value you can use for an <code>IN</code> clause, or any other comparison for that matter.</p>
+
+<p>We <em>can</em> compare things that are strings or numeric values, so we could do joins on extracted data that was castable to one of those types. Basically, you can join on scalar values, but not on scalar values within arrays or objects. <em>(Note: You can, however, run some comparisons on whole arrays or objects themselves.)</em></p>
+
+<p><a name="whattodo"></a></p>
+
+<hr />
+
+<h2 id="what-to-do-then">What To Do Then?</h2>
+
+<p>Working with JSON data in MySQL is still in its infancy, and I expect the architects of JSON support are observing how it behaves and gets used in practice. That said, MySQL is still a relational database, so it is unreasonable to expect a toolset or behavior like that we find in Mongo.</p>
+
+<p>To make working with JSON data a reality, we’ll need to bridge the world of relational SQL and that of document-oriented storage by selectively extracting data from incoming JSON messages, and utilizing the virtual index technique we looked at in Part 1.</p>
+
+<p>If you are designing an API, you might apply a rigorous schema to filter incoming data, but if you need to remain flexible it is worthwhile to revisit <a href="https://en.wikipedia.org/wiki/Robustness_principle">Postel’s Law</a></p>
+
+<blockquote>
+<p>Be conservative in what you send, be liberal in what you accept</p>
+</blockquote>
+
+<p>With that in mind, we need to make the best use of well-tuned relational operations while taking advantage of the new possibilities the JSON data type presents.</p>
+
+<h4 id="complex-arbitrary-data">Complex, Arbitrary Data</h4>
+
+<p>Working on <a href="https://sir.tracksalot.com">Sir Tracksalot</a> I allow API users to send some fairly loosely defined data structures in tracking messages. For example, the most basic track event looks like this:</p>
+
+<pre><code>{
+    &quot;identity&quot;: &quot;5eb63bbbe01eeed093cb22bb8f5acdc3&quot;,
+    &quot;event&quot;: &quot;Logged In&quot;,
+    &quot;details&quot;: {}
+}
+</code></pre>
+
+<p>As you can see, no details were passed, so the event is quite simple. The details object though can be fairly freeform. I have a general recommendation that:
+1. Only top-level properties in the details object can act as filters in the tracking UI (e.g. “show me ‘logged in’ events where ‘promo’ is equal to ‘sale123’)
+2. Details objects may only be three levels deep
+3. Details objects have a max size of X (where X is TBD)</p>
+
+<p>That means someone can send a message like:</p>
+
+<pre><code>{
+    &quot;identity&quot;: &quot;5eb63bbbe01eeed093cb22bb8f5acdc3&quot;,
+    &quot;event&quot;: &quot;Logged In&quot;,
+    &quot;details&quot;: {
+        &quot;name&quot;: &quot;Benjamin&quot;,
+        &quot;is_tuesday&quot;: true,
+        &quot;colors&quot;: [
+            {
+              &quot;name&quot;: &quot;blue&quot;,
+              &quot;hex&quot;: &quot;0000ff&quot;
+            }
+        ],
+        &quot;address&quot;: [
+            {
+                &quot;type&quot;: &quot;home&quot;,
+                &quot;street&quot;: [
+                    &quot;123 Some St&quot;,
+                    &quot;Apt #400&quot;
+                ],
+                &quot;zip&quot;: &quot;12345&quot;
+            }
+        ]
+    }
+}
+</code></pre>
+
+<p>Add to that the metadata—referer, ip address, user agent, etc—and each document can get pretty sizable.</p>
+
+<p>While I could make up schemata for common objects like addresses, geolocations, or whatever, I’ll never be able to define everything a user could possibly want, nor should I try.</p>
+
+<p>Instead, I am remaining flexible on what I accept, and creating tools to help users make sense of the data they store. It is possible I will build out the query engine to support a query that could match against arbitrary data in the JSON, but not right now.</p>
+
+<p>All of that said, I’m working on strategies to make queries more performant, and to allow users to get more from their data. Here’s some of the goals I have set for storing and retrieving the JSON data.</p>
+
+<ol>
+<li>Keep a record of the original document intact, always</li>
+<li>Optimize for fast retrieval of primary data</li>
+<li>Enable users to perform intelligent slicing on key data</li>
+<li>Enable users to filter queries based on top-level “details” data</li>
+<li>Be flexible, but be performant (don’t do it if it won’t perform)</li>
+<li>Avoid dependency on caching strategy, but embrace caching</li>
+</ol>
+
+<h4 id="strategy-1-extract-key-data">Strategy 1: Extract Key Data</h4>
+
+<p>One strategy is to use <code>JSON_EXTRACT</code> to build indexes on crucial properties in the data. Within the event message, I will extract certain data based on the API specification. Specifically, the following properties, if present, will be extracted and indexed so that JOINs or other complex operations can be performed on them.</p>
+
+<pre><code>{
+    &quot;event_id&quot;: &quot;ABC-123&quot;,
+    &quot;is_user&quot;: true,
+    &quot;is_logged_in&quot;: true
+}
+</code></pre>
+
+<p>These come from feedback about common things that folks would like to track, that may not be immediately obvious from a message sent to the API.</p>
+
+<p>For example, if a user logged into a site an chose “remember me” they may come back weeks later and there is no easy way to tell if they are logged in or not if the initial message to the API is not related to authentication.</p>
+
+<p>Just like in Part 1, I will extract those values into an indexed column upon insertion:</p>
+
+<pre><code>ALTER TABLE `event`
+    ADD `remote_event_id` INT(10) UNSIGNED
+    GENERATED ALWAYS AS (JSON_UNQUOTE(
+        JSON_EXTRACT(eventdoc, '$.event_id')
+    ))
+    VIRTUAL NOT NULL
+CREATE INDEX remote_event_id_index ON event (remote_event_id);
+</code></pre>
+
+<p>Great! Now if a user wants to look for that event based on their system’s id, the query is as simple as <code>SELECT * FROM `event` WHERE remote_event_id = &quot;ABC-123&quot;;</code>.</p>
+
+<p>We can also use <code>JSON_EXTRACT</code> on that property, <code>SELECT JSON_EXTRACT(event.eventdoc, &quot;$.event_id&quot;) FROM `event</code>`, and MySQL will use the index!</p>
+
+<h4 id="strategy-2-denormalized-data-basic-relationships">Strategy 2: Denormalized Data &amp;  Basic Relationships</h4>
+
+<p>Obviously, we should avoid creating too many columns on any single table, and we need to keep overall table and index size in mind. In the case of the event table, having a column for every aspect of the event metadata would be prohibitive. Let’s consider the user agent string for a moment.</p>
+
+<pre><code>&quot;userAgent&quot;: &quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_3) 
+    AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 
+    Safari/537.36&quot;
+</code></pre>
+
+<p>I’m using <a href="https://github.com/jenssegers/agent">Agent</a> by Jens Segers to parse the UA string into little bits I can store in the DB. Generally, I need to enable queries like “how many people accessed the site using Chrome last week” or “last month” or “mobile Chrome.”</p>
+
+<p>In order to enable efficient queries on this data, as well as allowing the most flexibility for those using the query tools, I have done this <em>(yes, it is denormalized for sure)</em>.</p>
+
+<ol>
+<li>Create an <code>event_browserinfo</code> table with columns for <code>ip, browser, browser_ver_major, browser_ver, is_mobile, os, os_ver_major, os_ver_minor, os_ver</code> and a few more.</li>
+<li>Store the column values as individual values in the JSON object as well</li>
+<li>Store the original UA string in the event JSON object</li>
+</ol>
+
+<p>The first point above allows for joins that let us answer questions like “show all events triggered in Chrome.” The key here is we can index the columns in <code>event_browserinfo</code> with an index that spans  each row, as the <code>event_id</code> will guarantee uniqueness even where all the other values are the same.</p>
+
+<pre><code>SELECT * from `event` 
+    JOIN `event_browserinfo`
+    ON event.id = event_browserinfo.event_id
+    WHERE browser = &quot;Chrome&quot;;
+</code></pre>
+
+<p>The second point allows for queries within the event table itself. These will of course not be indexed because they are in the JOSN blob, but are useful when we can restrict the candidate rows through other means such as date ranges, user_id, etc.</p>
+
+<p>SELECT * from <code>event</code>
+      WHERE JSON_UNQUOTE(JSON_EXTRACT(event.jsondoc, &ldquo;$.browser&rdquo;)) = &ldquo;Chrome&rdquo;;</p>
+
+<p>The last point simply stores the original string, so we can work with it should new features arise.</p>
+
+<h4 id="strategy-3-complex-relationships">Strategy 3: Complex Relationships</h4>
+
+<p>As noted at the outset, many-to-many relationships are impossible to facilitate in the way Mongo allows. However, if we know the data we wish to relate, we can get smart about producing results.</p>
+
+<p>If we combine what we can do in MySQL directly, with a bit of work in software, we can avoid the pivot table scenario and get closer to the manner in which Mongo works.</p>
+
+<p>The trouble was that <code>publisher</code> was an array in the initial JSON. If we convert it to a string, we can use an <code>IN</code> clause to match on.</p>
+
+<h5 id="revised-book-row">Revised Book Row</h5>
+
+<pre><code>{
+    &quot;title&quot;: &quot;MongoDB: The Definitive Guide&quot;, 
+    &quot;publisher&quot;: &quot;oreilly, wiley&quot;
+    ... 
+}
+</code></pre>
+
+<p>Now, this will work:</p>
+
+<pre><code>SELECT book.*, publisher.* FROM book
+    JOIN publisher
+    WHERE publisher.id 
+    IN (JSON_UNQUOTE(JSON_EXTRACT(book.jsondoc, &quot;$.publisher&quot;)));
+</code></pre>
+
+<p>Still, we don’t get to index the publisher values which means we lose some overall performance. Also, applying the JSON functions to obtain the value to search is quite expensive.</p>
+
+<p>For that, we have to revisit our lengthy join:</p>
+
+<pre><code>SELECT book.*, GROUP_CONCAT(publisher.jsondoc) FROM book 
+    LEFT JOIN book_publisher ON book_publisher.bookid = book.id 
+    LEFT JOIN publisher ON book_publisher.publisherid = publisher.id 
+    WHERE publisher.id IS NOT NULL 
+    GROUP BY book_publisher.bookid;
+</code></pre>
+
+<p>If we set up our tables as follows, then we can index the id columns in all three, making the above query pretty performant.</p>
+
+<h5 id="a-publisher-row">A Publisher Row</h5>
+
+<pre><code>id =&gt; 100
+jsondoc =&gt; '{&quot;id&quot;: &quot;oreilly&quot;, 
+    &quot;name&quot;: &quot;O'Reilly Media&quot;, 
+    ... }'
+</code></pre>
+
+<h5 id="a-book-row">A Book Row</h5>
+
+<pre><code>id =&gt; 123,
+jsondoc =&gt; '{&quot;title&quot;: &quot;MongoDB: The Definitive Guide&quot;, 
+  &quot;publisher&quot;: &quot;oreilly, wiley&quot; // same as above
+    ... }'
+</code></pre>
+
+<h5 id="pivot-table">Pivot Table</h5>
+
+<pre><code>book_id =&gt; 123, publisher_id =&gt; 100
+book_id =&gt; 123, publisher_id =&gt; 999
+book_id =&gt; 456, publisher_id =&gt; 100
+</code></pre>
+
+<p>Note that we’ve also converted the publisher array to as string, which lets us continue to perform the basic JOIN using the IN clause above at our discretion.</p>
+
+<p><a name="whymatter"></a></p>
+
+<hr />
+
+<h2 id="why-does-this-matter">Why Does This Matter?</h2>
+
+<p>Most of the above may seem academic, but it is important to understand the design limitations of working with JSON data in a relational context. There are patterns in Mongo that work brilliantly, but that break down in MySQL because of how documents and columns are indexed respectively.</p>
+
+<h4 id="the-keyword-search-pattern">The Keyword Search Pattern</h4>
+
+<p>Let’s consider one last pattern, the <a href="https://docs.mongodb.org/manual/tutorial/model-data-for-keyword-search/">Keyword Search</a> pattern. Note that this is not a fulltext search, rather a way to match documents based on an array of keywords (think tags).</p>
+
+<h5 id="sample-data">Sample Data</h5>
+
+<pre><code>{ 
+    title : &quot;Moby Dick&quot; ,
+    author : &quot;Herman Melville&quot; ,
+    published : 1851 ,
+    ISBN : 0451526996 ,
+    topics : [ &quot;whaling&quot; , &quot;allegory&quot; , &quot;revenge&quot; , &quot;American&quot; ,
+        &quot;novel&quot; , &quot;nautical&quot; , &quot;voyage&quot; , &quot;Cape Cod&quot; ]
+}
+</code></pre>
+
+<p>In Mongo, you can create what is called a “multi-key index” which in this case basically means that all the keys listed in the <code>topics</code> array will get indexed as individual entries that map to this book. <em><strong>(As the page notes, if your total possible keyspace is very large, insertions will incur a penalty.)</strong></em></p>
+
+<pre><code>db.volumes.createIndex( { topics: 1 } )
+</code></pre>
+
+<p>With that index in place, you can execute a query that looks for books with a given keyword and expect some pretty great retrieval performance.</p>
+
+<pre><code>db.volumes.findOne( { topics : &quot;voyage&quot; }, { title: 1 } )
+// { title: 1 } means get items with a title
+</code></pre>
+
+<p>In MySQL, as we’ve already discussed, we’re unable to index the JSON data. Since this is another many-to-many relationship, creating a pivot table with the topic ids mapped to book ids will allow us to index both and perform more efficient joins and selections.</p>
+
+<p>In fact, this pattern is so prevalent—assigning tags to blog posts, matching user likes to photos, etc—that carefully reasoning about our JSON data means keeping an eye out for spots where incoming arrays or lists will need their own pivot tables.</p>
+
+<h4 id="other-data-to-look-out-for">Other Data To Look Out For</h4>
+
+<p>There are, of course, other things to look out for. Generally speaking, data in an array that you want to query on <em>(or sometimes in an object)</em>, is a candidate for promotion to its own column or relation so you an index against that data.</p>
+
+<p>Geospatial data is a good example. MySQL has <a href="https://dev.mysql.com/doc/refman/5.7/en/spatial-geojson-functions.html">functions for working specifically with GeoJSON data</a>, but extracting that data from incoming JSON documents will allow you to create a more performant index because you can convert the data to numeric data types when you store them.</p>
+
+<p>Geo coordinates typically come in pairs of <code>[lat, long]</code>, but so does point data, and polygons or other geometry are often arrays of arrays <code>[[0,0], [0,10], [10,10], [10,0]]</code>.</p>
+
+<p>You might also want to keep an eye on incoming formats, and reformat the data to normalize it for queries that need to compare on that data. Timecodes and currency data fall into this bucket.</p>
+
+<p>If you accept a <code>price</code> attribute, you may want to accept whatever data comes in. This could mean <code>$9.99</code>, <code>$.99</code>, <code>9.99</code>, <code>.99</code>, <code>0.99</code>, <code>999</code>. That last is hard to interpret. To assure that all values a comparable, you may want to specify that all currency data is sent in integers only, by capping precision at two decimals and multiplying by 100 <code>int(9.99 * 100)</code>.</p>
+
+<p>However, you may <em>have</em> to deal with conversion from strings or floats yourself if you cannot control the data. If that is the case, thinking about how to format the incoming JSON, and cleaning it up is a must before committing it to the DB.</p>
+
+<p><a name="whew"></a></p>
+
+<hr />
+
+<h2 id="whew">Whew!</h2>
+
+<p>That was indeed a long one. This background will help us easily move into Laravel and drop this functionality into our models and query builders.</p>
+
+<p>In two weeks, I’ll have a complete implementation of a simple app that uses JSON data in a Laravel project. We’ll take a look at how to build out the book example we’ve been using, with a few simple forms for adding books, publishers and viewing our catalog. That means building out migrations, models and controllers that make use of our JSON data.</p>
+
+<p>I’ll also throw the functioning code up on GitHub so you can follow along.</p>
+
+<p>If you’ve made it this far, thank you for toughing it out. I promise several shorter articles before the next big one ;-)</p>
+
+    </div>
+
+    <footer>
+        
+    
+
+        
+
+    
+    <ul class="tags">
+    
+        <li><a href="/tags/json">JSON</a></li>
+    
+        <li><a href="/tags/mysql">MySQL</a></li>
+    
+        <li><a href="/tags/getting-started">getting started</a></li>
+    
+    </ul>
+    
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="https://benjaminlistwon.com/blog/working-with-json-data-in-mysql-part-1-of-3/"
+                class="button big previous">Working With JSON Data In MySQL - Part 1 of 3</a></li>
+    
+
+    
+        <li><a href="https://benjaminlistwon.com/blog/in-brief-007-an-update-on-mysql-json/"
+                class="button big next">In Brief #007: An Update On MySQL &#43; JSON</a></li>
+    
+</ul>
+
+
+
+
+        <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f&text=Working%20With%20JSON%20Data%20In%20MySQL%20-%20Part%202%20of%203&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f&title=Working%20With%20JSON%20Data%20In%20MySQL%20-%20Part%202%20of%203"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f&title=Working%20With%20JSON%20Data%20In%20MySQL%20-%20Part%202%20of%203"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f&title=Working%20With%20JSON%20Data%20In%20MySQL%20-%20Part%202%20of%203"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fworking-with-json-data-in-mysql-part-2-of-3%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+    <section id="intro">
+        
+        
+            
+                <a href="/" class="logo"><img src="/img/logo.jpg" alt="Benjamin Listwon" /></a>
+            
+        
+        
+            <header>
+                <h2></h2>
+                <p>A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way.</p>
+            </header>
+        
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+    </section>
+
+
+    
+    <section class="book-promo sidebar-book-promo">
+    <h3>Vue.js In Action</h3>
+    <figure>
+        <a href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">
+            <img src="/img/vuejs-in-action-cover.png" alt="Vue.js In Action Cover Image">
+        </a>
+    </figure>
+    <p>I wrote a book about Vue.js along with amazing developer and author <a href="https://twitter.com/ErikCH">Erik Hanchett</a>.</p>
+    <p><a class="button" href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">Grab a Copy</a></p>
+</section>
+
+
+    
+    <a name="subscribe"></a>
+    <section class="mcform-wrapper">
+    <form action="http://newsletter.benjaminlistwon.com/add_subscriber" method="post" name="revue-form">
+    <div class="mcform">
+        <h3>Subscribe To The Newsletter</h3>
+        <p>Thanks for taking the time to visit! If you liked this, or you want to
+            follow along as I learn, build and share, just sign up below. 
+            I promise to keep it low-key and infrequent. Cheers!</p>
+    
+        <p class="mcform-inputs">
+            <input class="revue-form-field" placeholder="thank@you.com" type="email" name="member[email]" >
+            <input type="submit" value="Subscribe" name="member[subscribe]">
+        </p>
+    </div>
+    </form>
+</section>
+
+
+
+
+    
+    <section id="recent-posts">
+        <ul class="posts">
+            <header>
+                <h3>Recent Posts</h3>
+            </header>
+            
+                
+            
+
+            
+                
+            
+
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/">Strategies for extending Vue</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-11-04'>
+                                November 4, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/">Vuex Chat Part 2</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-28'>
+                                September 28, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">Data Flow in Vue and Vuex</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-21'>
+                                September 21, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/hooray-for-hugo/">Hooray for Hugo!</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-19'>
+                                September 19, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/">Short Order Vue: A Vue 2.0 App</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-16'>
+                                September 16, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+
+            
+                <li>
+                    <ul class="actions">
+                        <li><a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a></li>
+                    </ul>
+                </li>
+            
+        </ul>
+    </section>
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    <section class="blurb">
+        <h2>About</h2>
+        <p>I am a designer, developer, and proud father, living in the greater Seattle area. I have spent the last two decades building apps, websites and software with some terrific folks, and now I am striking out on my own.</p>
+
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    
+
+    
+    <section id="footer">
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+
+        <p class="copyright">
+            &copy; Benjamin Listwon.<br/>
+            Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+            Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+            Powered by <a href="//gohugo.io" >Hugo</a>
+        </p>
+    </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

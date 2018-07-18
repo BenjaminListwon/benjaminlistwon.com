@@ -1,0 +1,1062 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Adding More Robust Ajax Detection In Laravel</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.44" />
+        
+
+
+        
+        
+            <meta name="description" content="Laravel 5.2 (and earlier) ships with ajax detection that is unreliable. Here&#39;s a fix that gets almost complete coverage.">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Adding More Robust Ajax Detection In Laravel"/>
+<meta name="twitter:description" content="Laravel 5.2 (and earlier) ships with ajax detection that is unreliable. Here&#39;s a fix that gets almost complete coverage."/>
+<meta name="twitter:site" content="@benjaminlistwon"/>
+
+        <meta property="og:title" content="Adding More Robust Ajax Detection In Laravel" />
+<meta property="og:description" content="Laravel 5.2 (and earlier) ships with ajax detection that is unreliable. Here&#39;s a fix that gets almost complete coverage." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://benjaminlistwon.com/blog/adding-more-robust-ajax-detection-in-laravel/" />
+
+
+
+<meta property="article:published_time" content="2016-02-17T10:00:00-07:00"/>
+
+<meta property="article:modified_time" content="2016-02-17T10:00:00-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Adding More Robust Ajax Detection In Laravel">
+<meta itemprop="description" content="Laravel 5.2 (and earlier) ships with ajax detection that is unreliable. Here&#39;s a fix that gets almost complete coverage.">
+
+
+<meta itemprop="datePublished" content="2016-02-17T10:00:00-07:00" />
+<meta itemprop="dateModified" content="2016-02-17T10:00:00-07:00" />
+<meta itemprop="wordCount" content="1346">
+
+
+
+<meta itemprop="keywords" content="Laravel,ajax," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-78325407-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+
+    </head>
+
+    
+    <body class="post">
+    
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h1><a href="/">Benjamin Listwon</i></a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/blog">
+                        Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archive">
+                        Archive
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resource">
+                        Resources
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/blog">
+                            <h3>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archive">
+                            <h3>
+                                
+                                Archive
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resource">
+                            <h3>
+                                
+                                Resources
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/"><p>Strategies for extending Vue</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/"><p>Vuex Chat Part 2</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/"><p>Data Flow in Vue and Vuex</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/hooray-for-hugo/"><p>Hooray for Hugo!</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/"><p>Short Order Vue: A Vue 2.0 App</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://benjaminlistwon.com/blog/adding-more-robust-ajax-detection-in-laravel/">Adding More Robust Ajax Detection In Laravel</a></h2>
+            
+        
+        
+        
+            <p>Laravel 5.2 (and earlier) ships with ajax detection that is unreliable. Here&#39;s a fix that gets almost complete coverage.</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-02-17'>
+            February 17, 2016</time>
+        
+        
+            <p>7 minute read</p>
+        
+            <p class="subscribe-bug"><a href="#subscribe"><i class="fa fa-newspaper-o">&nbsp;</i>Subscribe</a></p>
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f&text=Adding%20More%20Robust%20Ajax%20Detection%20In%20Laravel&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f&title=Adding%20More%20Robust%20Ajax%20Detection%20In%20Laravel"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f&title=Adding%20More%20Robust%20Ajax%20Detection%20In%20Laravel"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f&title=Adding%20More%20Robust%20Ajax%20Detection%20In%20Laravel"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+    
+
+    <div id="content">
+        
+
+<h2 id="tl-dr">TL;DR</h2>
+
+<p>The <code>$request-&gt;ajax()</code> method does not detect XHR sent without an <code>X-Requested-With</code> header, so you’ll want to add the following to your own <code>Request.php</code> file (or whatever base Request class is used by your controllers).</p>
+
+<h5 id="app-http-requests-request-php">App/Http/Requests/Request.php</h5>
+
+<pre><code>&lt;?php
+namespace App\Http\Requests;
+use Illuminate\Foundation\Http\FormRequest;
+
+abstract class Request extends FormRequest
+{
+   public function ajax()
+   {
+       /* 1. Call the builtin method */
+       if ($this-&gt;isXmlHttpRequest())
+       {
+           return true;
+       }
+
+       /* 2. Then check the Content-Type */
+       $content_type = $this-&gt;header('Content-Type');
+       $allowable_types = array(
+               'application/json', 
+               'application/javascript',
+       );
+       if (in_array(
+               strtolower($content_type),
+               $allowable_types)) 
+       {
+           return true;
+       }
+
+       /* 3. Otherwise, not Ajax */
+       return false;
+   }
+}
+</code></pre>
+
+<h2 id="background">Background</h2>
+
+<p>Recently, while working on some controllers for an API, I started getting redirections to my site’s welcome page. There was no error showing in my logs, and I was stumped for a bit.</p>
+
+<p>I took a look at the payload I was sending from Postman, and realized I had mistyped a value for one of the attributes I was sending. This meant the request was failing one of the validation rules used by my API controller.</p>
+
+<p>But why was the result a redirection to the default web route? Why not a JSON response like any other API error?</p>
+
+<h2 id="ajax-pjax-json-oh-my">Ajax, Pjax, JSON, Oh My!</h2>
+
+<p>The trouble lay in the validation phase of the request.</p>
+
+<p>When you call <code>$this-&gt;validate()</code> on a request, failure to validate throws a <code>ValidationException</code> which invokes the following code <em>(comments mine)</em>:</p>
+
+<h5 id="illuminate-foundation-validation-php">Illuminate/Foundation/Validation.php</h5>
+
+<pre><code>protected function buildFailedValidationResponse(
+                        Request $request, array $errors)
+{
+   /* 1. See if we have an Ajax request */
+   if (($request-&gt;ajax() &amp;&amp; ! $request-&gt;pjax()) || 
+        $request-&gt;wantsJson()) 
+   {
+
+   /* 2. If so, return a JSON response */
+       return new JsonResponse($errors, 422);
+   }
+
+   /* 3. If not, redirect to the form (or default) */
+   return redirect()-&gt;to($this-&gt;getRedirectUrl())
+                      -&gt;withInput($request-&gt;input())
+                      -&gt;withErrors($errors, $this-&gt;errorBag());
+}
+</code></pre>
+
+<p>As you can see, this code utilizes the request object’s builtin methods <code>ajax()</code>, <code>pjax()</code> and <code>wantsJson()</code> to determine if the response should be a JSON response or if the user should be redirected to the originating form with data and error information.</p>
+
+<p>The trouble is that the <code>ajax()</code> call may not return a “truthy” value because of the underlying mechanism it uses. Let’s follow it down the call chain.</p>
+
+<h5 id="illuminate-http-request-php">Illuminate/Http/Request.php</h5>
+
+<pre><code>public function ajax()
+{
+   return $this-&gt;isXmlHttpRequest();
+} 
+</code></pre>
+
+<p>Which, in turn, simply hands off to <code>isXmlHttpRequest()</code>.</p>
+
+<h5 id="symfony-http-foundation-request-php">symfony/http-foundation/Request.php</h5>
+
+<pre><code>/**
+* Returns true if the request is a XMLHttpRequest.
+*
+* It works if your JavaScript library sets an 
+* X-Requested-With HTTP header.
+*
+* It is known to work with common JavaScript frameworks:
+* @link http://en.wikipedia.org/wiki/List_of_Ajax_frameworks#JavaScript
+*
+* @return bool true if the request is an XMLHttpRequest,
+* false otherwise
+*/
+public function isXmlHttpRequest()
+{
+   return 'XMLHttpRequest' == 
+       $this-&gt;headers-&gt;get('X-Requested-With');
+}
+</code></pre>
+
+<p><em>(Of note, this method of detection is unchanged since at least <a href="https://github.com/symfony/symfony/blob/bf82cf42dda099f8c0b6648b7dbd8e8ea7397c1e/src/Symfony/Component/HttpFoundation/Request.php#L640">version 2.0 on Aug 20, 2010</a>, the oldest Git history entry I could find, so it is likely that it has simply not kept up with the rapid change in the world of Javascript frameworks since.)</em></p>
+
+<p>The key part here is that this method is looking for the presence of the <code>X-Requested-With</code> header. If it is not found, then this method returns <code>false</code>, which bubbles up the chain and ultimately implies that the request is a regular old web request.</p>
+
+<p>As the comment mentions, this method works with “common JavaScript frameworks.”</p>
+
+<p>In practice, this means <em>it will detect</em> requests from libraries like jQuery and YUI, but <em>will not detect</em> requests made by Postman, Angular and/or any mechanism that does not set this header. <em>(Angular has had <a href="http://encosia.com/making-angulars-http-work-with-request-isajaxrequest/%20">a particularly on-again/off-again relationship</a> with this header.)</em></p>
+
+<p>Worse still, by default the header will <a href="http://stackoverflow.com/questions/8163703/cross-domain-ajax-doesnt-send-x-requested-with-header">not be set on CORS requests</a>, and <a href="https://remysharp.com/2011/04/21/getting-cors-working">must be explicitly added, even in jQuery</a> and other frameworks that do send the header on same-domain requests. As usual, <a href="http://stackoverflow.com/a/22533680">StackOverflow</a> sheds some light on the matter.</p>
+
+<h2 id="adding-more-comprehensive-detection">Adding More Comprehensive Detection</h2>
+
+<p>I wanted to add a more reliable method of detecting that a request was using Ajax, and I wanted it to avoid any <code>X-</code> headers that are not common and/or might get <a href="https://www.w3.org/TR/ct-guidelines/#sec-altering-header-values">stripped in transit</a>.</p>
+
+<p><code>Content-Type</code> seemed a logical header to look for on a request. The header is a common one, not unreasonable to ask developers to use when hitting your API, and allows for customizability in the values array, should you decide you need to tweak behavior of detection.</p>
+
+<pre><code>$content_type = $this-&gt;header('Content-Type');
+$allowable_types = array(
+       'application/json', 
+       'application/javascript',
+);
+</code></pre>
+
+<p>Also, if we look at <code>wantsJson()</code>, we see it is looking at <code>Accepts</code> header values to see if JSON responses are allowed.</p>
+
+<h5 id="illuminate-http-request-php-1">Illuminate/Http/Request.php</h5>
+
+<pre><code>public function wantsJson()
+{
+   $acceptable = $this-&gt;getAcceptableContentTypes();
+   return isset($acceptable[0]) &amp;&amp;
+       Str::contains($acceptable[0], ['/json', '+json']);
+}
+</code></pre>
+
+<p>This is why I view the <code>Content-Type</code> header as more thematically consistent than <code>X-Requested-With</code>, because <strong>it speaks to the type of the payload, not the mechanism used to fetch it</strong>, just as <code>wantsJson()</code> does for the response.</p>
+
+<p>Anyway, for obvious reasons, this code should not be placed into the foundation code directly. We also don’t want to have ridiculous one-liners all over individual controller methods like, <code>if (($request-&gt;ajax() &amp;&amp; ! $request-&gt;pjax()) || $request-&gt;wantsJson()) || $request-&gt;myCustomAjaxCheck())</code>.</p>
+
+<p>What an ugly–very error prone–sight.</p>
+
+<p>Therefore, we should just override the request object’s <code>ajax()</code> method, invoking the standard test as well as our own custom header check shown in the TL;DR section above (and in the Putting It All Together section below).</p>
+
+<h2 id="injecting-a-custom-request-object">Injecting A Custom Request Object</h2>
+
+<p>The only trouble that remains is that our new method will not get invoked where we’ve injected Laravel’s standard request class.</p>
+
+<p>Consider the following way of performing validation on a request (in most cases, the <code>store()</code> handler). Here’s the <a href="https://laravel.com/docs/5.2/validation#quick-writing-the-validation-logic">sample from the Laravel docs</a>:</p>
+
+<pre><code>use Illuminate\Http\Request;
+...
+public function store(Request $request)
+{
+   $this-&gt;validate($request, [
+       'title' =&gt; 'required|unique:posts|max:255',
+       'body' =&gt; 'required',
+   ]);
+
+   // The blog post is valid, store in database...
+}
+</code></pre>
+
+<p>Because the instance of <code>Request</code> here is the default, the call to <code>buildFailedValidationResponse()</code> will invoke the standard <code>ajax()</code> method.</p>
+
+<p>What we need to do is build out our own base request object, and inherit from it. That’s where the code at the top comes in, and fortunately Laravel has already created a Request template for you at <code>/app/Http/Requests/Request.php</code></p>
+
+<p>Typically, we should also move validation logic to custom request classes as well, and there’s a <a href="https://laracasts.com/discuss/channels/requests/laravel-5-validation-request-how-to-handle-validation-on-update">few good articles</a> out there on <a href="https://mattstauffer.co/blog/laravel-5.0-form-requests">custom form requests</a> which I will paraphrase below.</p>
+
+<h2 id="putting-it-all-together">Putting It All Together</h2>
+
+<p>First, add the custom <code>ajax()</code> method above into your app’s base request class:</p>
+
+<h5 id="app-http-requests-request-php-1">/app/Http/Requests/Request.php</h5>
+
+<pre><code>&lt;?php
+namespace App\Http\Requests;
+use Illuminate\Foundation\Http\FormRequest;
+
+abstract class Request extends FormRequest
+{
+  public function ajax()
+  {
+      /* 1. Call the builtin method */
+      if ($this-&gt;isXmlHttpRequest())
+      {
+        return true;
+      }
+
+      /* 2. Then check the Content-Type */
+      $content_type = $this-&gt;header('Content-Type');
+      $allowable_types = array(
+            'application/json', 
+            'application/javascript',
+      );
+      if (in_array(
+            strtolower($content_type),
+            $allowable_types)) 
+      {
+          return true;
+      }
+
+      /* 3. Otherwise, not Ajax */
+      return false;
+  }
+}
+</code></pre>
+
+<p>Next, set up your custom request class, being sure to replace the ellipses (“…”) with any actual code you may require (see the articles above).</p>
+
+<h5 id="app-http-requests-mycustomrequest-php">/app/Http/Requests/MyCustomRequest.php</h5>
+
+<pre><code>&lt;?php 
+namespace App\Http\Requests;
+use App\Http\Requests\Request;
+
+class MyCustomRequest extends Request
+{
+     public function authorize() { ... }
+
+     public function rules()
+     {
+         $rules = [];    
+         switch($this-&gt;method())
+         {
+             ...
+             case 'POST':
+             {
+                 $this-&gt;sanitize();
+                 $rules = [
+                     'title' =&gt; 'required|unique:posts|max:255',
+                     'body' =&gt; 'required'
+                 ];
+             }
+             ...
+         }
+         return $rules;
+     }
+
+     public function sanitize() { ... }
+}
+</code></pre>
+
+<p>Lastly, make use of your custom request back in your controller:</p>
+
+<h5 id="app-http-controllers-somecontroller-php">/app/Http/Controllers/SomeController.php</h5>
+
+<pre><code>use App\Http\Requests\MyCustomRequest;
+...
+public function store(MyCustomRequest $request)
+{
+   /* Validation happens like magic */
+   // The blog post is valid, store in database...
+}
+</code></pre>
+
+<p>That’s it!</p>
+
+<h2 id="going-further">Going Further</h2>
+
+<p>In the end, I may remove the <code>isXmlHttpRequest()</code> detection altogether, since my API will require the <code>Content-Type</code> header to be set with each request as part of the overall API guidelines.</p>
+
+<p>Further, when I think about how to properly use the Auth guards in Laravel 5.2, incoming API requests will also need an <code>Authorization</code> header or an <code>api_token</code> in the querystring.</p>
+
+<p>As such, I may abstract away the JSON detection and run every request behind my <code>/api</code> route through a custom middleware that handles all of these issues.</p>
+
+<p>That would allow me to force every response through a single point of return that formats the outgoing payload as JSON.</p>
+
+<p>As always, YMMV.</p>
+
+    </div>
+
+    <footer>
+        
+    
+
+        
+
+    
+    <ul class="tags">
+    
+        <li><a href="/tags/laravel">Laravel</a></li>
+    
+        <li><a href="/tags/ajax">ajax</a></li>
+    
+    </ul>
+    
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+
+    
+        <li><a href="https://benjaminlistwon.com/blog/in-brief-001-routing-with-cors/"
+                class="button big next">In Brief #001: Routing With CORS</a></li>
+    
+</ul>
+
+
+
+
+        <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f&text=Adding%20More%20Robust%20Ajax%20Detection%20In%20Laravel&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f&title=Adding%20More%20Robust%20Ajax%20Detection%20In%20Laravel"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f&title=Adding%20More%20Robust%20Ajax%20Detection%20In%20Laravel"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f&title=Adding%20More%20Robust%20Ajax%20Detection%20In%20Laravel"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-more-robust-ajax-detection-in-laravel%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+    <section id="intro">
+        
+        
+            
+                <a href="/" class="logo"><img src="/img/logo.jpg" alt="Benjamin Listwon" /></a>
+            
+        
+        
+            <header>
+                <h2></h2>
+                <p>A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way.</p>
+            </header>
+        
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+    </section>
+
+
+    
+    <section class="book-promo sidebar-book-promo">
+    <h3>Vue.js In Action</h3>
+    <figure>
+        <a href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">
+            <img src="/img/vuejs-in-action-cover.png" alt="Vue.js In Action Cover Image">
+        </a>
+    </figure>
+    <p>I wrote a book about Vue.js along with amazing developer and author <a href="https://twitter.com/ErikCH">Erik Hanchett</a>.</p>
+    <p><a class="button" href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">Grab a Copy</a></p>
+</section>
+
+
+    
+    <a name="subscribe"></a>
+    <section class="mcform-wrapper">
+    <form action="http://newsletter.benjaminlistwon.com/add_subscriber" method="post" name="revue-form">
+    <div class="mcform">
+        <h3>Subscribe To The Newsletter</h3>
+        <p>Thanks for taking the time to visit! If you liked this, or you want to
+            follow along as I learn, build and share, just sign up below. 
+            I promise to keep it low-key and infrequent. Cheers!</p>
+    
+        <p class="mcform-inputs">
+            <input class="revue-form-field" placeholder="thank@you.com" type="email" name="member[email]" >
+            <input type="submit" value="Subscribe" name="member[subscribe]">
+        </p>
+    </div>
+    </form>
+</section>
+
+
+
+
+    
+    <section id="recent-posts">
+        <ul class="posts">
+            <header>
+                <h3>Recent Posts</h3>
+            </header>
+            
+                
+            
+
+            
+                
+            
+
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/">Strategies for extending Vue</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-11-04'>
+                                November 4, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/">Vuex Chat Part 2</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-28'>
+                                September 28, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">Data Flow in Vue and Vuex</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-21'>
+                                September 21, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/hooray-for-hugo/">Hooray for Hugo!</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-19'>
+                                September 19, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/">Short Order Vue: A Vue 2.0 App</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-16'>
+                                September 16, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+
+            
+                <li>
+                    <ul class="actions">
+                        <li><a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a></li>
+                    </ul>
+                </li>
+            
+        </ul>
+    </section>
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    <section class="blurb">
+        <h2>About</h2>
+        <p>I am a designer, developer, and proud father, living in the greater Seattle area. I have spent the last two decades building apps, websites and software with some terrific folks, and now I am striking out on my own.</p>
+
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    
+
+    
+    <section id="footer">
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+
+        <p class="copyright">
+            &copy; Benjamin Listwon.<br/>
+            Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+            Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+            Powered by <a href="//gohugo.io" >Hugo</a>
+        </p>
+    </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

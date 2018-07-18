@@ -1,0 +1,873 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>In Brief #007: An Update On MySQL &#43; JSON</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.44" />
+        
+
+
+        
+        
+            <meta name="description" content="A follow-up on the brief series on MySQL &#43; JSON, with new resources and information.">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="In Brief #007: An Update On MySQL &#43; JSON"/>
+<meta name="twitter:description" content="A follow-up on the brief series on MySQL &#43; JSON, with new resources and information."/>
+<meta name="twitter:site" content="@benjaminlistwon"/>
+
+        <meta property="og:title" content="In Brief #007: An Update On MySQL &#43; JSON" />
+<meta property="og:description" content="A follow-up on the brief series on MySQL &#43; JSON, with new resources and information." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://benjaminlistwon.com/blog/in-brief-007-an-update-on-mysql-json/" />
+
+
+
+<meta property="article:published_time" content="2016-04-06T10:00:00-07:00"/>
+
+<meta property="article:modified_time" content="2016-04-06T10:00:00-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="In Brief #007: An Update On MySQL &#43; JSON">
+<meta itemprop="description" content="A follow-up on the brief series on MySQL &#43; JSON, with new resources and information.">
+
+
+<meta itemprop="datePublished" content="2016-04-06T10:00:00-07:00" />
+<meta itemprop="dateModified" content="2016-04-06T10:00:00-07:00" />
+<meta itemprop="wordCount" content="614">
+
+
+
+<meta itemprop="keywords" content="In Brief,MySQL,JSON," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-78325407-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+
+    </head>
+
+    
+    <body class="post">
+    
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h1><a href="/">Benjamin Listwon</i></a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/blog">
+                        Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archive">
+                        Archive
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resource">
+                        Resources
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/blog">
+                            <h3>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archive">
+                            <h3>
+                                
+                                Archive
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resource">
+                            <h3>
+                                
+                                Resources
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/"><p>Strategies for extending Vue</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/"><p>Vuex Chat Part 2</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/"><p>Data Flow in Vue and Vuex</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/hooray-for-hugo/"><p>Hooray for Hugo!</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/"><p>Short Order Vue: A Vue 2.0 App</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://benjaminlistwon.com/blog/in-brief-007-an-update-on-mysql-json/">In Brief #007: An Update On MySQL &#43; JSON</a></h2>
+            
+        
+        
+        
+            <p>A follow-up on the brief series on MySQL &#43; JSON, with new resources and information.</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-04-06'>
+            April 6, 2016</time>
+        
+        
+            <p>3 minute read</p>
+        
+            <p class="subscribe-bug"><a href="#subscribe"><i class="fa fa-newspaper-o">&nbsp;</i>Subscribe</a></p>
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f&text=In%20Brief%20%23007%3a%20An%20Update%20On%20MySQL%20%2b%20JSON&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f&title=In%20Brief%20%23007%3a%20An%20Update%20On%20MySQL%20%2b%20JSON"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f&title=In%20Brief%20%23007%3a%20An%20Update%20On%20MySQL%20%2b%20JSON"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f&title=In%20Brief%20%23007%3a%20An%20Update%20On%20MySQL%20%2b%20JSON"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+    
+
+    <div id="content">
+        
+
+<p>After publishing <a href="https://benjaminlistwon.com/working-with-json-data-in-mysql-part-2-of-3">Part 2</a> of a series on JSON data in MySQL last week, a few folks reached out to me with some great feedback. Not only that, but they shared some resources I thought would be beneficial to pass on.</p>
+
+<hr />
+
+<p><a href="https://twitter.com/morgo">Morgan Tocker</a>, the Product Manager that works on JSON support in MySQL pointed me toward the <a href="http://mysqlserverteam.com/">MySQL Server Team’s blog</a>, which is more approachable than the docs for topical matters and directed discussion. Specifically he highlighted the <a href="http://mysqlserverteam.com/category/json/">JSON category</a>, which has several great posts on everything from using path expressions to ‘upgrading’ json data previously stored in TEXT data columns to JSON data columns. Definitely worth perusing.</p>
+
+<p>As I was Googling around, I also found <a href="http://www.slideshare.net/morgo/mysql-57-json">this slide deck</a> from Morgan, running through the JSON support in the 5.7 series, as well as generated columns and some other goodies. A great intro.</p>
+
+<hr />
+
+<p>Morgan also mentioned the use of transactions, and the possibility of using a transaction to sort of bridge the gap between de-normalized JSON docs and normalized relational data. I think this is a pretty terrific point, and one that I will explore in more depth in Part 3, as I head into Laravel.</p>
+
+<p>If we took a look back at the example where we wanted to “cast” a JSON array into a string, the quick version would look something like (in pseudocode):</p>
+
+<pre><code>DB::transaction(function () {
+    $publishers = DB::select('SELECT JSON_EXTRACT
+        (book.jsondoc, &quot;$.publisher&quot;) 
+        FROM book WHERE id = :id', 
+        ['id' =&gt; 123]);
+
+    $publishers = join(',', $publishers)
+
+    DB::update('UPDATE book JSON_REPLACE
+        (book.jsondoc, &quot;$.publisher&quot;, :publisher)
+        WHERE id = :id',
+        ['publisher' =&gt; $publishers, 'id' =&gt; 123]);
+});
+</code></pre>
+
+<p>That would replace the publisher array, with the stringified form. (I know, I know, it&rsquo;s just thinking-out-loud pseudocode.)</p>
+
+<h5 id="before">Before</h5>
+
+<pre><code>id =&gt; 123,
+jsondoc =&gt; '{&quot;title&quot;: &quot;MongoDB: The Definitive Guide&quot;, 
+    &quot;publisher&quot;: [&quot;oreilly&quot;, &quot;wiley&quot;]
+    ... 
+}'
+</code></pre>
+
+<h5 id="after">After</h5>
+
+<pre><code>id =&gt; 123,
+jsondoc =&gt; '{&quot;title&quot;: &quot;MongoDB: The Definitive Guide&quot;, 
+    &quot;publisher&quot;: &quot;oreilly, wiley&quot;
+    ... 
+}'
+</code></pre>
+
+<p>Obviously, transactions can be used for much more, but I’ll leave that to the sample code for Part 3.</p>
+
+<hr />
+
+<p>Craig Russell, an Architect at Oracle, also reached out with a pointer to <a href="https://github.com/mysql/mysql-js/tree/master/database-jones">Database Jones</a>, a package that lets you build database apps in Node.js. Check out this killer feature list:</p>
+
+<ul>
+<li>Simple API for create, read, update, delete</li>
+<li>Bulk operations for high performance</li>
+<li>Support for ACID transactions, both explicit and implicit</li>
+<li>Flexible mapping from JavaScript objects to relational tables</li>
+<li>A fluent Query language using domain model tokens</li>
+<li>Default mapping of relational tables to simple objects</li>
+<li>Complex mapping of relational tables to complex objects</li>
+<li>Asynchronous API using well-known node.js callback patterns</li>
+<li>Promises/A+, allowing easier management of callbacks</li>
+<li>Connection pooling, allowing in-process scale up</li>
+</ul>
+
+<p>Using Node with a backing store that can accept and work with JSON data natively is a obvious pairing.</p>
+
+<p>I’ve not got a Node project going at the moment, but this package looks really well thought out, comprehensive, and with an API that is familiar enough to be very approachable. I’m going to have to find an excuse to try it out!</p>
+
+<hr />
+
+<p>A couple of folks asked about, or sent recommendations for, visual DB tools for Windows and Mac environments, and their support for the JSON data type.</p>
+
+<p>I don’t personally use a visual db browser, but I would assume that <a href="https://www.mysql.com/products/workbench/">MySQL Workbench</a> is up-to-date.  This is where I’d start, since it is free, right format he source, and runs on Windows, OS X and Linux.</p>
+
+<p>Other folks mentioned <a href="http://www.heidisql.com/">HeidiSQL</a> for Windows (which added support last November), and there was glowing praise for <a href="http://www.araelium.com/querious/">Querious</a> on the Mac (Querious runs around $50 for a license).</p>
+
+<hr />
+
+<p>Thanks again to everyone who wrote in, and I hope that some of the above resources help you along in your journey with JSON and MySQL.</p>
+
+    </div>
+
+    <footer>
+        
+    
+
+        
+
+    
+    <ul class="tags">
+    
+        <li><a href="/tags/in-brief">In Brief</a></li>
+    
+        <li><a href="/tags/mysql">MySQL</a></li>
+    
+        <li><a href="/tags/json">JSON</a></li>
+    
+    </ul>
+    
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="https://benjaminlistwon.com/blog/working-with-json-data-in-mysql-part-2-of-3/"
+                class="button big previous">Working With JSON Data In MySQL - Part 2 of 3</a></li>
+    
+
+    
+        <li><a href="https://benjaminlistwon.com/blog/in-brief-008-the-case-of-the-disappearing-id-values/"
+                class="button big next">In Brief #008: The Case Of The Disappearing Id Values</a></li>
+    
+</ul>
+
+
+
+
+        <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f&text=In%20Brief%20%23007%3a%20An%20Update%20On%20MySQL%20%2b%20JSON&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f&title=In%20Brief%20%23007%3a%20An%20Update%20On%20MySQL%20%2b%20JSON"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f&title=In%20Brief%20%23007%3a%20An%20Update%20On%20MySQL%20%2b%20JSON"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f&title=In%20Brief%20%23007%3a%20An%20Update%20On%20MySQL%20%2b%20JSON"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fin-brief-007-an-update-on-mysql-json%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+    <section id="intro">
+        
+        
+            
+                <a href="/" class="logo"><img src="/img/logo.jpg" alt="Benjamin Listwon" /></a>
+            
+        
+        
+            <header>
+                <h2></h2>
+                <p>A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way.</p>
+            </header>
+        
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+    </section>
+
+
+    
+    <section class="book-promo sidebar-book-promo">
+    <h3>Vue.js In Action</h3>
+    <figure>
+        <a href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">
+            <img src="/img/vuejs-in-action-cover.png" alt="Vue.js In Action Cover Image">
+        </a>
+    </figure>
+    <p>I wrote a book about Vue.js along with amazing developer and author <a href="https://twitter.com/ErikCH">Erik Hanchett</a>.</p>
+    <p><a class="button" href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">Grab a Copy</a></p>
+</section>
+
+
+    
+    <a name="subscribe"></a>
+    <section class="mcform-wrapper">
+    <form action="http://newsletter.benjaminlistwon.com/add_subscriber" method="post" name="revue-form">
+    <div class="mcform">
+        <h3>Subscribe To The Newsletter</h3>
+        <p>Thanks for taking the time to visit! If you liked this, or you want to
+            follow along as I learn, build and share, just sign up below. 
+            I promise to keep it low-key and infrequent. Cheers!</p>
+    
+        <p class="mcform-inputs">
+            <input class="revue-form-field" placeholder="thank@you.com" type="email" name="member[email]" >
+            <input type="submit" value="Subscribe" name="member[subscribe]">
+        </p>
+    </div>
+    </form>
+</section>
+
+
+
+
+    
+    <section id="recent-posts">
+        <ul class="posts">
+            <header>
+                <h3>Recent Posts</h3>
+            </header>
+            
+                
+            
+
+            
+                
+            
+
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/">Strategies for extending Vue</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-11-04'>
+                                November 4, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/">Vuex Chat Part 2</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-28'>
+                                September 28, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">Data Flow in Vue and Vuex</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-21'>
+                                September 21, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/hooray-for-hugo/">Hooray for Hugo!</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-19'>
+                                September 19, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/">Short Order Vue: A Vue 2.0 App</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-16'>
+                                September 16, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+
+            
+                <li>
+                    <ul class="actions">
+                        <li><a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a></li>
+                    </ul>
+                </li>
+            
+        </ul>
+    </section>
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    <section class="blurb">
+        <h2>About</h2>
+        <p>I am a designer, developer, and proud father, living in the greater Seattle area. I have spent the last two decades building apps, websites and software with some terrific folks, and now I am striking out on my own.</p>
+
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    
+
+    
+    <section id="footer">
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+
+        <p class="copyright">
+            &copy; Benjamin Listwon.<br/>
+            Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+            Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+            Powered by <a href="//gohugo.io" >Hugo</a>
+        </p>
+    </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

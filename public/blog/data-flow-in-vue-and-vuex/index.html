@@ -1,0 +1,1128 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Data Flow in Vue and Vuex</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.44" />
+        
+
+
+        
+        
+            <meta name="description" content="A closer look at how to share state across components in Vue, data flow in vuex, and a DIY data store. (Plus an absolute no-no!)">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Data Flow in Vue and Vuex"/>
+<meta name="twitter:description" content="A closer look at how to share state across components in Vue, data flow in vuex, and a DIY data store. (Plus an absolute no-no!)"/>
+<meta name="twitter:site" content="@benjaminlistwon"/>
+
+        <meta property="og:title" content="Data Flow in Vue and Vuex" />
+<meta property="og:description" content="A closer look at how to share state across components in Vue, data flow in vuex, and a DIY data store. (Plus an absolute no-no!)" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/" />
+
+
+
+<meta property="article:published_time" content="2016-09-21T10:00:00-07:00"/>
+
+<meta property="article:modified_time" content="2016-09-21T10:00:00-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Data Flow in Vue and Vuex">
+<meta itemprop="description" content="A closer look at how to share state across components in Vue, data flow in vuex, and a DIY data store. (Plus an absolute no-no!)">
+
+
+<meta itemprop="datePublished" content="2016-09-21T10:00:00-07:00" />
+<meta itemprop="dateModified" content="2016-09-21T10:00:00-07:00" />
+<meta itemprop="wordCount" content="1557">
+
+
+
+<meta itemprop="keywords" content="Vue,vuex,javascript,reactive," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-78325407-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+
+    </head>
+
+    
+    <body class="post">
+    
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h1><a href="/">Benjamin Listwon</i></a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/blog">
+                        Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archive">
+                        Archive
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resource">
+                        Resources
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/blog">
+                            <h3>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archive">
+                            <h3>
+                                
+                                Archive
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resource">
+                            <h3>
+                                
+                                Resources
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/"><p>Strategies for extending Vue</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/"><p>Vuex Chat Part 2</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/"><p>Data Flow in Vue and Vuex</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/hooray-for-hugo/"><p>Hooray for Hugo!</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/"><p>Short Order Vue: A Vue 2.0 App</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">Data Flow in Vue and Vuex</a></h2>
+            
+        
+        
+        
+            <p>A closer look at how to share state across components in Vue, data flow in vuex, and a DIY data store. (Plus an absolute no-no!)</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-09-21'>
+            September 21, 2016</time>
+        
+        
+            <p>8 minute read</p>
+        
+            <p class="subscribe-bug"><a href="#subscribe"><i class="fa fa-newspaper-o">&nbsp;</i>Subscribe</a></p>
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f&text=Data%20Flow%20in%20Vue%20and%20Vuex&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f&title=Data%20Flow%20in%20Vue%20and%20Vuex"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f&title=Data%20Flow%20in%20Vue%20and%20Vuex"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f&title=Data%20Flow%20in%20Vue%20and%20Vuex"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+    
+
+    <div id="content">
+        <p><em>(Update 10/14/16: This article has been <a href="http://www.jianshu.com/p/2e0b6d19dd6a">translated into simplified Chinese</a> by <a href="https://twitter.com/sqrtthree">@sqrtthree</a>. Also <a href="http://gold.xitu.io/entry/58007bcf0bd1d00058eefe69/">available here</a>.)</em></p>
+
+<p>It seems like one of the things that trips people up in <a href="https://vuejs.org">Vue</a> is how to share state across components. For those new to reactive programming, something like <a href="https://github.com/vuejs/vuex/">vuex</a> can seem daunting with loads of new jargon and the way it separates concerns. It can also seem like overkill when all you want is to share one or two pieces of data.</p>
+
+<p></p>
+
+<p>With that in mind, I thought I&rsquo;d pull together a couple of quick demos. The first implements shared state by using a simple javascript object that is referenced by each new component. The second does the same with vuex. There&rsquo;s also an example of something that, while it works, you should <em>never</em> do. (We&rsquo;ll look at why at the end.)</p>
+
+<p>You can start by checking out the demos:</p>
+
+<ul>
+<li><a href="/demo/dataflow/shared/index.html">Using shared object</a></li>
+<li><a href="/demo/dataflow/vuex/index.html">Using vuex</a></li>
+<li><a href="/demo/dataflow/evil/index.html">Using evil bindings</a></li>
+</ul>
+
+<p>Or <a href="https://github.com/BenjaminListwon/vue-data-flow">grab the repo</a> and try it out locally! The code is 2.0 specific at a couple points, but the data flow theory is relevant in any version and is easily ported down to 1.0 with a couple changes that I try to note below.</p>
+
+<p>The demos are all the same, just implemented differently. The app consists of two instance of a single chat component. Whena  user posts a message in one instance, it should appear in both chat windows because the message state is what is shared. Here&rsquo;s a screenshot:</p>
+
+<p><img src="/postimg/data-flow-in-vue-and-vuex/screenshot.png" alt="" /></p>
+
+<h2 id="sharing-state-with-an-object">Sharing State With An Object</h2>
+
+<p>To start off, let&rsquo;s take a look at how the data will flow in our example app.</p>
+
+<p><img src="/postimg/data-flow-in-vue-and-vuex/shared-state-01.svg" alt="" /></p>
+
+<p>In this demo we&rsquo;ll use a simple javascript object, <code>var store = {...}</code>, to share our state between the instances of the <code>Client.vue</code> component. Here&rsquo;s the important bits of the key files.</p>
+
+<p>&nbsp;</p>
+
+<h5 id="index-html">index.html</h5>
+
+<pre><code>&lt;div id=&quot;app&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+  var store = {
+    state: {
+      messages: []
+    },
+    newMessage (msg) {
+      this.state.messages.push(msg)
+    }
+  }
+&lt;/script&gt;
+</code></pre>
+
+<p>There&rsquo;s two key things here.</p>
+
+<ol>
+<li>We make the object available to our entire app by just adding it to <code>index.html</code>. We could inject it into the app further down the chain, but this is quick and easy for now.</li>
+<li>We store our state here, but we also provide a function to act on that data. Rather than scatter unctions all over our components, we want to keep them all in one place, and simple use them whereever we need them.</li>
+</ol>
+
+<p>&nbsp;</p>
+
+<h5 id="app-vue">App.vue</h5>
+
+<pre><code>&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+      &lt;div class=&quot;col&quot;&gt;
+        &lt;client clientid=&quot;Client A&quot;&gt;&lt;/client&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;col&quot;&gt;
+        &lt;client clientid=&quot;Client B&quot;&gt;&lt;/client&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+import Client from './components/Client.vue'
+
+export default {
+  components: {
+    Client
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+<p>Here we import our client componet, and create two instances of it. We use a prop, <code>clientid</code>, to uniquely identify each client. In reality, you&rsquo;d do this more dynamically, but remember, quick and easy for now.</p>
+
+<p>One thing to note, we don&rsquo;t even pull in any state here at all.</p>
+
+<p>&nbsp;</p>
+
+<h5 id="client-vue">Client.vue</h5>
+
+<pre><code>&lt;template&gt;
+  &lt;div&gt;
+    &lt;h1&gt;{{ clientid }}&lt;/h1&gt;
+    &lt;div class=&quot;client&quot;&gt;
+      &lt;ul&gt;
+          &lt;li v-for=&quot;message in messages&quot;&gt;
+            &lt;label&gt;{{ message.sender }}:&lt;/label&gt; {{ message.text }}
+          &lt;/li&gt;
+      &lt;/ul&gt;
+      &lt;div class=&quot;msgbox&quot;&gt;
+        &lt;input v-model=&quot;msg&quot; placeholder=&quot;Enter a message, then hit [enter]&quot; @keyup.enter=&quot;trySendMessage&quot;&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+export default {
+  data() {
+    return {
+      msg: '',
+      messages: store.state.messages
+    }
+  },
+  props: ['clientid'],
+  methods: {
+    trySendMessage() {
+      store.newMessage({
+        text: this.msg, 
+        sender: this.clientid
+      })
+      this.resetMessage()
+    },
+    resetMessage() {
+      this.msg = ''
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+<p>Here&rsquo;s the meat of the app.</p>
+
+<ol>
+<li>In the template, we set up our <code>v-for</code> loop to iterate over the <code>messages</code> collection.</li>
+<li>The <code>v-model</code> binding on our text input simply stores the message the component&rsquo;s local data object at <code>msg</code>.</li>
+<li>Also in the data object, we establish a reference to <code>store.state.messages</code>. This is what will trigger the update of our component.</li>
+<li>Lastly, we bind the enter key to the <code>trySendMessage</code> function. That function is a wrapper that
+
+<ol>
+<li>Prepares the data to be stored (a dictionary of sender and message).</li>
+<li>Invokes the <code>newMessage</code> function we defined on our shared store.</li>
+<li>Calls a cleanup function, <code>resetMessage</code>, that resets the input box. Typically you&rsquo;d call that after a promise is fulfilled.</li>
+</ol></li>
+</ol>
+
+<p>That&rsquo;s it! Go <a href="/demo/dataflow/shared/index.html">give it a try</a>.</p>
+
+<h2 id="sharing-state-with-vuex">Sharing State With Vuex</h2>
+
+<p>Okay, so now let&rsquo;s try it with vuex. Again, a diagram, so we can map vuex&rsquo;s terminology (actions, mutations, etc) to the example we just went through.</p>
+
+<p><img src="/postimg/data-flow-in-vue-and-vuex/vuex-01.svg" alt="" /></p>
+
+<p>As you can see, vuex simply formalizes the process we just went through. When you use it, you do the very same things we did above:</p>
+
+<ol>
+<li>Create a store that is shared, in this case injected into components for you by vue/vuex.</li>
+<li>Define actions that components can call, so they remain centralized.</li>
+<li>Define mutations which actually touch the store&rsquo;s state. We do this so actions can compose more than one mutation, or perform logic todetermine which mutation to call. That means you never have to worry about that business logic in the components. Win!</li>
+<li>When the state is updated, any component with a getter, computed property, or other mapping to the store will be instantly up-to-date.</li>
+</ol>
+
+<p>Again, the code.</p>
+
+<h5 id="main-js">main.js</h5>
+
+<pre><code>import store from './vuex/store'
+
+new Vue({ // eslint-disable-line no-new
+  el: '#app',
+  render: (h) =&gt; h(App),
+  store: store
+})
+</code></pre>
+
+<p>This time, instead of a <code>store</code> object in the index, we create it with vuex and pass it into our app directly. Let&rsquo;s take a look at the store, before we continue.</p>
+
+<p>&nbsp;</p>
+
+<h5 id="store-js">store.js</h5>
+
+<pre><code>export default new Vuex.Store({
+
+  state: {
+    messages: []
+  },
+
+  actions: {
+    newMessage ({commit}, msg) {
+      commit('NEW_MESSAGE', msg)
+    }
+  },
+
+  mutations: {
+    NEW_MESSAGE (state, msg) {
+      state.messages.push(msg)
+    }
+  },
+
+  strict: debug
+
+})
+</code></pre>
+
+<p>Very similar to the object we made ourselves, but with the addition of the <code>mutations</code> object.</p>
+
+<h5 id="client-vue-1">Client.vue</h5>
+
+<pre><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col&quot;&gt;
+    &lt;client clientid=&quot;Client A&quot;&gt;&lt;/client&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;
+    &lt;client clientid=&quot;Client B&quot;&gt;&lt;/client&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Same deal as last time. (Amazing how similar it is, right?)</p>
+
+<p>&nbsp;</p>
+
+<h5 id="client-vue-2">Client.vue</h5>
+
+<pre><code>&lt;script&gt;
+import { mapState, mapActions } from 'vuex'
+
+export default {
+  data() {
+    return {
+      msg: ''
+    }
+  },
+  props: ['clientid'],
+  computed: {
+    ...mapState({
+      messages: state =&gt; state.messages
+    })
+  },
+  methods: {
+    trySendMessage() { 
+      this.newMessage({
+        text: this.msg, 
+        sender: this.clientid
+      })
+      this.resetMessage()
+    },
+    resetMessage() {
+      this.msg = ''
+    },
+    ...mapActions(['newMessage'])
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+<p>The template remains exactly the same, so I didn&rsquo;t even bother to include it. The big differences here are:</p>
+
+<ol>
+<li>We use <code>mapState</code> to bring in the reference to our shared messages collection.</li>
+<li>we use <code>mapActions</code> to bring in the action that will create a new message.</li>
+</ol>
+
+<p>(<strong>Note</strong>: These are vuex 2.0 features.)</p>
+
+<p>And bingo, we are done! Feel free to <a href="/demo/dataflow/vuex/index.html">go give this one a look too</a>.</p>
+
+<h2 id="conclusions">Conclusions</h2>
+
+<p>So, as you can hopefully see, there is not a huge gulf between simply sharing state on your own, and using vuex. The <strong>huge</strong> advantage to vuex is that it formalizes the process of centralizing your data store for you, and providing all the machinery to work wirth that data.</p>
+
+<p>At first, when you read the vuex docs or examples, it can seem daunting with the individual files for mutations, actions and modules. But if you are just starting out, simply write all of those in the single <code>store.js</code> file to begin. As your file size grows, you&rsquo;ll find the right time to move the actions into <code>actions.js</code> or to split them out even further.</p>
+
+<p>Don&rsquo;t fret, take it slow, and you&rsquo;ll be up in no time. And definitely start off with a template used with <a href="https://github.com/vuejs/vue-cli">vue-cli</a>. I use the <a href="https://github.com/vuejs-templates/browserify">browserify</a> template, and add the following to my <code>package.json</code>.</p>
+
+<pre><code>&quot;dependencies&quot;: {
+    &quot;vue&quot;: &quot;^2.0.0-rc.6&quot;,
+    &quot;vuex&quot;: &quot;^2.0.0-rc.5&quot;
+}
+</code></pre>
+
+<h2 id="still-here">Still Here?</h2>
+
+<p>I know, I promised the &ldquo;evil&rdquo; way. Once again, the demo is <a href="/demo/dataflow/evil/index.html">exactly the same</a>. What is evil is that I am exploiting the one-way binding nature of Vue 2.0 to inject the callback function, thus allowing a two-way binding of sorts between the parent and child templates. First, check out <a href="http://rc.vuejs.org/guide/components.html#One-Way-Data-Flow">this portion of the 2.0 docs</a>, then take a look at my evil.</p>
+
+<h5 id="app-vue-1">App.vue</h5>
+
+<pre><code>&lt;div class=&quot;row&quot;&gt;
+  &lt;div class=&quot;col&quot;&gt;
+    &lt;client clientid=&quot;Client A&quot; :messages=&quot;messages&quot; :callback=&quot;newMessage&quot;&gt;&lt;/client&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;col&quot;&gt;
+    &lt;client clientid=&quot;Client B&quot; :messages=&quot;messages&quot; :callback=&quot;newMessage&quot;&gt;&lt;/client&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+
+<p>Here, I use a dynamic binding to pass in the <code>messages</code> collection using a prop on the component. <em>But</em>, I also pass in the action function so I can call it from the child component.</p>
+
+<p>&nbsp;</p>
+
+<h5 id="client-vue-3">Client.vue</h5>
+
+<pre><code>&lt;script&gt;
+export default {
+  data() {
+    return {
+      msg: ''
+    }
+  },
+  props: ['clientid', 'messages', 'callback'],
+  methods: {
+    trySendMessage() { 
+      this.callback({
+        text: this.msg, 
+        sender: this.clientid
+      })
+      this.resetMessage()
+    },
+    resetMessage() {
+      this.msg = ''
+    }
+  }
+}
+&lt;/script&gt;
+</code></pre>
+
+<p>Here&rsquo;s the evil in action.</p>
+
+<p>Why so bad you ask?</p>
+
+<ol>
+<li>We are defeting the one-way loop found in the diagrams above.</li>
+<li>We create a ridculously tight coupling between the component and it&rsquo;s parent.</li>
+<li>This would be <em>impossible</em> to maintain. If you needed twenty functions in the component, you&rsquo;d have to add twenty props, manage their names, etc, etc. Then, if anything ever changed, ugh!</li>
+</ol>
+
+<p>So why bother showing this at all? Because I am lazy just like everyone else. Sometimes I do something like this only to discover how horrible it is down the road. Then I curse my lazy self because I have hours, or days, of cleanup to do. In this case, I hope I can help you avoid costly decisions or mistakes early by advocating for <em>never</em> passing around anything you don&rsquo;t need to. In 99% of the cases I&rsquo;ve run into, a single shared state is more than perfect. (More on that 1% case soon).</p>
+    </div>
+
+    <footer>
+        
+    
+
+        
+
+    
+    <ul class="tags">
+    
+        <li><a href="/tags/vue">Vue</a></li>
+    
+        <li><a href="/tags/vuex">vuex</a></li>
+    
+        <li><a href="/tags/javascript">javascript</a></li>
+    
+        <li><a href="/tags/reactive">reactive</a></li>
+    
+    </ul>
+    
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="https://benjaminlistwon.com/blog/hooray-for-hugo/"
+                class="button big previous">Hooray for Hugo!</a></li>
+    
+
+    
+        <li><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/"
+                class="button big next">Vuex Chat Part 2</a></li>
+    
+</ul>
+
+
+
+
+        <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f&text=Data%20Flow%20in%20Vue%20and%20Vuex&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f&title=Data%20Flow%20in%20Vue%20and%20Vuex"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f&title=Data%20Flow%20in%20Vue%20and%20Vuex"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f&title=Data%20Flow%20in%20Vue%20and%20Vuex"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fdata-flow-in-vue-and-vuex%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+    <section id="intro">
+        
+        
+            
+                <a href="/" class="logo"><img src="/img/logo.jpg" alt="Benjamin Listwon" /></a>
+            
+        
+        
+            <header>
+                <h2></h2>
+                <p>A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way.</p>
+            </header>
+        
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+    </section>
+
+
+    
+    <section class="book-promo sidebar-book-promo">
+    <h3>Vue.js In Action</h3>
+    <figure>
+        <a href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">
+            <img src="/img/vuejs-in-action-cover.png" alt="Vue.js In Action Cover Image">
+        </a>
+    </figure>
+    <p>I wrote a book about Vue.js along with amazing developer and author <a href="https://twitter.com/ErikCH">Erik Hanchett</a>.</p>
+    <p><a class="button" href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">Grab a Copy</a></p>
+</section>
+
+
+    
+    <a name="subscribe"></a>
+    <section class="mcform-wrapper">
+    <form action="http://newsletter.benjaminlistwon.com/add_subscriber" method="post" name="revue-form">
+    <div class="mcform">
+        <h3>Subscribe To The Newsletter</h3>
+        <p>Thanks for taking the time to visit! If you liked this, or you want to
+            follow along as I learn, build and share, just sign up below. 
+            I promise to keep it low-key and infrequent. Cheers!</p>
+    
+        <p class="mcform-inputs">
+            <input class="revue-form-field" placeholder="thank@you.com" type="email" name="member[email]" >
+            <input type="submit" value="Subscribe" name="member[subscribe]">
+        </p>
+    </div>
+    </form>
+</section>
+
+
+
+
+    
+    <section id="recent-posts">
+        <ul class="posts">
+            <header>
+                <h3>Recent Posts</h3>
+            </header>
+            
+                
+            
+
+            
+                
+            
+
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/">Strategies for extending Vue</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-11-04'>
+                                November 4, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/">Vuex Chat Part 2</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-28'>
+                                September 28, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">Data Flow in Vue and Vuex</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-21'>
+                                September 21, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/hooray-for-hugo/">Hooray for Hugo!</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-19'>
+                                September 19, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/">Short Order Vue: A Vue 2.0 App</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-16'>
+                                September 16, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+
+            
+                <li>
+                    <ul class="actions">
+                        <li><a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a></li>
+                    </ul>
+                </li>
+            
+        </ul>
+    </section>
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    <section class="blurb">
+        <h2>About</h2>
+        <p>I am a designer, developer, and proud father, living in the greater Seattle area. I have spent the last two decades building apps, websites and software with some terrific folks, and now I am striking out on my own.</p>
+
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    
+
+    
+    <section id="footer">
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+
+        <p class="copyright">
+            &copy; Benjamin Listwon.<br/>
+            Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+            Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+            Powered by <a href="//gohugo.io" >Hugo</a>
+        </p>
+    </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

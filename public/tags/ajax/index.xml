@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ajax on Benjamin Listwon</title>
+    <link>https://benjaminlistwon.com/tags/ajax/</link>
+    <description>Recent content in Ajax on Benjamin Listwon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 17 Feb 2016 10:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://benjaminlistwon.com/tags/ajax/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Adding More Robust Ajax Detection In Laravel</title>
+      <link>https://benjaminlistwon.com/blog/adding-more-robust-ajax-detection-in-laravel/</link>
+      <pubDate>Wed, 17 Feb 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/adding-more-robust-ajax-detection-in-laravel/</guid>
+      <description>TL;DR The $request-&amp;gt;ajax() method does not detect XHR sent without an X-Requested-With header, so you’ll want to add the following to your own Request.php file (or whatever base Request class is used by your controllers).
+App/Http/Requests/Request.php &amp;lt;?php namespace App\Http\Requests; use Illuminate\Foundation\Http\FormRequest; abstract class Request extends FormRequest { public function ajax() { /* 1. Call the builtin method */ if ($this-&amp;gt;isXmlHttpRequest()) { return true; } /* 2. Then check the Content-Type */ $content_type = $this-&amp;gt;header(&#39;Content-Type&#39;); $allowable_types = array( &#39;application/json&#39;, &#39;application/javascript&#39;, ); if (in_array( strtolower($content_type), $allowable_types)) { return true; } /* 3.</description>
+    </item>
+    
+  </channel>
+</rss>

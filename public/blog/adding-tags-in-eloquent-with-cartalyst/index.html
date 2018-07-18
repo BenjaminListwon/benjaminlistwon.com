@@ -1,0 +1,963 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Adding Tags In Eloquent With Cartalyst</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.44" />
+        
+
+
+        
+        
+            <meta name="description" content="Cartalyst has a great tags package for your Laravel projects, but there&#39;s a couple tricks to make using it feel seamless.">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Adding Tags In Eloquent With Cartalyst"/>
+<meta name="twitter:description" content="Cartalyst has a great tags package for your Laravel projects, but there&#39;s a couple tricks to make using it feel seamless."/>
+<meta name="twitter:site" content="@benjaminlistwon"/>
+
+        <meta property="og:title" content="Adding Tags In Eloquent With Cartalyst" />
+<meta property="og:description" content="Cartalyst has a great tags package for your Laravel projects, but there&#39;s a couple tricks to make using it feel seamless." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://benjaminlistwon.com/blog/adding-tags-in-eloquent-with-cartalyst/" />
+
+
+
+<meta property="article:published_time" content="2016-02-27T10:00:00-07:00"/>
+
+<meta property="article:modified_time" content="2016-02-27T10:00:00-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Adding Tags In Eloquent With Cartalyst">
+<meta itemprop="description" content="Cartalyst has a great tags package for your Laravel projects, but there&#39;s a couple tricks to make using it feel seamless.">
+
+
+<meta itemprop="datePublished" content="2016-02-27T10:00:00-07:00" />
+<meta itemprop="dateModified" content="2016-02-27T10:00:00-07:00" />
+<meta itemprop="wordCount" content="891">
+
+
+
+<meta itemprop="keywords" content="Laravel,tags,Cartalyst," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-78325407-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+
+    </head>
+
+    
+    <body class="post">
+    
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h1><a href="/">Benjamin Listwon</i></a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/blog">
+                        Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archive">
+                        Archive
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resource">
+                        Resources
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/blog">
+                            <h3>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archive">
+                            <h3>
+                                
+                                Archive
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resource">
+                            <h3>
+                                
+                                Resources
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/"><p>Strategies for extending Vue</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/"><p>Vuex Chat Part 2</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/"><p>Data Flow in Vue and Vuex</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/hooray-for-hugo/"><p>Hooray for Hugo!</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/"><p>Short Order Vue: A Vue 2.0 App</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://benjaminlistwon.com/blog/adding-tags-in-eloquent-with-cartalyst/">Adding Tags In Eloquent With Cartalyst</a></h2>
+            
+        
+        
+        
+            <p>Cartalyst has a great tags package for your Laravel projects, but there&#39;s a couple tricks to make using it feel seamless.</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-02-27'>
+            February 27, 2016</time>
+        
+        
+            <p>5 minute read</p>
+        
+            <p class="subscribe-bug"><a href="#subscribe"><i class="fa fa-newspaper-o">&nbsp;</i>Subscribe</a></p>
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f&text=Adding%20Tags%20In%20Eloquent%20With%20Cartalyst&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f&title=Adding%20Tags%20In%20Eloquent%20With%20Cartalyst"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f&title=Adding%20Tags%20In%20Eloquent%20With%20Cartalyst"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f&title=Adding%20Tags%20In%20Eloquent%20With%20Cartalyst"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+    
+
+    <div id="content">
+        
+
+<p>When I was first building out the code for this blog, I gave some thought to how to add tagging. The Laravel Docs actually use <a href="https://laravel.com/docs/5.2/eloquent-relationships#many-to-many-polymorphic-relations">tagging as an example of polymorphic relations</a>. But then, over on his new jam <a href="https://makersclique.com/">Makers Clique</a>, <a href="https://twitter.com/scrivs">Scrivs</a> mentioned a package called <a href="https://cartalyst.com/manual/tags/2.0#introduction">Cartalyst Tags</a> which looked like it ticked all the boxes.</p>
+
+<p>After following the installation instructions, I added a tags field to my post forms:</p>
+
+<h5 id="resources-views-post-create-blade-php">/resources/views/post/create.blade.php</h5>
+
+<pre><code>&lt;p&gt;
+    {{ Form::label('tags', 'Tags (separate with comma)') }}
+    {{ Form::text('tags') }}
+&lt;/p&gt;
+</code></pre>
+
+<p><em>(I’m using the <a href="https://laravelcollective.com/docs/5.2/html">Laravel Collective Form &amp; HTML package</a> here. More on that below, and in another post.</em></p>
+
+<p>Displaying the tag list on a post was pretty easy as well:</p>
+
+<h5 id="resources-views-post-show-blade-php">/resources/views/post/show.blade.php</h5>
+
+<pre><code>@if ($post-&gt;tags)
+    &lt;ul class=&quot;tags&quot;&gt;
+    @foreach ($post-&gt;tags as $tag)
+        &lt;li&gt;&lt;a href=&quot;/tag/{{ $tag-&gt;slug }}&quot;&gt;{{ $tag-&gt;name }}&lt;/a&gt;&lt;/li&gt;
+    @endforeach
+    &lt;/ul&gt;
+@endif
+</code></pre>
+
+<p>Then I tweaked my <code>store</code> and <code>update</code> methods and voilà, my posts were taggable.</p>
+
+<h2 id="getting-the-tags-for-update">Getting The Tags For Update</h2>
+
+<p>So, I hit a huge brick wall when I wanted to retrieve the tags in my edit form. I’ll keep this as brief as I can.</p>
+
+<p>Calling <code>$post-&gt;tags</code> will give you a collection of tag objects.  This can be useful if you are going to work with them in code, but is not so great for display in a template:</p>
+
+<pre><code>[{
+    &quot;id&quot;:2,
+    &quot;namespace&quot;:&quot;App\\Database\\Models\\Post&quot;,
+    &quot;slug&quot;:&quot;laravel&quot;,
+    &quot;name&quot;:&quot;Laravel&quot;,
+    &quot;count&quot;:2,
+    &quot;pivot&quot;:{&quot;taggable_id&quot;:1,&quot;tag_id&quot;:2}
+}, ...]
+</code></pre>
+
+<p>Of course, you can iterate over that array, pulling out items by key if all you need is display. Trouble is, because I use the <a href="https://laravelcollective.com/docs/5.2/html">Form package</a>, I cannot control the output so easily.</p>
+
+<p><code>Form</code> objects are bound to a model—in this case <code>Post</code>—so references to model properties will invoke the appropriate accessor. In the case of tags, it will use the <code>$post-&gt;tags</code>, which returns the above, and places it in the <code>value</code> attribute. Blech!</p>
+
+<h5 id="resources-views-post-edit-blade-php">/resources/views/post/edit.blade.php</h5>
+
+<pre><code>{{ Form::model($post, ['method' =&gt; 'PUT', 
+        'action' =&gt; ['PostController@update', $post-&gt;id]] ) }}
+...
+&lt;p&gt;
+   {{ Form::label('tags', 'Tags (separate with comma)') }}
+   {{ Form::text('tags') }}
+&lt;/p&gt;
+...
+{{ Form::close() }}
+</code></pre>
+
+<p>Basically, I wanted the value of <code>tags</code> to be something like “Tag, Tag 2, Another Tag” when it was being placed back into the text field on my edit form.</p>
+
+<p>Things I tried:</p>
+
+<ol>
+<li><p>Decorate the results of <code>$post-&gt;tags</code> on the way back to the template. For reasons I didn’t dig too much further into, and because <code>$post-&gt;tags</code> retrieves a relationship, it is expected to return an object of type Relation. Mucking with it at all yields this error: <code>Relationship method must return an object of type Illuminate\Database\Eloquent\ Relations\Relation</code></p></li>
+
+<li><p><a href="https://laravelcollective.com/docs/5.2/html#form-model-binding">Custom Accessors</a> looked like the way to go for a while, but <code>formTagAttribute</code> will never get called, because <code>tags</code> is not an attribute of the model, it is a relationship.</p></li>
+
+<li><p>I tried to make a <a href="https://laravelcollective.com/docs/5.2/html#custom-components">custom component</a> to render the form field correctly, but that just kicked the above can down the road.</p></li>
+
+<li><p>I also tried adding another accessor and a custom property to my <code>Post</code> model, but they all continued to run into the Relation issue above.</p></li>
+</ol>
+
+<p>In the end, here’s what worked:</p>
+
+<h5 id="app-database-models-post-php">/App/Database/Models/Post.php</h5>
+
+<pre><code>public function tagList() 
+{
+    $tags = $this-&gt;tags;
+    $tagList = array();
+    foreach ($tags as $tag) {
+        array_push($tagList, $tag-&gt;name);
+    }
+    return implode(', ', $tagList);
+}
+</code></pre>
+
+<p>Which I use like so:
+    <p>
+      {{ Form::label(&lsquo;tags&rsquo;, &lsquo;Tags (separate with comma)&rsquo;) }}
+      {{ Form::text(&lsquo;tags&rsquo;, $post-&gt;tagList()) }}
+    </p></p>
+
+<p>Unfortunately, I don’t get the automatic handling of <code>old('tags')</code>, then fall through to the above, then fall through to blank. But, I think that can be added to a custom component, which I will throw together now that I have the way to retrieve the data I need.</p>
+
+<h2 id="displaying-posts-with-tag-xyz">Displaying Posts With Tag XYZ</h2>
+
+<p>You may have noticed that the link I use to get all posts with a given tag looks like this <code>&lt;a href=&quot;/tag/{{ $tag-&gt;slug }}&quot;&gt;{{ $tag-&gt;name }}&lt;/a&gt;</code>.</p>
+
+<p>The <code>$tag-&gt;slug</code> uses Laravel’s default slug generator, so a tag like “Dogs and Cats” will get sluggified as “dogs-and-cats”.</p>
+
+<p>One thing <a href="https://cartalyst.com/manual/tags/2.0#get-all-the-entities-with-the-given-tags">the documentation</a> doesn’t make clear is that you MUST use the slug to retrieve items tagged with a given tag. Here’s the example:</p>
+
+<p>$products = Product::whereTag(&lsquo;foo, bar&rsquo;)-&gt;get();</p>
+
+<p>From that, it is impossible to tell if ‘foo’ and ‘bar’ represent <code>tag-&gt;name</code> or <code>tag-&gt;slug</code> properties.</p>
+
+<p>So, your controller method for this will look something like:</p>
+
+<h5 id="app-http-controllers-tagcontroller-php">/App/Http/Controllers/TagController.php</h5>
+
+<pre><code>public function show($slug)
+{
+    $posts = Post::whereTag($slug)-&gt;orderBy('created_at', 'desc')-&gt;get();
+    $tag = Tag::where('slug', $slug)-&gt;first();
+    return view('tag.show', array_merge(compact('posts', 'tag')));
+}
+</code></pre>
+
+<p>Note that I am also fetching the tag itself here, just so I can refer to it outside the scope of any given post in my template.</p>
+
+<h2 id="displaying-all-tags">Displaying All Tags</h2>
+
+<p>The final issue I ran up against was retrieving all the tags. While <a href="https://cartalyst.com/manual/tags/2.0#get-all-the-tags-from-an-entity-namespace">the docs say</a> you can use the <code>allTags()</code> method to retrieve all the tags for a given domain, it failed to return any results no matter what I did.</p>
+
+<p>Having blown way too much time on the above, I opted to simply add my own model, so I could query the <code>tags</code> table myself.</p>
+
+<h5 id="app-database-models-tag-php">/App/Database/Models/Tag.php</h5>
+
+<pre><code>&lt;?php
+
+namespace App\Database\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class Tag extends Model
+{
+
+    /**
+     * The database table used by the model.
+     *
+     * @var string
+     */
+    protected $table = 'tags';
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
+    protected $fillable = ['namespace', 'name', 'slug', 'count'];
+
+}
+</code></pre>
+
+<p>With that in place, I simply did the following:</p>
+
+<h5 id="app-http-controllers-tagcontroller-php-1">/App/Http/Controllers/TagController.php</h5>
+
+<pre><code>public function index()
+{
+    $tags = Tag::get();
+    return view('tag.index', array_merge(compact('tags')));
+}
+</code></pre>
+
+<p>Later, I will add queries to fetch by domain, etc.</p>
+
+<p>Hope the above can help someone. Cheers!</p>
+
+    </div>
+
+    <footer>
+        
+    
+
+        
+
+    
+    <ul class="tags">
+    
+        <li><a href="/tags/laravel">Laravel</a></li>
+    
+        <li><a href="/tags/tags">tags</a></li>
+    
+        <li><a href="/tags/cartalyst">Cartalyst</a></li>
+    
+    </ul>
+    
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="https://benjaminlistwon.com/blog/in-brief-001-routing-with-cors/"
+                class="button big previous">In Brief #001: Routing With CORS</a></li>
+    
+
+    
+        <li><a href="https://benjaminlistwon.com/blog/in-brief-002-updating-rows-in-a-migration/"
+                class="button big next">In Brief #002: Updating Rows In A Migration</a></li>
+    
+</ul>
+
+
+
+
+        <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f&text=Adding%20Tags%20In%20Eloquent%20With%20Cartalyst&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f&title=Adding%20Tags%20In%20Eloquent%20With%20Cartalyst"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f&title=Adding%20Tags%20In%20Eloquent%20With%20Cartalyst"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f&title=Adding%20Tags%20In%20Eloquent%20With%20Cartalyst"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fadding-tags-in-eloquent-with-cartalyst%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+    <section id="intro">
+        
+        
+            
+                <a href="/" class="logo"><img src="/img/logo.jpg" alt="Benjamin Listwon" /></a>
+            
+        
+        
+            <header>
+                <h2></h2>
+                <p>A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way.</p>
+            </header>
+        
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+    </section>
+
+
+    
+    <section class="book-promo sidebar-book-promo">
+    <h3>Vue.js In Action</h3>
+    <figure>
+        <a href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">
+            <img src="/img/vuejs-in-action-cover.png" alt="Vue.js In Action Cover Image">
+        </a>
+    </figure>
+    <p>I wrote a book about Vue.js along with amazing developer and author <a href="https://twitter.com/ErikCH">Erik Hanchett</a>.</p>
+    <p><a class="button" href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">Grab a Copy</a></p>
+</section>
+
+
+    
+    <a name="subscribe"></a>
+    <section class="mcform-wrapper">
+    <form action="http://newsletter.benjaminlistwon.com/add_subscriber" method="post" name="revue-form">
+    <div class="mcform">
+        <h3>Subscribe To The Newsletter</h3>
+        <p>Thanks for taking the time to visit! If you liked this, or you want to
+            follow along as I learn, build and share, just sign up below. 
+            I promise to keep it low-key and infrequent. Cheers!</p>
+    
+        <p class="mcform-inputs">
+            <input class="revue-form-field" placeholder="thank@you.com" type="email" name="member[email]" >
+            <input type="submit" value="Subscribe" name="member[subscribe]">
+        </p>
+    </div>
+    </form>
+</section>
+
+
+
+
+    
+    <section id="recent-posts">
+        <ul class="posts">
+            <header>
+                <h3>Recent Posts</h3>
+            </header>
+            
+                
+            
+
+            
+                
+            
+
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/">Strategies for extending Vue</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-11-04'>
+                                November 4, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/">Vuex Chat Part 2</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-28'>
+                                September 28, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">Data Flow in Vue and Vuex</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-21'>
+                                September 21, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/hooray-for-hugo/">Hooray for Hugo!</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-19'>
+                                September 19, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/">Short Order Vue: A Vue 2.0 App</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-16'>
+                                September 16, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+
+            
+                <li>
+                    <ul class="actions">
+                        <li><a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a></li>
+                    </ul>
+                </li>
+            
+        </ul>
+    </section>
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    <section class="blurb">
+        <h2>About</h2>
+        <p>I am a designer, developer, and proud father, living in the greater Seattle area. I have spent the last two decades building apps, websites and software with some terrific folks, and now I am striking out on my own.</p>
+
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    
+
+    
+    <section id="footer">
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+
+        <p class="copyright">
+            &copy; Benjamin Listwon.<br/>
+            Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+            Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+            Powered by <a href="//gohugo.io" >Hugo</a>
+        </p>
+    </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

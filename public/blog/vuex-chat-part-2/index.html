@@ -1,0 +1,1089 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Vuex Chat Part 2</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.44" />
+        
+
+
+        
+        
+            <meta name="description" content="Taking our vuex demo one step further using modules, mutation constants, and a dash of cleverness with browser local storage.">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Vuex Chat Part 2"/>
+<meta name="twitter:description" content="Taking our vuex demo one step further using modules, mutation constants, and a dash of cleverness with browser local storage."/>
+<meta name="twitter:site" content="@benjaminlistwon"/>
+
+        <meta property="og:title" content="Vuex Chat Part 2" />
+<meta property="og:description" content="Taking our vuex demo one step further using modules, mutation constants, and a dash of cleverness with browser local storage." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://benjaminlistwon.com/blog/vuex-chat-part-2/" />
+
+
+
+<meta property="article:published_time" content="2016-09-28T10:00:00-07:00"/>
+
+<meta property="article:modified_time" content="2016-09-28T10:00:00-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Vuex Chat Part 2">
+<meta itemprop="description" content="Taking our vuex demo one step further using modules, mutation constants, and a dash of cleverness with browser local storage.">
+
+
+<meta itemprop="datePublished" content="2016-09-28T10:00:00-07:00" />
+<meta itemprop="dateModified" content="2016-09-28T10:00:00-07:00" />
+<meta itemprop="wordCount" content="2094">
+
+
+
+<meta itemprop="keywords" content="Vue,vuex,javascript,reactive," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-78325407-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+
+    </head>
+
+    
+    <body class="post">
+    
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h1><a href="/">Benjamin Listwon</i></a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/blog">
+                        Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archive">
+                        Archive
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resource">
+                        Resources
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/blog">
+                            <h3>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archive">
+                            <h3>
+                                
+                                Archive
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resource">
+                            <h3>
+                                
+                                Resources
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/"><p>Strategies for extending Vue</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/"><p>Vuex Chat Part 2</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/"><p>Data Flow in Vue and Vuex</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/hooray-for-hugo/"><p>Hooray for Hugo!</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/"><p>Short Order Vue: A Vue 2.0 App</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/">Vuex Chat Part 2</a></h2>
+            
+        
+        
+        
+            <p>Taking our vuex demo one step further using modules, mutation constants, and a dash of cleverness with browser local storage.</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-09-28'>
+            September 28, 2016</time>
+        
+        
+            <p>10 minute read</p>
+        
+            <p class="subscribe-bug"><a href="#subscribe"><i class="fa fa-newspaper-o">&nbsp;</i>Subscribe</a></p>
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f&text=Vuex%20Chat%20Part%202&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f&title=Vuex%20Chat%20Part%202"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f&title=Vuex%20Chat%20Part%202"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f&title=Vuex%20Chat%20Part%202"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+    
+
+    <div id="content">
+        
+
+<p><a href="https://benjaminlistwon.com/demo/vuexchat/"><img src="/postimg/vuex-chat-part-2/demo-small.png" alt="" /></a></p>
+
+<p>In my <a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">last post</a>, we took a look at how you might implement shared state in your <a href="https://vuejs.org">Vue.js</a> app by comparing a <a href="http://vuex.vuejs.org/en/intro.html">vuex</a> implementation with a hand-coded alternative. Incorporating vuex, as we saw, is pretty straightforward once the core concept of one-way data flow in Vue makes sense.</p>
+
+<p>This time, I&rsquo;d like to take the demo a little further by introducing <a href="http://vuex.vuejs.org/en/modules.html">modules</a>, <a href="http://vuex.vuejs.org/en/mutations.html#using-constants-for-mutation-names">constants</a> for mutation names, and organizing our <a href="http://vuex.vuejs.org/en/actions.html">actions</a> a bit differently.</p>
+
+<p>Along the way, we&rsquo;ll also work with a couple of <a href="http://rc.vuejs.org/guide/mixins.html">mixins</a> that provide shared functionality to our components, and we will leverage <a href="https://github.com/bevacqua/local-storage">this localStorage API</a> to simulate passing messages between clients.</p>
+
+<p>Before we dive into the code, go <a href="https://benjaminlistwon.com/demo/vuexchat/">try the demo</a>. One big difference in this demo is that you can spawn two (or three, or ten, or 100) windows / tabs and chat between them. This is accomplished via the local-storage package mentioned above, and we&rsquo;l cover that later on. In the meantime, try out the chat client, the admin buttons, and see what happens when you add new clients.</p>
+
+<p><em>(Note: If your browser doesn&rsquo;t support localStorage or JSON, the demo probably won&rsquo;t work. Apologies as I haven&rsquo;t had time to shim it for earlier browsers; it&rsquo;s on the todo list.)</em></p>
+
+<p>This time around, I&rsquo;ve thoroughly commented the code, so feel free to go <a href="https://github.com/BenjaminListwon/vue-vuex-demo">grab the repo</a>, sift through the code, and fire it up on your local machine.</p>
+
+<h2 id="using-vuex-modules">Using vuex Modules</h2>
+
+<p>In order to begin to organize our code a little better, we&rsquo;ll start chunking bits of the vuex store into modules. This also has the advantage of scoping mutations to the module&rsquo;s state, not the rootstate (though you can still get at rootstate if you need). Adding a module to <code>store.js</code> is a piece of cake.</p>
+
+<pre><code>import messages from './modules/messages'
+
+export default new Vuex.Store({
+  modules: {
+    messages
+  }
+}
+</code></pre>
+
+<p>With that out of the way, here&rsquo;s the module code:</p>
+
+<pre><code>import { NEW_MESSAGE, LOAD_MESSAGES } from '../mutation-constants'
+
+const state = { 
+  items: [
+    {
+      text: 'Welcome to vuex chat!',
+      sender: 'Vue.js'
+    }
+  ]
+}
+
+const mutations = {
+  [NEW_MESSAGE] (state, msg) {
+    state.items.push(msg)
+  },
+  [LOAD_MESSAGES] (state, toLoad) {
+    state.items = toLoad
+  }
+}
+
+const actions = {
+  newMessage ({commit}, msg) {
+    commit(NEW_MESSAGE, msg)
+  },
+  loadMessages ({commit}, toLoad) {
+    commit(LOAD_MESSAGES, toLoad)
+  },
+  resetMessages ({commit}) {
+    commit(LOAD_MESSAGES, [])
+  }
+}
+
+export default {
+  state,
+  mutations,
+  actions
+}
+</code></pre>
+
+<p>I&rsquo;ve stripped <a href="https://github.com/BenjaminListwon/vue-vuex-demo/blob/master/src/vuex/modules/messages.js">the comments</a> out here, but let&rsquo;s take a quick look at what&rsquo;s going on.</p>
+
+<ol>
+<li>The <code>const state</code> defines the initial state of the module. In reality we would use some initialization when the user &ldquo;connected&rdquo;, but for now we just hardcode a welcome message.</li>
+<li>The mutations are nothing new, but there&rsquo;s a couple differences here.
+
+<ul>
+<li>Note the ES6 constant syntax <code>[MUTATION_CONST]</code> used here. Those are defined in the <code>mutation-constants</code> file we import from at the top so that we define names global to our app. It also helps new code authors get acquainted with the codebase a little easier by looking in one file.</li>
+<li>As mentioned, the state is relative to this module, so <code>state.items</code> refers to the state defined in the module, not that from <code>store.js</code>.</li>
+</ul></li>
+<li>The actions are also mostly the same. The only thing worth noting is that we reuse the <code>LOAD_MESSAGES</code> mutation in <code>resetMessages</code> to provide component authors with a convenient way to zero out the message store. Nothing fancy, just an example of how to reuse atomic mutation operations to compose actions that are more complex internally, or offer conveniece elsewhere in the app.</li>
+</ol>
+
+<p>For more info on namespacing, designing vuex modules, and the scope of all the moving parts of your store, consult <a href="http://vuex.vuejs.org/en">Section #6 of the vuex docs</a>.</p>
+
+<h2 id="mixins">Mixins</h2>
+
+<p>Before we dive into the big changes in <code>Client.vue</code>, let&rsquo;s take a look at our mixins. <a href="http://rc.vuejs.org/guide/mixins.html">Mixins</a> provide additional functionality to components by blending in methods and lifecycle hook callbacks. We could also create a base component that we extend, but mixins allow us to decorate different types of components that may not share a common ancestor.</p>
+
+<p>Here&rsquo;s the simpler of the two, <code>message-mixin.js</code>.</p>
+
+<pre><code>export const messageMixin = {
+  methods: {
+    bundleMessage (message = '', sender = 'Anonymous') {
+      return { text: message, sender: sender }
+    }
+  }
+}
+</code></pre>
+
+<p>All this mixin provides is a method that takes our message text and the sender&rsquo;s id, then packages it up in a structure we save in our store. It is a simple convenience function, and keeps us from worrying about how a message is composed internally. <em>(Note also we are making use of ES6 default values.)</em></p>
+
+<p>Now for <code>local-storage-mixin.js</code>.</p>
+
+<pre><code>import ls from 'local-storage'
+
+export const localStorageMixin = {
+  methods: {
+    ls_pushMessage (msg) {
+      ls.set('new-message', msg)
+    },
+    ls_pullMessage () {
+      return ls.get('new-message')
+    },
+    ls_attachListener (callback) {
+      ls.on('new-message', callback)
+    }
+  }
+}
+</code></pre>
+
+<ol>
+<li>First we import the <code>local-storage</code> package as <code>ls</code>. Our mixin is just providing a thin wrapper around the API local-storage exposes so we can easily reuse it in our components. <em>(There&rsquo;s a bit more about that package is at the end of this post, but you needn&rsquo;t worry about the particulars here.)</em></li>
+<li><code>ls_pushMessage</code> wraps the <code>set</code> method, allowing us to push a message to the browser&rsquo;s localStorage.</li>
+<li><code>ls_pullMessage</code> wraps the <code>get</code> method, allowing us to read a message from the browser&rsquo;s localStorage.</li>
+<li><code>ls_attachListener</code> wraps the <code>on</code> method, allowing us to register a callback for when the value at our <code>new-message</code> key changes in another process.</li>
+</ol>
+
+<p>When we use any of these mixins, we can call them as if they were methods we had defined directly on our component, so <code>this.ls_pushMessage(someMessage)</code>.</p>
+
+<h2 id="the-main-event-client-vue">The Main Event, Client.vue</h2>
+
+<p>We&rsquo;ve moved almost all of the app&rsquo;s functionality into <code>Client.vue</code> this time around, removing the code that was in <code>App.vue</code> last time so the code is more clearly related to the DOM it acts upon. That also makes it self contained so we can truly plop it into any context without worrying about how to set it up.</p>
+
+<p>The template is largely unchanged, but there are a couple of points of interest. Here&rsquo;s the important bit:</p>
+
+<pre><code>&lt;header&gt;
+  &lt;h2&gt;{{ clientId }}&lt;/h2&gt;
+  &lt;p&gt;&lt;a href=&quot;#&quot; @click=&quot;changeId&quot;&gt;Change Id&lt;/a&gt; | &lt;a href=&quot;#&quot; @click=&quot;changeFont&quot;&gt;Change Font&lt;/a&gt;&lt;/p&gt;
+&lt;/header&gt;
+</code></pre>
+
+<ol>
+<li>We&rsquo;ve ditched passing in <code>clientId</code> as a prop, and the client is responsible for generating an id and saving it to the store.</li>
+<li>The two <code>@click</code> bindings here are used to illustrate two new bits of functionality
+
+<ul>
+<li><code>changeId</code> propmts us for a new id, which then gets saved in the store and changes cascade as we will see</li>
+<li><code>changeFont</code> toggles a local <code>data</code> boolean that is used by a <code>:class</code> binding on our client&rsquo;s main display</li>
+</ul></li>
+</ol>
+
+<p>Now for the code:</p>
+
+<pre><code>import { localStorageMixin } from '../mixins/local-storage-mixin'
+import { messageMixin } from '../mixins/message-mixin'
+import { mapState, mapActions } from 'vuex'
+
+export default {
+  mixins: [localStorageMixin, messageMixin],
+  data () {
+    return {
+      userMessage: '',
+      alternateFont: false
+    }
+  },
+  computed: {
+    ...mapState({
+      messages: ({messages}) =&gt; messages.items,
+      clientId: state =&gt; state.clientId
+    })
+  },
+  methods: {
+    getMessages () {
+      return this.messages.slice(0).reverse()
+    },
+    trySendMessage () {
+      let msg = this.bundleMessage(this.userMessage, this.clientId)
+      this.newMessage(msg)
+      this.ls_pushMessage(msg)
+      this.clearUserMessage()
+    },
+    clearUserMessage () {
+      this.userMessage = ''
+    },
+    handleRemoteMessage () {
+      this.newMessage(this.ls_pullMessage())
+    },
+    changeId () {
+      let newId = window.prompt('What name would you like to use?', this.clientId)
+      if (newId !== null &amp;&amp; newId !== '') {
+        this.setClientId(newId)
+      }
+    },
+    changeFont () {
+      this.alternateFont = this.alternateFont ? false : true // eslint-disable-line no-unneeded-ternary
+    },
+    setPageTitle () {
+      document.title = this.clientId + ' | Vuex Chat'
+    },
+    ...mapActions(['newMessage', 'resetMessages', 'setClientId'])
+  },
+  watch: {
+    clientId () {
+      this.setPageTitle()
+    }
+  },
+  mounted () {
+    this.setClientId('Client-' + parseInt(100000 * Math.random()))
+    this.ls_attachListener(this.handleRemoteMessage)
+  }
+}
+</code></pre>
+
+<p>I won&rsquo;t dive too much into the code here, as the <a href="https://github.com/BenjaminListwon/vue-vuex-demo/blob/master/src/components/Admin.vue">comments in the file</a> should give a complete picture of what is happening in the file. Here&rsquo;s the highlights:</p>
+
+<ol>
+<li>Having inported our mixins, we mix them into the component definition with the line <code>mixins: [localStorageMixin, messageMixin],</code>. That&rsquo;s it!</li>
+<li>You&rsquo;ll see we&rsquo;ve added a state mapping for the <code>clientId</code>. That will allow us to us it below in <code>watch</code>.</li>
+<li>Rather than loop directly over the <code>messages</code> computed property in our template, we use <code>getMessages</code> which allows us to reverse the order of the messages so we can display them like a chat window might, scrolling up. If we called <code>reverse()</code> directly on <code>messages</code> we&rsquo;d throw a vuex error because we&rsquo;d be manipulating the state directly.</li>
+<li><code>trySendMessage</code> is the workhorse here. It makes use of our mixins to bundle a message object, push it into the store, then into localStorage.</li>
+<li><code>handleRemoteMessage</code> is our callback when another client pushes a message into localStorage. It pushes that message into this client&rsquo;s vuex store.</li>
+<li><code>changeId</code> prompts the user for a new id, then uses the <code>setClientId</code> mapped action to set it on the vuex store.</li>
+<li><code>changeFont</code> toggles our local boolean <code>alternateFont</code> which triggers the <code>:class</code> binding to update the client&rsquo;s CSS class.</li>
+<li><code>watch: { clientId ...</code> calls <code>setPageTitle</code> whenever the <code>clientId</code> state changes on our vuex store. This keeps the page title always freshly updated. (Big circle on that one!)</li>
+<li>Lastly, we define a <code>mounted</code> lifecycle hook to
+
+<ul>
+<li>Set an initial <code>clientId</code> value</li>
+<li>Bind our <code>handleRemoteMessage</code> callback to the localStorage message key</li>
+</ul></li>
+</ol>
+
+<p>Whew. There&rsquo;s a lot going on there, but it all flows pretty nicely from where we&rsquo;ve been so far.</p>
+
+<h2 id="admin-vue">Admin.vue</h2>
+
+<p>The Admin component is trying to simulate a server-side administrator doing some things. Obviosuly this wouldn&rsquo;t be exposed alongside the CLient component in real life, but that is a good demonstration of a key concept in Vue: <strong>carefully planned, we can reuse so much of our app&rsquo;s code in different contexts and configurations.</strong></p>
+
+<p>In this case, because we moved some common functionality to mixins, and we defined our actions and mutations carefully, we could envision building an admin client quite easily. In fact, next time we&rsquo;ll lift make it so we can inject the admin functionality into an instance of the client so you could run the same app, but with different permissions to allow different functionality.</p>
+
+<p>Anyway, the code!</p>
+
+<pre><code>export default {
+  mixins: [localStorageMixin, messageMixin],
+  data () {
+    return {
+      sysmsg: [
+        'Vue 2.0rc8 is out!',
+        'Have you tried vue-router yet?',
+        'Three cheers for Evan!'
+      ],
+      adminId: 'Vue.js'
+    }
+  },
+  methods: {
+    tryAdminMessage (broadcast = false) {
+      let randomMessage = this.sysmsg[Math.floor(Math.random() * this.sysmsg.length)]
+      let msg = this.bundleMessage(randomMessage, this.adminId)
+      this.newMessage(msg)
+      if (broadcast === true) {
+        this.ls_pushMessage(msg)
+      }
+    },
+    ...mapActions(['newMessage', 'resetMessages'])
+  }
+}
+</code></pre>
+
+<ol>
+<li>As mentioned, we leverage the same mixins in this component. Yay!</li>
+<li>The <code>data</code> array is filled out with some hardcoded bits to save us from typing as an admin ;-)</li>
+<li>The big dealio here is the <code>tryAdminMessage</code> method. It works much the same as the <code>trySendMessage</code> in Client.vue, but here we accept a boolean flag. That flag determines if the message should be broadcast (pushed onto localStorage <em>and</em> the vuex store) or just sent locaally (only pushed onto the vuex store).</li>
+<li>We also directly bind <code>resetMessages</code>, the action we defined in our <code>messages.js</code> module, to the reset button in the interface. As we covered in the messages module, we eliminate the need for knowing how that gets implemented internally, so we don&rsquo;t have to worry about if / what we need to pass it here.</li>
+</ol>
+
+<h2 id="conclusion-and-next-steps">Conclusion and Next Steps</h2>
+
+<p>Not bad, eh? We are sending messages around between windows, getting updates, and more. This time around I wanted to demonstrate messaging between clients as we started to modularize, but not require much in the way of additional npm packages or running additional servers.</p>
+
+<p>Next time though, we&rsquo;ll integrate <a href="http://feathersjs.com/">Feathers.js</a> so we can run a backend server, and get messaging for real. As mentioned, we&rsquo;ll also create a true admin interface, so we can boot rowdy guests, send admin messages and maybe even start &ldquo;rooms&rdquo; on our chat server (stretch goal there).</p>
+
+<p>I&rsquo;m also working on a few other things:</p>
+
+<ul>
+<li>Wrapping up a <a href="https://handsontable.com/">handsontable</a> component for Vue2.0/vuex2.0</li>
+<li>Turning <a href="https://benjaminlistwon.com/demo/shortordervue/">Short Order Vue</a> into a multiplayer diner matching game</li>
+<li>Filling out the newly minted <a href="https://benjaminlistwon.com/resource/">Resources</a> section <em>(suggestions welcome / encouraged)</em></li>
+</ul>
+
+<p>So stay tuned!</p>
+
+<h2 id="a-bit-about-local-storage">A Bit About local-storage</h2>
+
+<p>As promised, a bit more about the localStorage wrapper I chose. <a href="https://github.com/bevacqua/local-storage">local-storage</a> seemed to offer everything we needed for this demo. It serializes data for us, using JSON.stringify / JSON.parse, so we don&rsquo;t have to worry about preserving objects or values other than strings. It also provides the watch functionality we needed to trigger updates.</p>
+
+<p>I&rsquo;m aware of other packages like <a href="https://github.com/marcuswestin/store.js">store</a>, but unless I missed something in the docs, it does not provide a watcher out-of-the-box.</p>
+
+<p>In the end, I needed something quick and dirty to simulate a message server, and local-storage fit the bill. If you have thoughts, or suggestions for a better API wrapper, drop a line or a PR.</p>
+
+    </div>
+
+    <footer>
+        
+    
+
+        
+
+    
+    <ul class="tags">
+    
+        <li><a href="/tags/vue">Vue</a></li>
+    
+        <li><a href="/tags/vuex">vuex</a></li>
+    
+        <li><a href="/tags/javascript">javascript</a></li>
+    
+        <li><a href="/tags/reactive">reactive</a></li>
+    
+    </ul>
+    
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/"
+                class="button big previous">Data Flow in Vue and Vuex</a></li>
+    
+
+    
+        <li><a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/"
+                class="button big next">Strategies for extending Vue</a></li>
+    
+</ul>
+
+
+
+
+        <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f&text=Vuex%20Chat%20Part%202&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f&title=Vuex%20Chat%20Part%202"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f&title=Vuex%20Chat%20Part%202"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f&title=Vuex%20Chat%20Part%202"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fvuex-chat-part-2%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+    <section id="intro">
+        
+        
+            
+                <a href="/" class="logo"><img src="/img/logo.jpg" alt="Benjamin Listwon" /></a>
+            
+        
+        
+            <header>
+                <h2></h2>
+                <p>A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way.</p>
+            </header>
+        
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+    </section>
+
+
+    
+    <section class="book-promo sidebar-book-promo">
+    <h3>Vue.js In Action</h3>
+    <figure>
+        <a href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">
+            <img src="/img/vuejs-in-action-cover.png" alt="Vue.js In Action Cover Image">
+        </a>
+    </figure>
+    <p>I wrote a book about Vue.js along with amazing developer and author <a href="https://twitter.com/ErikCH">Erik Hanchett</a>.</p>
+    <p><a class="button" href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">Grab a Copy</a></p>
+</section>
+
+
+    
+    <a name="subscribe"></a>
+    <section class="mcform-wrapper">
+    <form action="http://newsletter.benjaminlistwon.com/add_subscriber" method="post" name="revue-form">
+    <div class="mcform">
+        <h3>Subscribe To The Newsletter</h3>
+        <p>Thanks for taking the time to visit! If you liked this, or you want to
+            follow along as I learn, build and share, just sign up below. 
+            I promise to keep it low-key and infrequent. Cheers!</p>
+    
+        <p class="mcform-inputs">
+            <input class="revue-form-field" placeholder="thank@you.com" type="email" name="member[email]" >
+            <input type="submit" value="Subscribe" name="member[subscribe]">
+        </p>
+    </div>
+    </form>
+</section>
+
+
+
+
+    
+    <section id="recent-posts">
+        <ul class="posts">
+            <header>
+                <h3>Recent Posts</h3>
+            </header>
+            
+                
+            
+
+            
+                
+            
+
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/">Strategies for extending Vue</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-11-04'>
+                                November 4, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/">Vuex Chat Part 2</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-28'>
+                                September 28, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">Data Flow in Vue and Vuex</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-21'>
+                                September 21, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/hooray-for-hugo/">Hooray for Hugo!</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-19'>
+                                September 19, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/">Short Order Vue: A Vue 2.0 App</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-16'>
+                                September 16, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+
+            
+                <li>
+                    <ul class="actions">
+                        <li><a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a></li>
+                    </ul>
+                </li>
+            
+        </ul>
+    </section>
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    <section class="blurb">
+        <h2>About</h2>
+        <p>I am a designer, developer, and proud father, living in the greater Seattle area. I have spent the last two decades building apps, websites and software with some terrific folks, and now I am striking out on my own.</p>
+
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    
+
+    
+    <section id="footer">
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+
+        <p class="copyright">
+            &copy; Benjamin Listwon.<br/>
+            Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+            Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+            Powered by <a href="//gohugo.io" >Hugo</a>
+        </p>
+    </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

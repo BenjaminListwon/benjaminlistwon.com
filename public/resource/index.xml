@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Resources on Benjamin Listwon</title>
+    <link>https://benjaminlistwon.com/resource/</link>
+    <description>Recent content in Resources on Benjamin Listwon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 14 Sep 2016 10:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://benjaminlistwon.com/resource/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Vue.js Resources</title>
+      <link>https://benjaminlistwon.com/resource/vue/</link>
+      <pubDate>Wed, 14 Sep 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/resource/vue/</guid>
+      <description>This page contains resources related to the Vue.js framework, as well as the major modules and plugins in the Vue.js ecosystem (vuex, vue-router, etc). As always, if thee&amp;rsquo;s something I&amp;rsquo;m missing, go ahead and let me know, and I will add it.
+Community  Vue Forum Definitely join. Loads of discussion, group problem solving, and searchable posts. Vue on Gitter Like a Slack/IRC channel, specifically for Vue.js discussion. Vue Newsletter 🆕 Stay up-to-date on all things Vue.</description>
+    </item>
+    
+  </channel>
+</rss>

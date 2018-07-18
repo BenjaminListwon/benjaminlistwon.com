@@ -1,0 +1,928 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        
+            
+                <title>Why Laravel? Why Now?</title>
+            
+        
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="generator" content="Hugo 0.44" />
+        
+
+
+        
+        
+            <meta name="description" content="My journey to Laravel, why it fits my needs, and why it may or may not be right for your next project.">
+        
+
+        <meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Why Laravel? Why Now?"/>
+<meta name="twitter:description" content="My journey to Laravel, why it fits my needs, and why it may or may not be right for your next project."/>
+<meta name="twitter:site" content="@benjaminlistwon"/>
+
+        <meta property="og:title" content="Why Laravel? Why Now?" />
+<meta property="og:description" content="My journey to Laravel, why it fits my needs, and why it may or may not be right for your next project." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://benjaminlistwon.com/blog/why-laravel-why-now/" />
+
+
+
+<meta property="article:published_time" content="2016-03-04T10:00:00-07:00"/>
+
+<meta property="article:modified_time" content="2016-03-04T10:00:00-07:00"/>
+
+
+
+
+
+
+
+
+
+
+
+        
+<meta itemprop="name" content="Why Laravel? Why Now?">
+<meta itemprop="description" content="My journey to Laravel, why it fits my needs, and why it may or may not be right for your next project.">
+
+
+<meta itemprop="datePublished" content="2016-03-04T10:00:00-07:00" />
+<meta itemprop="dateModified" content="2016-03-04T10:00:00-07:00" />
+<meta itemprop="wordCount" content="1900">
+
+
+
+<meta itemprop="keywords" content="opinion,personal,Laravel,getting started," />
+
+        
+
+        
+
+        
+        
+            
+        
+
+        
+        
+            <link rel="stylesheet" href="/css/google-font.css" />
+            <link rel="stylesheet" href="/css/font-awesome.min.css" />
+            <link rel="stylesheet" href="/css/main.css" />
+            <link rel="stylesheet" href="/css/add-on.css" />
+            <link rel="stylesheet" href="/css/monokai-sublime.css">
+        
+
+        
+
+        
+        
+        
+            
+<script>
+var doNotTrack = false;
+if (!doNotTrack) {
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+	ga('create', 'UA-78325407-1', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+
+        
+
+    </head>
+
+    
+    <body class="post">
+    
+
+        
+        <div id="wrapper">
+
+    
+    
+<header id="header">
+    
+        <h1><a href="/">Benjamin Listwon</i></a></h1>
+    
+
+    <nav class="links">
+        <ul>
+            
+                <li>
+                    <a href="/blog">
+                        Blog
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/archive">
+                        Archive
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/resource">
+                        Resources
+                    </a>
+                </li>
+            
+                <li>
+                    <a href="/about">
+                        About
+                    </a>
+                </li>
+            
+        </ul>
+    </nav>
+    <nav class="main">
+        <ul>
+            
+            <li id="share-nav" class="share-menu" style="display:none;">
+                <a class="fa-share-alt" href="#share-menu">Share</a>
+            </li>
+            
+            <li class="search">
+                <a class="fa-search" href="#search">Search</a>
+                <form id="search" method="get" action="//google.com/search">
+                    <input type="text" name="q" placeholder="Search" />
+                    <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+                </form>
+            </li>
+            <li class="menu">
+                <a class="fa-bars" href="#menu">Menu</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+<section id="menu">
+
+    
+        <section>
+            <form class="search" method="get" action="//google.com/search">
+                <input type="text" name="q" placeholder="Search" />
+                <input type="hidden" name="q" value="site:https://benjaminlistwon.com/">
+            </form>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                
+                    <li>
+                        <a href="/blog">
+                            <h3>
+                                
+                                Blog
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/archive">
+                            <h3>
+                                
+                                Archive
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/resource">
+                            <h3>
+                                
+                                Resources
+                            </h3>
+                        </a>
+                    </li>
+                
+                    <li>
+                        <a href="/about">
+                            <h3>
+                                
+                                About
+                            </h3>
+                        </a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        <section>
+            <ul class="links">
+                <header>
+                    <h3>Recent Posts</h3>
+                </header>
+                
+                    
+                
+
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/"><p>Strategies for extending Vue</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/"><p>Vuex Chat Part 2</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/"><p>Data Flow in Vue and Vuex</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/hooray-for-hugo/"><p>Hooray for Hugo!</p></a>
+                    </li>
+                
+                    <li>
+                        <a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/"><p>Short Order Vue: A Vue 2.0 App</p></a>
+                    </li>
+                
+            </ul>
+        </section>
+
+    
+        
+</section>
+
+    
+    <div id="main">
+        
+        
+        <article class="post">
+    <header>
+    <div class="title">
+        
+            <h2><a href="https://benjaminlistwon.com/blog/why-laravel-why-now/">Why Laravel? Why Now?</a></h2>
+            
+        
+        
+        
+            <p>My journey to Laravel, why it fits my needs, and why it may or may not be right for your next project.</p>
+        
+    </div>
+    <div class="meta">
+        
+            
+        
+
+        <time class="published"
+            datetime='2016-03-04'>
+            March 4, 2016</time>
+        
+        
+            <p>9 minute read</p>
+        
+            <p class="subscribe-bug"><a href="#subscribe"><i class="fa fa-newspaper-o">&nbsp;</i>Subscribe</a></p>
+    </div>
+</header>
+
+
+    <section id="social-share">
+        <ul class="icons">
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f&text=Why%20Laravel%3f%20Why%20Now%3f&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f&title=Why%20Laravel%3f%20Why%20Now%3f"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f&title=Why%20Laravel%3f%20Why%20Now%3f"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f&title=Why%20Laravel%3f%20Why%20Now%3f"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+    
+    
+
+    <div id="content">
+        
+
+<p><em>(Update: Can&rsquo;t believe I forgot Laracasts when I wrote about the <a href="#ecosystem">Laravel ecosystem</a> below.)</em></p>
+
+<p>First, a confession. I’ve only been doing “serious” Laravel development for about four or five weeks now.</p>
+
+<p>In fact, it has been about a decade since I did any serious PHP development at all.</p>
+
+<p>I’m still getting my hands dirty digging through how Laravel works, and I’m certainly a way off from “mastery” of the framework, but the single best way to learn a new language, technology or framework is to have a project, a timeline, and to just get cracking.</p>
+
+<p>So yeah, with that, let’s continue.</p>
+
+<h2 id="let-s-take-a-step-back">Let&rsquo;s Take A Step Back</h2>
+
+<p>Ages ago (1998 to be exact), PHP was the first language I learned (after JavaScript) as I realized how crucial it was for a designer to be fluent in the development side of things. Not only was it relatively easy to pick up, it was also the type of language that fed curiosity by gently bumping up against databases, caching, OOP and more.</p>
+
+<p>As time went on, I ended up working on problems that PHP was not well-suited to solve. And so, I shifted to Python, where I spent the last decade or so.</p>
+
+<p>Python could solve diverse problems, where PHP felt like the language you built a website with. That diversity meant that my own growth could expand as well, taking on larger problems, greater challenges and, crucially, I could keep learning.</p>
+
+<p>Python, too, has its practical limits. A close friend and unofficial mentor introduced me to Go. As a language, Go has loads of appeal.</p>
+
+<p><em>(<a href="http://www.moovweb.com/blog/survival-of-the-fittest/">This article on Moovweb</a> is eerily similar to my own journey, and does a much better job explaining it. If anyone knows who the author is, <a href="mailto:ben@benjaminlistwon.com">let me know</a> and I’ll add a credit here.)</em></p>
+
+<p>But as I fiddled with Go I realized I had, at some point, moved too far away from doing the things I liked. Large, challenging problems provide tremendous reward when you tackle them, but I missed being at the nexus of developing a product and watching a  person use it. I missed the human aspect of development.</p>
+
+<p>Some might call this the interface, or UX, or HCI or whatever, I simply think of it as <strong>the goal</strong>.</p>
+
+<p>It is a goal we all share as makers, whether you make toboggans, websites or artisan cocktails. It is the pride in the craft, the journey and the moment when someone has an actual emotional reaction to the thing you’ve built.</p>
+
+<h2 id="where-s-this-going">Where’s This Going?</h2>
+
+<p>“Hey Ben,” I hear you saying, “What’s all this got to do with Laravel, eh?”</p>
+
+<p>The short answer: I wanted to get back to just building and shipping products.</p>
+
+<p>Over the last few years I&rsquo;ve gotten comfortable building sites in Python and Flask. But, there&rsquo;s still a lot of boilerplate work you have to do to get a Flask app out the door.</p>
+
+<p><em>(In theory I could have collected all that work into a repository I could reuse from one project to another, but I&rsquo;m not really clever enough to get it all abstracted appropriately.)</em></p>
+
+<p>There was too much junk keeping me from actual making. I didn’t want to maintain my own framework, spend all day writing a database abstraction layer or wrestle with nginx configurations.</p>
+
+<p>Finally, last November, I started to look around to see if someone had done that work on top of Flask, and I started getting some Laravel mentions in my search results. When 5.2 shipped in late December, I put a pot of coffee on, buckled up and took some time to go down the rabbit hole.</p>
+
+<p><em>(BTW, If you looked at Larval in the 4.x days, as I did once, the 5.x series, especially 5.2, are night-and-day different. Go check it out.)</em></p>
+
+<p>Here’s what stood out, and led to my conversion this past January.</p>
+
+<h2 id="expressivity-expressiveness">Expressivity / Expressiveness</h2>
+
+<p>These words kept popping up, and, to be honest, I was skeptical at first. PHP itself is notoriously “unexpressive” in nature. Some folks have actually <a href="http://redmonk.com/dberkholz/2013/03/25/programming-languages-ranked-by-expressiveness/">quantified the expressivity</a> of common languages, and <a href="http://hammerprinciple.com/therighttool/statements/this-language-is-expressive">PHP does not fare well</a>.</p>
+
+<p>The best summary of expressivity I have seen is from the above article from Moovweb,</p>
+
+<blockquote>
+<p>Design patterns exist to compensate for a programming language&rsquo;s lack of expressiveness.</p>
+</blockquote>
+
+<p>Crucially, this speaks more to a developer’s ability to <em>be expressive</em> in a language than the expressivity (or lack thereof) of a language’s syntax.</p>
+
+<p>Robin Winslow has a great post about <a href="https://robinwinslow.uk/2013/11/22/expressive-coding/">writing expressive code</a> that speaks to this notion.</p>
+
+<p>A great example of the expressivity of Laravel comes the the <a href="https://laravel.com/docs/5.2/eloquent-collections#available-methods">variety of handy methods</a> that collections provide. Coming from Python, so many of these are comfortably familiar (<code>zip</code>, <code>slice</code>, <code>map</code>), that the transition was a lot easier.</p>
+
+<p>And some are great additions, like <code>toJson</code> being available without needing to invoke a separate method like <code>json_encode($collection)</code>. The latter is still readable for sure, but the encapsulation of that expression in a callable property is, for me, far more preferable.</p>
+
+<p>The fact that <code>all</code> will give you back more than one object and <code>first</code> will give you a single object is so subtly intuitive that you don’t even think about the ability to iterate over the former and not the latter.</p>
+
+<p>Delivering on that implicit expectation is expressivity at its finest.</p>
+
+<h2 id="reducing-complexity">Reducing Complexity</h2>
+
+<p>Not entirely unrelated to the above, simplifying complex operations is a boon to development time and to the legibility of a developer’s intent.</p>
+
+<p>Not that all code should be over-simplified, but that, where possible, we should strive to reduce how much time there is between someone else reading our code and understanding what it does.</p>
+
+<p>Perhaps the clearest example of what you get out of the box comes from being able to work easily with Eloquent relationships. Consider this example <a href="https://laravel.com/docs/5.2/eloquent-relationships#many-to-many">from the docs</a>:</p>
+
+<p>$roles = App\User::find(1)-&gt;roles()-&gt;orderBy(&lsquo;name&rsquo;)-&gt;get();</p>
+
+<p>There’s <em>a lot</em> of code under the hood to make this work as expected. That’s code I’ve written before in Python, and that I’ve experienced (unfavorably) in lots of other ORMs.</p>
+
+<p>Sure, there’s still some part of my brain that is screaming about more complex SQL relationships and the ability to control those statements. But that stuff isn’t what gets a product out the door and in front of people that will give you feedback and help you grow to the point where any of that matters in the first place.</p>
+
+<h2 id="developer-friendly-integrations">Developer Friendly Integrations</h2>
+
+<p>Whether it is an integration with something like Redis or memcache, or with a third party service such as Stripe or Rackspace, Laravel&rsquo;s framework ships with API wrappers that developers love to use. And, almost always, if the integration you&rsquo;re looking for isn&rsquo;t included in the Laravel core, it is easily obtained from Github or <a href="http://packalyst.com/">Packalyst</a>.</p>
+
+<p>For example, <a href="http://blog.mandrill.com/important-changes-to-mandrill.html">given the recent news about Mandrill</a>, it is great comfort to know you can use the other builtin interface to Mailgun, or go out and find packages for Postmark, Sendgrid and more.</p>
+
+<p>Other frameworks boast loads of integrations as well, of course. But one thing that sets Laravel apart is the consistency of working with third party APIs as a result of the service container and Service Providers.</p>
+
+<p>When writing code for Flask, I often had to learn about the way a particular module was written, in addition to the service&rsquo;s API itself.</p>
+
+<p>In Laravel, I find I am spending much less time negotiating a given service provider&rsquo;s interface, allowing me to get an integration up and running much more quickly.</p>
+
+<p>That consistency comes form the fusion of a few things:
+1. A well documented, well tested service provider framework
+2. A strong, approachable community that support the framework, its packages, and those that use them
+3. Relentless consistency provided by shared underlying objects in the framework</p>
+
+<p>The combined net effect of that consistency and not having to learn/relearn a whole new interface with each integration, coupled with choices developers already use, means that the time it takes to integrate is not compounded exponentially with each new integration.</p>
+
+<p>Think about how much time and effort you have sunk into wrapper X for such-and-such an API. Bleh.</p>
+
+<p><a name="ecosystem"></a></p>
+
+<h2 id="the-laravel-ecosystem">The Laravel Ecosystem</h2>
+
+<p>Using <a href="https://laravel.com/docs/5.2/homestead">Homestead</a> to manage virtual environments on your development box could not be easier. I remember when configuring and using a local VM was a configuration nightmare and a resource luxury all at once. Now, I don’t know how I could get things done without <a href="https://www.vagrantup.com/">Vagrant</a> and <a href="https://www.virtualbox.org/wiki/VirtualBox">VirtualBox</a>.</p>
+
+<p>Together Laravel, <a href="https://forge.laravel.com">Forge</a> and <a href="https://envoyer.io/">Envoyer</a> make the process of development to deployment as quick and painless as possible. I cannot understate how great this entire process is. Couple the deployment process with the fact that it will deploy to AWS, DigitalOcean and/or Linode, and you have great options regardless of your skill level or price point.</p>
+
+<p><a href="https://lumen.laravel.com/">Lumen</a> is a pared down version of Laravel that makes API creation pretty much dead simple. It compares pretty directly with something like <a href="https://flask-restless.readthedocs.org/en/stable/">flask-restless</a> for those also coming from the Flask world. One bonus though is that code written for Lumen is portable to Laravel proper, should you need to do so, because the underlying framework is shared.</p>
+
+<p><a href="https://ottomatik.io/">Ottomatik</a> (“testimonialized” by Taylor Orwell) makes backups of your machine instances, and your data, dead simple.</p>
+
+<p><a href="https://laracasts.com/">Laracasts</a> and the <a href="https://laracasts.com/discuss">discussion forums there</a> should be your first stop (often the only stop you&rsquo;ll need) if you are looking for details on the framework, how to solve practical problems with it, or just about anything in the Laravel world. <a href="https://twitter.com/jeffrey_way">Jeffrey Way</a> does an incredible job with every video he puts out, and the entire site is an invaluable resource for community building as well. <em>(Oh, and <a href="https://twitter.com/taylorotwell">Taylor Otwell</a> has been known to put together some videos as well ;-)</em></p>
+
+<p>And the list kind of goes on and on.</p>
+
+<p>I will, however, acknowledge there are some things that still need manual doing / tweaking.</p>
+
+<p>For example, the default Forge deployment will install and run MySQL, postgres, memcache and redis on top of nginx, php-fpm, etc. It is unlikely you will want both MySQL and postgres, for example, and also quite possible you won’t want either on the same machine as your web server.</p>
+
+<p>Forge allows you to use deployment scripts to take care of some of these tasks, but you still have to do some digging on <a href="http://forgerecipes.com/recipes">Forge Recipes</a> or similar.</p>
+
+<p>Some things, like creating a VPN, you just kind of have to do yourself though. Which is fine, because the aim of Forge or Envoyer is not to cover every situation, but the most common ones. And for that, they are perfect.</p>
+
+<h2 id="ideas-to-reality">Ideas To Reality</h2>
+
+<p>All of the above seek to minimize the time from idea to functioning product. That means developers, designers and product creators of all stripes can focus more on the quality of the product they are making, and worry far less about the particulars of how it gets done.</p>
+
+<p>I’m certain that advocates for Rails or Django or Cake or whatever can make similar (or better) points in support of their framework of choice. And that is fine. This post is not intended as a mandate for Laravel, but as documentation of the beginning of a new journey for me both technically and professionally.</p>
+
+<p>For me personally, Laravel gets me back to that critical point where a product gets used by people. It challenges me to deliver something that will have a meaningful, direct impact for someone in their daily life.</p>
+
+<p>And that is a challenge I’ll gladly take up any day.</p>
+
+    </div>
+
+    <footer>
+        
+    
+
+        
+
+    
+    <ul class="tags">
+    
+        <li><a href="/tags/opinion">opinion</a></li>
+    
+        <li><a href="/tags/personal">personal</a></li>
+    
+        <li><a href="/tags/laravel">Laravel</a></li>
+    
+        <li><a href="/tags/getting-started">getting started</a></li>
+    
+    </ul>
+    
+
+    </footer>
+</article>
+<ul class="actions pagination">
+    
+        <li><a href="https://benjaminlistwon.com/blog/in-brief-003-mysql-backups-on-forge/"
+                class="button big previous">In Brief #003: MySQL Backups On Forge</a></li>
+    
+
+    
+        <li><a href="https://benjaminlistwon.com/blog/in-brief-004-mysql-backups-on-forge-part-2/"
+                class="button big next">In Brief #004: MySQL Backups On Forge, Part 2</a></li>
+    
+</ul>
+
+
+
+
+        <section id="share-menu">
+    <section id="social-share-nav">
+        <ul class="links">
+            <header>
+                <h3>Share this post <i class="fa fa-smile-o"></i></h3>
+            </header>
+            
+
+
+<li><a href="//twitter.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f&text=Why%20Laravel%3f%20Why%20Now%3f&via=benjaminlistwon"  class="share-btn twitter">
+    <i class="fa fa-twitter"></i>
+    <p>Twitter</p>
+</a></li>
+
+
+<li><a href="//plus.google.com/share?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f"  class="share-btn google-plus">
+    <i class="fa fa-google-plus"></i>
+    <p>Google+</p>
+</a></li>
+
+
+<li><a href="//www.facebook.com/sharer/sharer.php?u=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f"  class="share-btn facebook">
+    <i class="fa fa-facebook"></i>
+    <p>Facebook</p>
+</a></li>
+
+
+<li><a href="//reddit.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f&title=Why%20Laravel%3f%20Why%20Now%3f"  class="share-btn reddit">
+    <i class="fa fa-reddit-alien"></i>
+    <p>Reddit</p>
+</a></li>
+
+
+<li><a href="//www.linkedin.com/shareArticle?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f&title=Why%20Laravel%3f%20Why%20Now%3f"  class="share-btn linkedin">
+    <i class="fa fa-linkedin"></i>
+    <p>LinkedIn</p>
+</a></li>
+
+
+<li><a href="//www.stumbleupon.com/submit?url=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f&title=Why%20Laravel%3f%20Why%20Now%3f"  class="share-btn stumbleupon">
+    <i class="fa fa-stumbleupon"></i>
+    <p>StumbleUpon</p>
+</a></li>
+
+
+<li><a href="mailto:?subject=Check out this post by &body=https%3a%2f%2fbenjaminlistwon.com%2fblog%2fwhy-laravel-why-now%2f"  class="share-btn email">
+    <i class="fa fa-envelope"></i>
+    <p>Email</p>
+</a></li>
+
+        </ul>
+    </section>
+</section>
+
+    </div>
+    
+<section id="sidebar">
+
+    
+    <section id="intro">
+        
+        
+            
+                <a href="/" class="logo"><img src="/img/logo.jpg" alt="Benjamin Listwon" /></a>
+            
+        
+        
+            <header>
+                <h2></h2>
+                <p>A blog about building digital products, crafting lasting experiences, learning new technology, and the mistakes and discoveries I make along the way.</p>
+            </header>
+        
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+    </section>
+
+
+    
+    <section class="book-promo sidebar-book-promo">
+    <h3>Vue.js In Action</h3>
+    <figure>
+        <a href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">
+            <img src="/img/vuejs-in-action-cover.png" alt="Vue.js In Action Cover Image">
+        </a>
+    </figure>
+    <p>I wrote a book about Vue.js along with amazing developer and author <a href="https://twitter.com/ErikCH">Erik Hanchett</a>.</p>
+    <p><a class="button" href="https://www.manning.com/books/vue-js-in-action?a_aid=VueJSinActionBen&a_bid=a20e76bb" title="Vue.js In Action at Manning.com">Grab a Copy</a></p>
+</section>
+
+
+    
+    <a name="subscribe"></a>
+    <section class="mcform-wrapper">
+    <form action="http://newsletter.benjaminlistwon.com/add_subscriber" method="post" name="revue-form">
+    <div class="mcform">
+        <h3>Subscribe To The Newsletter</h3>
+        <p>Thanks for taking the time to visit! If you liked this, or you want to
+            follow along as I learn, build and share, just sign up below. 
+            I promise to keep it low-key and infrequent. Cheers!</p>
+    
+        <p class="mcform-inputs">
+            <input class="revue-form-field" placeholder="thank@you.com" type="email" name="member[email]" >
+            <input type="submit" value="Subscribe" name="member[subscribe]">
+        </p>
+    </div>
+    </form>
+</section>
+
+
+
+
+    
+    <section id="recent-posts">
+        <ul class="posts">
+            <header>
+                <h3>Recent Posts</h3>
+            </header>
+            
+                
+            
+
+            
+                
+            
+
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/strategies-for-extending-vue/">Strategies for extending Vue</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-11-04'>
+                                November 4, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/vuex-chat-part-2/">Vuex Chat Part 2</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-28'>
+                                September 28, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/data-flow-in-vue-and-vuex/">Data Flow in Vue and Vuex</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-21'>
+                                September 21, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/hooray-for-hugo/">Hooray for Hugo!</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-19'>
+                                September 19, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+                <li>
+                    <article>
+                        <header>
+                            <h3><a href="https://benjaminlistwon.com/blog/short-order-vue-a-vue-20-app/">Short Order Vue: A Vue 2.0 App</a></h3>
+                            
+                                
+                            
+                            <time class="published" datetime=
+                                '2016-09-16'>
+                                September 16, 2016</time>
+                        </header>
+                    </article>
+                </li>
+            
+
+            
+                <li>
+                    <ul class="actions">
+                        <li><a href=
+                        
+                            /blog/
+                        
+                        class="button">View more posts</a></li>
+                    </ul>
+                </li>
+            
+        </ul>
+    </section>
+
+    
+    
+    
+    
+    
+    
+
+    
+    
+    <section class="blurb">
+        <h2>About</h2>
+        <p>I am a designer, developer, and proud father, living in the greater Seattle area. I have spent the last two decades building apps, websites and software with some terrific folks, and now I am striking out on my own.</p>
+
+        <ul class="actions">
+            <li><a href="/about/" class="button">Learn More</a></li>
+        </ul>
+    </section>
+    
+
+    
+    <section id="footer">
+        <header>
+            <p class="followme">Elsewhere</p>
+        </header>
+        <ul class="icons">
+            
+            
+                
+<li><a href="//github.com/benjaminlistwon"  title="GitHub" class="fa fa-github"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//flickr.com/photos/nettles"  title="Flickr" class="fa fa-flickr"></a></li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li><a href="//pinterest.com/benjaminlistwon"  title="Pinterest" class="fa fa-pinterest"></a></li>
+
+
+
+
+
+
+
+<li><a href="//twitter.com/benjaminlistwon"  title="Twitter" class="fa fa-twitter"></a></li>
+
+
+
+<li><a href="mailto:ben@benjaminlistwon.com" title="Email" class="fa fa-envelope"></a></li>
+
+
+            
+        </ul>
+
+        <p class="copyright">
+            &copy; Benjamin Listwon.<br/>
+            Design: <a href="http://html5up.net" >HTML5 UP</a><br/>
+            Ported by <a href="//github.com/jpescador" >Julio Pescador</a><br/>
+            Powered by <a href="//gohugo.io" >Hugo</a>
+        </p>
+    </section>
+
+</section>
+
+            </div>
+        <a id="back-to-top" href="#" class="fa fa-arrow-up fa-border fa-2x"></a>
+        
+
+        
+        
+            
+        
+
+        
+        
+            <script src="/js/jquery.min.js"></script>
+            <script src="/js/skel.min.js"></script>
+            <script src="/js/util.js"></script>
+            <script src="/js/main.js"></script>
+            <script src="/js/backToTop.js"></script>
+            <script src="/js/highlight.pack.js"></script>
+        
+
+        
+
+            
+            <script>hljs.initHighlightingOnLoad();</script>
+            
+    </body>
+</html>
+

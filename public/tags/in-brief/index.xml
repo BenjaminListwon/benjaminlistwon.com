@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>In Brief on Benjamin Listwon</title>
+    <link>https://benjaminlistwon.com/tags/in-brief/</link>
+    <description>Recent content in In Brief on Benjamin Listwon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Apr 2016 10:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://benjaminlistwon.com/tags/in-brief/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>In Brief #008: The Case Of The Disappearing Id Values</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-008-the-case-of-the-disappearing-id-values/</link>
+      <pubDate>Thu, 07 Apr 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-008-the-case-of-the-disappearing-id-values/</guid>
+      <description>It&amp;rsquo;s midnight, and for the past hour I’ve been trying to figure out why I was unable to echo the correct id values for rows of data in my blade templates. I thought I was going crazy. Here’s the relevant template snippet, and its output:
+feed/index.blade.php &amp;lt;ul&amp;gt; @foreach ($feeds as $feed) &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/feed/{{ $feed-&amp;gt;id }}&amp;quot;&amp;gt;{{ $feed-&amp;gt;title }}&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; @endforeach &amp;lt;/ul&amp;gt;  Output &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/feed/0&amp;quot;&amp;gt;BBC News - Business&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt;  There is obviously a value in the object sent to the template, which meant the id attribute was present at least.</description>
+    </item>
+    
+    <item>
+      <title>In Brief #007: An Update On MySQL &#43; JSON</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-007-an-update-on-mysql-json/</link>
+      <pubDate>Wed, 06 Apr 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-007-an-update-on-mysql-json/</guid>
+      <description>After publishing Part 2 of a series on JSON data in MySQL last week, a few folks reached out to me with some great feedback. Not only that, but they shared some resources I thought would be beneficial to pass on.
+Morgan Tocker, the Product Manager that works on JSON support in MySQL pointed me toward the MySQL Server Team’s blog, which is more approachable than the docs for topical matters and directed discussion.</description>
+    </item>
+    
+    <item>
+      <title>In Brief #006: Tokenizing Ids</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-006-tokenizing-ids/</link>
+      <pubDate>Wed, 16 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-006-tokenizing-ids/</guid>
+      <description>As I was designing an API this last week, I decided that I wanted to obfuscate object ids in the JSON messages I sent back and forth. To do so, I wanted to use the terrific Hashids library, so I sniffed out this Laravel wrapper for it.
+composer.json &amp;quot;require&amp;quot;: { ... &amp;quot;hashids/hashids&amp;quot;: &amp;quot;1.0.6&amp;quot;, &amp;quot;vinkla/hashids&amp;quot;: &amp;quot;2.2.2&amp;quot;, ... }  Note: You should peg your versions in Composer so you avoid incompatible hashes down the road, especially if you store computed hashes for use or comparison later.</description>
+    </item>
+    
+    <item>
+      <title>In Brief #005: Updating Cartalyst Tagged Models</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-005-updating-cartalyst-tagged-models/</link>
+      <pubDate>Fri, 11 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-005-updating-cartalyst-tagged-models/</guid>
+      <description>I was fiddling with the blog over the last few days, updating the look-and-feel a little bit, as well as doing some housekeeping on the back end. One thing I wanted to do was migrate my posts from an old model PostModel to just plain Post. (I know, what a horrible name I started with. I have learned!)
+This was no big deal, as I pretty much just had to do a quick find-and-replace for App\PostModel in my code.</description>
+    </item>
+    
+    <item>
+      <title>In Brief #004: MySQL Backups On Forge, Part 2</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-004-mysql-backups-on-forge-part-2/</link>
+      <pubDate>Mon, 07 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-004-mysql-backups-on-forge-part-2/</guid>
+      <description>If you read my last In Brief post, you may have tried setting up a cron job to run mysqldump nightly, gone back to check the results the following day and found a zero byte file where you expected to see a dumpfile.
+-rw-rw-r-- 1 forge forge 0 Mar 5 00:00 dump-nightly.sql  Don&amp;rsquo;t worry! The backup still ran, but Forge does some auto-magic output redirection that had me guessing for a little while.</description>
+    </item>
+    
+    <item>
+      <title>In Brief #003: MySQL Backups On Forge</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-003-mysql-backups-on-forge/</link>
+      <pubDate>Tue, 01 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-003-mysql-backups-on-forge/</guid>
+      <description>(Update: Forge auto-magically redirects cron job output to a job specific file, which means my cronjob below doesn&amp;rsquo;t quite do what is expected. I&amp;rsquo;ve written a new post about how this affects this strategy because it made more sense than trying to correct/update this one.)
+Shifting gears for a second, let’s chat about backups. I’m using Laravel Forge to run deployments on top of Linode servers. Both are ah-may-zing!</description>
+    </item>
+    
+    <item>
+      <title>In Brief #002: Updating Rows In A Migration</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-002-updating-rows-in-a-migration/</link>
+      <pubDate>Mon, 29 Feb 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-002-updating-rows-in-a-migration/</guid>
+      <description>Laravel Migrations are a great way to manage your database tables. If you add Doctrine to your composer dependencies, then you can easily alter a table’s columns, indices and loads of other properties, without changing the way you write migrations.
+Sometimes, when you alter a table to add a new column, you want to populate it with values. There’s a couple ways to do this for basic operations.
+ If your column will allow a default value, you can add it as part of the migration itself $table-&amp;gt;string(&#39;colName&#39;)-&amp;gt;default(&#39;foo&#39;); You can use a Seeder to insert rows, or to run just about any query you’d like.</description>
+    </item>
+    
+    <item>
+      <title>In Brief #001: Routing With CORS</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-001-routing-with-cors/</link>
+      <pubDate>Thu, 25 Feb 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-001-routing-with-cors/</guid>
+      <description>If you’re building an API for your app, chances are you have to build in support for CORS. Doing so in Laravel is pretty straightforward, especially if you snag the laravel-cors package from Barry van den Heuvel.
+After adding laravel-cors to your project, you can just add route code like any of these:
+Route::post(&#39;train&#39;, function() { return &#39;Choo, Choo!&#39;; })-&amp;gt;middleware(&#39;cors&#39;); Route::post(&#39;boat&#39;, [&#39;middleware&#39; =&amp;gt; &#39;cors&#39;, function() { return &#39;Hooooonk!&#39;; }]); Route::group([&#39;middleware&#39; =&amp;gt; &#39;cors&#39;], function($router){ $router-&amp;gt;post(&#39;car&#39;, function() { return &#39;Meep, Meep!</description>
+    </item>
+    
+  </channel>
+</rss>

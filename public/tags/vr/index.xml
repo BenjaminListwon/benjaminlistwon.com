@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VR on Benjamin Listwon</title>
+    <link>https://benjaminlistwon.com/tags/vr/</link>
+    <description>Recent content in VR on Benjamin Listwon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 26 May 2016 10:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://benjaminlistwon.com/tags/vr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>The New, New Media</title>
+      <link>https://benjaminlistwon.com/blog/the-new-new-media/</link>
+      <pubDate>Thu, 26 May 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/the-new-new-media/</guid>
+      <description>Here&amp;rsquo;s the thing about virtual reality (VR) and augmented reality (AR). (Collectively I will call them V/AR for now.)
+If your expectation is something like— “But when I see The Weeknd live, I can feel the bass.” or “Part of actually being in Paris is the noise, the smell, the sound.” or “But I can’t touch the things I see.” —then you should embrace those real experiences as they are, in the present, in all their glory.</description>
+    </item>
+    
+  </channel>
+</rss>

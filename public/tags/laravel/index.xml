@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Laravel on Benjamin Listwon</title>
+    <link>https://benjaminlistwon.com/tags/laravel/</link>
+    <description>Recent content in Laravel on Benjamin Listwon</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Apr 2016 10:00:00 -0700</lastBuildDate>
+    
+	<atom:link href="https://benjaminlistwon.com/tags/laravel/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>In Brief #008: The Case Of The Disappearing Id Values</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-008-the-case-of-the-disappearing-id-values/</link>
+      <pubDate>Thu, 07 Apr 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-008-the-case-of-the-disappearing-id-values/</guid>
+      <description>It&amp;rsquo;s midnight, and for the past hour I’ve been trying to figure out why I was unable to echo the correct id values for rows of data in my blade templates. I thought I was going crazy. Here’s the relevant template snippet, and its output:
+feed/index.blade.php &amp;lt;ul&amp;gt; @foreach ($feeds as $feed) &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/feed/{{ $feed-&amp;gt;id }}&amp;quot;&amp;gt;{{ $feed-&amp;gt;title }}&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; @endforeach &amp;lt;/ul&amp;gt;  Output &amp;lt;ul&amp;gt; &amp;lt;li&amp;gt;&amp;lt;a href=&amp;quot;/feed/0&amp;quot;&amp;gt;BBC News - Business&amp;lt;/a&amp;gt;&amp;lt;/li&amp;gt; &amp;lt;/ul&amp;gt;  There is obviously a value in the object sent to the template, which meant the id attribute was present at least.</description>
+    </item>
+    
+    <item>
+      <title>In Brief #006: Tokenizing Ids</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-006-tokenizing-ids/</link>
+      <pubDate>Wed, 16 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-006-tokenizing-ids/</guid>
+      <description>As I was designing an API this last week, I decided that I wanted to obfuscate object ids in the JSON messages I sent back and forth. To do so, I wanted to use the terrific Hashids library, so I sniffed out this Laravel wrapper for it.
+composer.json &amp;quot;require&amp;quot;: { ... &amp;quot;hashids/hashids&amp;quot;: &amp;quot;1.0.6&amp;quot;, &amp;quot;vinkla/hashids&amp;quot;: &amp;quot;2.2.2&amp;quot;, ... }  Note: You should peg your versions in Composer so you avoid incompatible hashes down the road, especially if you store computed hashes for use or comparison later.</description>
+    </item>
+    
+    <item>
+      <title>In Brief #005: Updating Cartalyst Tagged Models</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-005-updating-cartalyst-tagged-models/</link>
+      <pubDate>Fri, 11 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-005-updating-cartalyst-tagged-models/</guid>
+      <description>I was fiddling with the blog over the last few days, updating the look-and-feel a little bit, as well as doing some housekeeping on the back end. One thing I wanted to do was migrate my posts from an old model PostModel to just plain Post. (I know, what a horrible name I started with. I have learned!)
+This was no big deal, as I pretty much just had to do a quick find-and-replace for App\PostModel in my code.</description>
+    </item>
+    
+    <item>
+      <title>GitHub Third Party Access and Forge</title>
+      <link>https://benjaminlistwon.com/blog/github-third-party-access-and-forge/</link>
+      <pubDate>Fri, 11 Mar 2016 10:00:00 -0600</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/github-third-party-access-and-forge/</guid>
+      <description>Yesterday, I created a GitHub organization so that I could house all of the projects my LLC is working on under one roof. The re-homing process from my individual GitHub user account to the organization could not have been smoother.
+Once the repositories were in place, I went to spin up a new Forge instance for a new site I was working on. When I tried to deploy from GitHub, I got this error:</description>
+    </item>
+    
+    <item>
+      <title>In Brief #004: MySQL Backups On Forge, Part 2</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-004-mysql-backups-on-forge-part-2/</link>
+      <pubDate>Mon, 07 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-004-mysql-backups-on-forge-part-2/</guid>
+      <description>If you read my last In Brief post, you may have tried setting up a cron job to run mysqldump nightly, gone back to check the results the following day and found a zero byte file where you expected to see a dumpfile.
+-rw-rw-r-- 1 forge forge 0 Mar 5 00:00 dump-nightly.sql  Don&amp;rsquo;t worry! The backup still ran, but Forge does some auto-magic output redirection that had me guessing for a little while.</description>
+    </item>
+    
+    <item>
+      <title>Why Laravel? Why Now?</title>
+      <link>https://benjaminlistwon.com/blog/why-laravel-why-now/</link>
+      <pubDate>Fri, 04 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/why-laravel-why-now/</guid>
+      <description>(Update: Can&amp;rsquo;t believe I forgot Laracasts when I wrote about the Laravel ecosystem below.)
+First, a confession. I’ve only been doing “serious” Laravel development for about four or five weeks now.
+In fact, it has been about a decade since I did any serious PHP development at all.
+I’m still getting my hands dirty digging through how Laravel works, and I’m certainly a way off from “mastery” of the framework, but the single best way to learn a new language, technology or framework is to have a project, a timeline, and to just get cracking.</description>
+    </item>
+    
+    <item>
+      <title>In Brief #003: MySQL Backups On Forge</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-003-mysql-backups-on-forge/</link>
+      <pubDate>Tue, 01 Mar 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-003-mysql-backups-on-forge/</guid>
+      <description>(Update: Forge auto-magically redirects cron job output to a job specific file, which means my cronjob below doesn&amp;rsquo;t quite do what is expected. I&amp;rsquo;ve written a new post about how this affects this strategy because it made more sense than trying to correct/update this one.)
+Shifting gears for a second, let’s chat about backups. I’m using Laravel Forge to run deployments on top of Linode servers. Both are ah-may-zing!</description>
+    </item>
+    
+    <item>
+      <title>In Brief #002: Updating Rows In A Migration</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-002-updating-rows-in-a-migration/</link>
+      <pubDate>Mon, 29 Feb 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-002-updating-rows-in-a-migration/</guid>
+      <description>Laravel Migrations are a great way to manage your database tables. If you add Doctrine to your composer dependencies, then you can easily alter a table’s columns, indices and loads of other properties, without changing the way you write migrations.
+Sometimes, when you alter a table to add a new column, you want to populate it with values. There’s a couple ways to do this for basic operations.
+ If your column will allow a default value, you can add it as part of the migration itself $table-&amp;gt;string(&#39;colName&#39;)-&amp;gt;default(&#39;foo&#39;); You can use a Seeder to insert rows, or to run just about any query you’d like.</description>
+    </item>
+    
+    <item>
+      <title>Adding Tags In Eloquent With Cartalyst</title>
+      <link>https://benjaminlistwon.com/blog/adding-tags-in-eloquent-with-cartalyst/</link>
+      <pubDate>Sat, 27 Feb 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/adding-tags-in-eloquent-with-cartalyst/</guid>
+      <description>When I was first building out the code for this blog, I gave some thought to how to add tagging. The Laravel Docs actually use tagging as an example of polymorphic relations. But then, over on his new jam Makers Clique, Scrivs mentioned a package called Cartalyst Tags which looked like it ticked all the boxes.
+After following the installation instructions, I added a tags field to my post forms:</description>
+    </item>
+    
+    <item>
+      <title>In Brief #001: Routing With CORS</title>
+      <link>https://benjaminlistwon.com/blog/in-brief-001-routing-with-cors/</link>
+      <pubDate>Thu, 25 Feb 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/in-brief-001-routing-with-cors/</guid>
+      <description>If you’re building an API for your app, chances are you have to build in support for CORS. Doing so in Laravel is pretty straightforward, especially if you snag the laravel-cors package from Barry van den Heuvel.
+After adding laravel-cors to your project, you can just add route code like any of these:
+Route::post(&#39;train&#39;, function() { return &#39;Choo, Choo!&#39;; })-&amp;gt;middleware(&#39;cors&#39;); Route::post(&#39;boat&#39;, [&#39;middleware&#39; =&amp;gt; &#39;cors&#39;, function() { return &#39;Hooooonk!&#39;; }]); Route::group([&#39;middleware&#39; =&amp;gt; &#39;cors&#39;], function($router){ $router-&amp;gt;post(&#39;car&#39;, function() { return &#39;Meep, Meep!</description>
+    </item>
+    
+    <item>
+      <title>Adding More Robust Ajax Detection In Laravel</title>
+      <link>https://benjaminlistwon.com/blog/adding-more-robust-ajax-detection-in-laravel/</link>
+      <pubDate>Wed, 17 Feb 2016 10:00:00 -0700</pubDate>
+      
+      <guid>https://benjaminlistwon.com/blog/adding-more-robust-ajax-detection-in-laravel/</guid>
+      <description>TL;DR The $request-&amp;gt;ajax() method does not detect XHR sent without an X-Requested-With header, so you’ll want to add the following to your own Request.php file (or whatever base Request class is used by your controllers).
+App/Http/Requests/Request.php &amp;lt;?php namespace App\Http\Requests; use Illuminate\Foundation\Http\FormRequest; abstract class Request extends FormRequest { public function ajax() { /* 1. Call the builtin method */ if ($this-&amp;gt;isXmlHttpRequest()) { return true; } /* 2. Then check the Content-Type */ $content_type = $this-&amp;gt;header(&#39;Content-Type&#39;); $allowable_types = array( &#39;application/json&#39;, &#39;application/javascript&#39;, ); if (in_array( strtolower($content_type), $allowable_types)) { return true; } /* 3.</description>
+    </item>
+    
+  </channel>
+</rss>
