@@ -233,7 +233,10 @@ ul.archive-list li {
 .book-promo .button {
   background: rgb(95, 203, 105);
   border: 1px solid rgb(91, 187, 99);
-  
+  font-size: 0.675em;
+  line-height: 4em;
+  height: 4em;
+  padding: 0 1.5em;
 }
 
 .book-promo .button:hover {
@@ -279,9 +282,20 @@ ul.archive-list li {
   background-color: transparent !important ;
 } 
 
+.banner-book-promo table {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 720px;
+}
+
 .banner-book-promo td {
   vertical-align: middle;
   padding: 0 1em;
+}
+
+.banner-book-promo tr td:nth-of-type(2) p {
+  /*text-align: center;*/
+  line-height: 1.6em;
 }
 
 .banner-book-promo tr td:last-child {
@@ -302,9 +316,26 @@ ul.archive-list li {
   font-weight: 900;
 }
 
+
 @media screen and (min-width: 520px) {
   .banner-book-promo .mini-link {
     display: none;
+  }
+  .banner-book-promo tr td:nth-of-type(2) {
+    font-size: 1.1em;
+  }
+}
+
+@media screen and (min-width: 740px) {
+  .banner-book-promo tr td:nth-of-type(2) {
+    font-size: 1.25em;
+  }
+
+  .book-promo .button {
+    font-size: 0.725em;
+    line-height: 4em;
+    height: 4em;
+    padding: 0 1.5em;
   }
 }
 

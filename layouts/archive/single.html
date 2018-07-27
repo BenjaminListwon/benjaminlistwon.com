@@ -4,6 +4,10 @@
 {{ partial "navbar" . }}
 
 <div id="main">
+
+  <!-- Book Promo -->
+  {{ partial "book-promo" . }}
+
   <article class="post archive">
     {{ $.Scratch.Set "h1" true }}
     {{ .Render "header" }}

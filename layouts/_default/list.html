@@ -4,6 +4,10 @@
     {{ partial "navbar" . }}
     <!-- Main -->
     <div id="main">
+
+        <!-- Book Promo -->
+        {{ partial "book-promo" . }}
+
         {{ $paginator := .Paginate (where .Site.Pages "Type" "post") }}
 
         {{ range .Paginator.Pages }}

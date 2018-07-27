@@ -21,8 +21,8 @@ googleAnalytics = "UA-78325407-1"
     # https://github.com/audreyr/favicon-cheat-sheet
     loadFavicon          = false
     faviconVersion       = ""
-    customCSS            = ["/css/site.min.css?v=2"]
-    customJS             = ["/js/site.min.js?v=2"]
+    customCSS            = ["/css/site.min.css?v=5"]
+    customJS             = ["/js/site.min.js?v=5"]
 
 [params.intro]
     header    = ""
