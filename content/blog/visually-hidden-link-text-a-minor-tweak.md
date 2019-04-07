@@ -10,7 +10,7 @@ linktitle = ""
 title = "Visually Hidden Link Text, A Minor Tweak"
 type = "post"
 tags = ["accessibility", "CSS", "HTML"]
-
+draft = true
 +++
 
 > The specific provisions of, or particular steps for implementing, a general plan, policy, or contract may be complicated, controversial, or unworkable.
