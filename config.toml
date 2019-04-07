@@ -1,7 +1,6 @@
 baseurl = "https://benjaminlistwon.com/"
 languageCode = "en-us"
 title = "Benjamin Listwon"
-theme = ""
 preserveTaxonomyNames = true
 paginate = 5
 disqusShortname = ""
@@ -19,8 +18,8 @@ googleAnalytics = "UA-78325407-1"
     includeReadingTime   = true
     loadFavicon          = false
     faviconVersion       = ""
-    customCSS            = ["default", "/css/more.css"]
-    customJS             = ["default"]
+    customCSS            = "/css/site.min.css?v=6"
+    customJS             = "/js/site.min.js?v=6"
 
 [taxonomies]
     tag = "tags"

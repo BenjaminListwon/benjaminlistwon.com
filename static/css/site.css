@@ -4186,9 +4186,9 @@ ul.archive-list li {
 
 
 /* Subscribe form */
+.mcform,
 .mcform-inputs {
-  overflow: hidden;
-  position: relative;
+  text-align: center;
 }
 
 .mcform input[type="email"],
@@ -4198,15 +4198,14 @@ ul.archive-list li {
   padding-right: 9rem;
 }
 
-.mcform input[type="submit"] {
+.mcform input[type="submit"],
+.mcform a.button {
   background: rgb(95, 203, 105);
   border: 1px solid rgb(91, 187, 99);
-  position: absolute;
-  top: 0;
-  right: 0;
 }
 
-.mcform input[type="submit"]:hover {
+.mcform input[type="submit"]:hover,
+.mcform a.button:hover {
   box-shadow: inset 0 0 0 1px rgb(91, 187, 99);
   color: #fff !important;
 }

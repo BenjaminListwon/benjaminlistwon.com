@@ -1,7 +1,4 @@
-{{ partial "general-title" . }}
-
-{{ partial "header" . }}
-{{ partial "navbar" . }}
+{{ partial "general-title" . }} {{ partial "header" . }} {{ partial "navbar" . }}
 
 <div id="main">
 
@@ -9,27 +6,24 @@
   {{ partial "book-promo" . }}
 
   <article class="post archive">
-    {{ $.Scratch.Set "h1" true }}
-    {{ .Render "header" }}
+    {{ $.Scratch.Set "h1" true }} {{ .Render "header" }}
 
     <div id="content">
 
       {{ range .Site.Pages.GroupByDate "January, 2006" }}
-        <h4>{{ .Key }}</h4>
-        <ul class="archive-list">
-          {{ range .Pages }}
-          {{ if eq "post" .Type }}
-          <li>
-             <a href="{{ .Permalink }}">{{ .Title }}</a> <span class="archive-date">{{ .Date.Format "Jan 02, 2006" }}</span>
-          </li>
-          {{ end }}
-          {{ end }}
-        </ul>
+      <h4>{{ .Key }}</h4>
+      <ul class="archive-list">
+        {{ range .Pages }} {{ if eq "post" .Type }}
+        <li>
+          <a href="{{ .Permalink }}">{{ .Title }}</a>
+          <span class="archive-date">{{ .Date.Format "Jan 02, 2006" }}</span>
+        </li>
+        {{ end }} {{ end }}
+      </ul>
       {{ end }}
 
     </div>
   </article>
 </div>
 
-{{ partial "sidebar" . }}
-{{ partial "footer" . }}
+{{ partial "sidebar" . }} {{ partial "footer" . }}
